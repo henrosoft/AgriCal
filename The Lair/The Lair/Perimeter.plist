@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Tolman Hall</key>
+	<dict>
+		<key>times</key>
+		<dict>
+			<key>perimeter</key>
+			<array>
+				<string>6:49</string>
+				<string>7:04</string>
+				<string>7:19</string>
+				<string>7:34</string>
+				<string>7:49</string>
+				<string>8:04</string>
+				<string>8:19</string>
+				<string>8:34</string>
+				<string>8:49</string>
+				<string>9:04</string>
+				<string>9:19</string>
+				<string>9:34</string>
+				<string>9:49</string>
+				<string>10:04</string>
+				<string>10:19</string>
+				<string>10:34</string>
+				<string>10:49</string>
+				<string>11:04</string>
+				<string>11:34</string>
+				<string>12:04</string>
+				<string>12:34</string>
+				<string>13:04</string>
+				<string>13:34</string>
+				<string>14:04</string>
+				<string>14:34</string>
+				<string>15:04</string>
+				<string>15:34</string>
+				<string>16:04</string>
+				<string>16:19</string>
+				<string>16:34</string>
+				<string>16:49</string>
+				<string>17:04</string>
+				<string>17:19</string>
+				<string>17:34</string>
+				<string>17:49</string>
+				<string>18:04</string>
+				<string>18:19</string>
+				<string>18:34</string>
+				<string>18:49</string>
+				<string>19:04</string>
+			</array>
+		</dict>
+		<key>long</key>
+		<real>-122.263931</real>
+		<key>lat</key>
+		<real>37.874527</real>
+	</dict>
+	<key>North Gate Hall</key>
+	<dict>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.260156</real>
+		<key>lat</key>
+		<real>37.875123</real>
+	</dict>
+	<key>Cory Hall</key>
+	<dict>
+		<key>lat</key>
+		<real>37.875344</real>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.258309</real>
+	</dict>
+	<key>Evans Hall</key>
+	<dict>
+		<key>lat</key>
+		<real>37.873498</real>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.257318</real>
+	</dict>
+	<key>Gayley</key>
+	<dict>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.253952</real>
+		<key>lat</key>
+		<real>37.872685</real>
+	</dict>
+	<key>Haas School of Business</key>
+	<dict>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.252867</real>
+		<key>lat</key>
+		<real>37.871041</real>
+	</dict>
+	<key>International House</key>
+	<dict>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.252625</real>
+		<key>lat</key>
+		<real>37.869583</real>
+	</dict>
+	<key>Piedmont Avenue</key>
+	<dict>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.252212</real>
+		<key>lat</key>
+		<real>37.869348</real>
+	</dict>
+	<key>Underhill Facility</key>
+	<dict>
+		<key>lat</key>
+		<real>37.867489</real>
+		<key>times</key>
+		<array/>
+		<key>long</key>
+		<real>-122.254262</real>
+	</dict>
+	<key>Kroeber Hall</key>
+	<dict>
+		<key>lat</key>
+		<real>37.869296</real>
+		<key>long</key>
+		<real>-122.254591</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>Hearst Memorial Gym</key>
+	<dict>
+		<key>lat</key>
+		<real>37.869003</real>
+		<key>long</key>
+		<real>-122.256899</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>Eshelman Hall</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868759</real>
+		<key>long</key>
+		<real>-122.260204</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>RSF</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868425</real>
+		<key>long</key>
+		<real>-122.261461</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>Banway Building</key>
+	<dict>
+		<key>lat</key>
+		<real>37.867607</real>
+		<key>long</key>
+		<real>-122.267711</real>
+		<key>times</key>
+		<dict/>
+	</dict>
+	<key>Shattuck Avenue</key>
+	<dict>
+		<key>long</key>
+		<real>-122.267802</real>
+		<key>lat</key>
+		<real>37.868489</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>BART</key>
+	<dict>
+		<key>long</key>
+		<real>-122.267689</real>
+		<key>lat</key>
+		<real>37.871252</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>Oxford Street</key>
+	<dict>
+		<key>long</key>
+		<real>-122.266163</real>
+		<key>lat</key>
+		<real>37.872392</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>Strawberry Canyon Recreational Area</key>
+	<dict>
+		<key>lat</key>
+		<real>37.872082</real>
+		<key>long</key>
+		<real>-122.247111</real>
+		<key>times</key>
+		<array/>
+	</dict>
+	<key>UC Botanical Garden</key>
+	<dict>
+		<key>lat</key>
+		<real>37.875386</real>
+		<key>long</key>
+		<real>-122.238672</real>
+	</dict>
+	<key>Lawrence Hall of Science</key>
+	<dict>
+		<key>lat</key>
+		<real>37.880499</real>
+		<key>long</key>
+		<real>-122.246493</real>
+		<key>New item - 2</key>
+		<string></string>
+	</dict>
+	<key>Space Sciences Lab</key>
+	<dict>
+		<key>long</key>
+		<real>-122.24417</real>
+		<key>lat</key>
+		<real>37.880656</real>
+	</dict>
+</dict>
+</plist>

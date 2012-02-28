@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bear Basics</key>
+	<dict>
+		<key>lat</key>
+		<real>37.86768</real>
+		<key>long</key>
+		<real>-122.259085</real>
+	</dict>
+	<key>Berkeley Thai House</key>
+	<dict>
+		<key>long</key>
+		<real>-122.258389</real>
+		<key>lat</key>
+		<real>37.867061</real>
+	</dict>
+	<key>Cafe Durant</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868026</real>
+		<key>long</key>
+		<real>-122.258245</real>
+	</dict>
+	<key>Chipotle Mexican Grill</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868366</real>
+		<key>long</key>
+		<real>-122.25905</real>
+	</dict>
+	<key>IB&apos;s Hoagies &amp; Cheesesteaks</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868018</real>
+		<key>long</key>
+		<real>-122.258502</real>
+	</dict>
+	<key>Johnston&apos;s Market</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868024</real>
+		<key>long</key>
+		<real>-122.258457</real>
+	</dict>
+	<key>Moe&apos;s Books</key>
+	<dict>
+		<key>lat</key>
+		<real>37.865522</real>
+		<key>long</key>
+		<real>-122.258646</real>
+	</dict>
+	<key>Ned&apos;s Berkeley Bookstore</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868554</real>
+		<key>long</key>
+		<real>-122.259842</real>
+	</dict>
+	<key>UC Hair Salon &amp; Waxing</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868402</real>
+		<key>long</key>
+		<real>-122.26052</real>
+	</dict>
+	<key>Berkeley Student Food Collective</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868402</real>
+		<key>long</key>
+		<real>-122.26052</real>
+	</dict>
+	<key>Blondie&apos;s Pizza</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868034</real>
+		<key>long</key>
+		<real>-122.259197</real>
+	</dict>
+	<key>Cheese &apos;n&apos; Stuff</key>
+	<dict>
+		<key>lat</key>
+		<real>37.86763</real>
+		<key>long</key>
+		<real>-122.26029</real>
+	</dict>
+	<key>Extreme Pizza, Shattuck Ave.</key>
+	<dict>
+		<key>lat</key>
+		<real>37.86621</real>
+		<key>long</key>
+		<real>-122.268271</real>
+	</dict>
+	<key>Extreme Pizza, College Ave.</key>
+	<dict>
+		<key>lat</key>
+		<real>37.851045</real>
+		<key>long</key>
+		<real>-122.252634</real>
+	</dict>
+	<key>Jamba Juice</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868682</real>
+		<key>long</key>
+		<real>-122.258734</real>
+	</dict>
+	<key>Joshua-ya&apos;s Brasserie</key>
+	<dict>
+		<key>lat</key>
+		<real>37.865234</real>
+		<key>long</key>
+		<real>-122.259381</real>
+	</dict>
+	<key>Naan-N-Curry</key>
+	<dict>
+		<key>lat</key>
+		<real>37.8674</real>
+		<key>long</key>
+		<real>-122.259068</real>
+	</dict>
+	<key>San Francisco Soup Company</key>
+	<dict>
+		<key>lat</key>
+		<real>37.868671</real>
+		<key>long</key>
+		<real>-122.258563</real>
+	</dict>
+</dict>
+</plist>
