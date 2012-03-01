@@ -50,7 +50,6 @@
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
         CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:[current objectForKey:@"times"]];
-        NSLog(@"%@", [current objectForKey:@"times"]);
         [self.busAnnotations addObject:ano];	
     }
     plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
