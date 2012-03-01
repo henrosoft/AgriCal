@@ -49,11 +49,8 @@
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        if ([stop isEqualToString:@"Tolman Hall"])
-            stop = [NSString stringWithFormat:@"%@", [[current objectForKey:@"times"] objectForKey:@"perimeter"]];
-        else 
-            stop = [NSString stringWithFormat:@"%@\nPerimeter: 3:15,3:17,3:25..., F: 3:20,3:23...", stop];
-        CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:nil];
+        CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:[current objectForKey:@"times"]];
+        NSLog(@"%@", [current objectForKey:@"times"]);
         [self.busAnnotations addObject:ano];	
     }
     plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
@@ -73,7 +70,8 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     self.calloutAnnotation = nil;
-    self.calloutAnnotation = [[CalloutMapAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andName:[(CalloutMapAnnotation*) view.annotation name] andStops:nil];
+    CalloutMapAnnotation* annotation = (CalloutMapAnnotation*)view.annotation;
+    self.calloutAnnotation = [[CalloutMapAnnotation alloc] initWithLatitude:annotation.coordinate.latitude andLongitude:annotation.coordinate.longitude andName:[annotation name] andStops:annotation.stops];
     [self.mapView addAnnotation:self.calloutAnnotation];
     self.selectedAnnotationView = view;
 }
@@ -90,6 +88,10 @@
 																			 reuseIdentifier:@"CalloutAnnotation"];
 			calloutMapAnnotationView.contentHeight = 78.0f;
         }
+        calloutMapAnnotationView.tableView.delegate = annotation;
+        calloutMapAnnotationView.tableView.dataSource = annotation;
+        [(CalloutMapAnnotation*)annotation sortStops];
+        [calloutMapAnnotationView.tableView reloadData];
 		calloutMapAnnotationView.parentAnnotationView = self.selectedAnnotationView;
 		calloutMapAnnotationView.mapView = self.mapView;
         calloutMapAnnotationView.titleView.text = [(CalloutMapAnnotation*)annotation name];
@@ -97,13 +99,13 @@
 	}
     if ([self.busAnnotations containsObject:annotation])
     {
-        MKPinAnnotationView* anView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotation"];
+        MKPinAnnotationView* anView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotationGreen"];
         anView.pinColor=MKPinAnnotationColorGreen;
         return anView;
     }
     if ([self.cal1Annotations containsObject:annotation])
     {
-        MKPinAnnotationView* anView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotation"];
+        MKPinAnnotationView* anView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotationPurple"];
         anView.pinColor=MKPinAnnotationColorPurple;
         return anView;
     }

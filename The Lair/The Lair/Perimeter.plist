@@ -58,7 +58,7 @@
 	<key>North Gate Hall</key>
 	<dict>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.260156</real>
 		<key>lat</key>
@@ -69,7 +69,7 @@
 		<key>lat</key>
 		<real>37.875344</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.258309</real>
 	</dict>
@@ -78,14 +78,14 @@
 		<key>lat</key>
 		<real>37.873498</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.257318</real>
 	</dict>
 	<key>Gayley</key>
 	<dict>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.253952</real>
 		<key>lat</key>
@@ -94,7 +94,7 @@
 	<key>Haas School of Business</key>
 	<dict>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.252867</real>
 		<key>lat</key>
@@ -103,7 +103,7 @@
 	<key>International House</key>
 	<dict>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.252625</real>
 		<key>lat</key>
@@ -112,7 +112,7 @@
 	<key>Piedmont Avenue</key>
 	<dict>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.252212</real>
 		<key>lat</key>
@@ -123,7 +123,7 @@
 		<key>lat</key>
 		<real>37.867489</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 		<key>long</key>
 		<real>-122.254262</real>
 	</dict>
@@ -134,7 +134,7 @@
 		<key>long</key>
 		<real>-122.254591</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>Hearst Memorial Gym</key>
 	<dict>
@@ -143,7 +143,7 @@
 		<key>long</key>
 		<real>-122.256899</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>Eshelman Hall</key>
 	<dict>
@@ -152,7 +152,7 @@
 		<key>long</key>
 		<real>-122.260204</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>RSF</key>
 	<dict>
@@ -161,7 +161,7 @@
 		<key>long</key>
 		<real>-122.261461</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>Banway Building</key>
 	<dict>
@@ -179,7 +179,7 @@
 		<key>lat</key>
 		<real>37.868489</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>BART</key>
 	<dict>
@@ -188,7 +188,7 @@
 		<key>lat</key>
 		<real>37.871252</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>Oxford Street</key>
 	<dict>
@@ -197,7 +197,7 @@
 		<key>lat</key>
 		<real>37.872392</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>Strawberry Canyon Recreational Area</key>
 	<dict>
@@ -206,10 +206,12 @@
 		<key>long</key>
 		<real>-122.247111</real>
 		<key>times</key>
-		<array/>
+		<dict/>
 	</dict>
 	<key>UC Botanical Garden</key>
 	<dict>
+		<key>times</key>
+		<dict/>
 		<key>lat</key>
 		<real>37.875386</real>
 		<key>long</key>
@@ -221,11 +223,13 @@
 		<real>37.880499</real>
 		<key>long</key>
 		<real>-122.246493</real>
-		<key>New item - 2</key>
-		<string></string>
+		<key>times</key>
+		<dict/>
 	</dict>
 	<key>Space Sciences Lab</key>
 	<dict>
+		<key>times</key>
+		<dict/>
 		<key>long</key>
 		<real>-122.24417</real>
 		<key>lat</key>

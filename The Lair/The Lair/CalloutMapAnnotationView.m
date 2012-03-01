@@ -32,6 +32,7 @@
 @synthesize offsetFromParent = _offsetFromParent;
 @synthesize contentHeight = _contentHeight;
 @synthesize titleView = _title;
+@synthesize tableView = _tableView;
 - (id) initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
 		self.contentHeight = 80.0;
@@ -332,11 +333,9 @@
 		_contentView = [[UIView alloc] init];
 		self.contentView.backgroundColor = [UIColor clearColor];
 		self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.titleView= [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 300, 75)];
-        [self.titleView setEditable:NO];
-        [self.titleView setTextColor:[UIColor whiteColor]];
-        [self.titleView setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:self.titleView];
+        self.tableView = [[UITableView alloc] initWithFrame:self.contentView.frame style:UITableViewStyleGrouped];
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.contentView = self.tableView;
 		[self addSubview:self.contentView];
 	}
 	return _contentView;
