@@ -110,7 +110,7 @@
             for (int i = 0; i < [self.nextBuses count]; i++)
             {
                 NSArray *arr = [[NSArray alloc] initWithObjects:[self.nextBuses objectAtIndex:i], key, nil];
-                [self.nextBuses insertObject:arr atIndex:i];
+                [self.nextBuses replaceObjectAtIndex:i withObject:arr];
             }
             count++; 
             continue;
@@ -132,16 +132,16 @@
             if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:dateB])
             {
                 if (![[dateA earlierDate:dateB] isEqualToDate:dateA])
-                    [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
+                    [self.nextBuses replaceObjectAtIndex:i withObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil]];
             }
             if ([[dateA earlierDate:currentTime] isEqualToDate:currentTime] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
             {
                 if (![[dateA earlierDate:dateB] isEqualToDate:dateA])
-                    [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
+                    [self.nextBuses replaceObjectAtIndex:i withObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil]];
             }
             else if (![[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
             {
-                [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];            
+                [self.nextBuses replaceObjectAtIndex:i withObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil]];            
             }
         }
     }
