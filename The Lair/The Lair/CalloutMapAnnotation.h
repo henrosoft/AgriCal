@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface CalloutMapAnnotation : NSObject <MKAnnotation, UITableViewDelegate, UITableViewDataSource> {
+@interface CalloutMapAnnotation : MKAnnotationView <MKAnnotation, UITableViewDelegate, UITableViewDataSource> {
 	CLLocationDegrees _latitude;
 	CLLocationDegrees _longitude;
     NSString* _name;

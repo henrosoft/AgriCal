@@ -59,7 +59,8 @@
 
 - (void)sortStops
 {
-    for (NSString *key in self.stops){
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:self.stops];
+    for (NSString *key in dict){
         unsigned int flags = NSHourCalendarUnit | NSMinuteCalendarUnit;
         NSDateComponents *currentTimeComponents = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date]];
         NSDate *currentTime = [[NSCalendar currentCalendar] dateFromComponents:currentTimeComponents];
@@ -100,7 +101,6 @@
                                   
                               }] forKey:key];
     }
-    NSLog(@"first");
     int count = 0;
     for (NSString *key in self.stops)
     {
@@ -132,20 +132,19 @@
             if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:dateB])
             {
                 if (![[dateA earlierDate:dateB] isEqualToDate:dateA])
-                    [self.nextBuses replaceObjectAtIndex:i withObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil]];
+                    [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
             }
             if ([[dateA earlierDate:currentTime] isEqualToDate:currentTime] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
             {
                 if (![[dateA earlierDate:dateB] isEqualToDate:dateA])
-                    [self.nextBuses replaceObjectAtIndex:i withObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil]];
+                    [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
             }
             else if (![[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
             {
-                [self.nextBuses replaceObjectAtIndex:i withObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil]];            
+                [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];            
             }
         }
     }
-    NSLog(@"second");
 }
 
 @end

@@ -6,6 +6,10 @@
 	<dict>
 		<key>times</key>
 		<dict>
+			<key>f</key>
+			<array>
+				<string>7:09</string>
+			</array>
 			<key>perimeter</key>
 			<array>
 				<string>6:49</string>
