@@ -59,110 +59,54 @@
 - (void)sortStops
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:self.stops];
+    self.nextBuses = nil;
+    self.nextBuses = [[NSMutableArray alloc] init];
+    for (NSString *key in dict)
+    {
+        [self.nextBuses addObjectsFromArray:[self.stops objectForKey:key]]; 
+    }
     for (NSString *key in dict){
         unsigned int flags = NSHourCalendarUnit | NSMinuteCalendarUnit;
         NSDateComponents *currentTimeComponents = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date]];
         NSDate *currentTime = [[NSCalendar currentCalendar] dateFromComponents:currentTimeComponents];
-        [self.stops setValue:[[self.stops objectForKey:key] sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+        self.nextBuses = [[NSMutableArray alloc] initWithArray:[self.nextBuses sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
                               {
                                   NSDateComponents *timeAComponents = [[NSDateComponents alloc] init]; 
                                   [timeAComponents setHour:[(NSString*)a integerValue]];
-                                  [timeAComponents setMinute:[[[(NSString*)a componentsSeparatedByString:@":"] objectAtIndex:0] integerValue]];
+                                  [timeAComponents setMinute:[[[(NSString*)a componentsSeparatedByString:@":"] objectAtIndex:1] integerValue]];
                                   NSDateComponents *timeBComponents = [[NSDateComponents alloc] init]; 
                                   [timeBComponents setHour:[(NSString*)b integerValue]];
-                                  [timeBComponents setMinute:[[[(NSString*)b componentsSeparatedByString:@":"] objectAtIndex:0] integerValue]];
+                                  [timeBComponents setMinute:[[[(NSString*)b componentsSeparatedByString:@":"] objectAtIndex:1] integerValue]];
                                   
                                   NSDate *dateA = [[NSCalendar currentCalendar] dateFromComponents:timeAComponents];
                                   NSDate *dateB = [[NSCalendar currentCalendar] dateFromComponents:timeBComponents];
                                   
                                   if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:dateB])
                                   {
-                                      if ([[dateA earlierDate:dateB] isEqualToDate:dateA])
+                                      if ([dateA earlierDate:dateB] == dateA) {
                                           return NSOrderedAscending;
+                                      }
                                       else 
                                           return NSOrderedDescending;
                                   }
                                   if ([[dateA earlierDate:currentTime] isEqualToDate:currentTime] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
                                   {
-                                      if ([[dateA earlierDate:dateB] isEqualToDate:dateA])
+                                      if ([dateA earlierDate:dateB] == dateA) {
                                           return NSOrderedAscending;
+                                      }
                                       else 
                                           return NSOrderedDescending;
                                   }
                                   else if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
                                   {
-                                      return NSOrderedDescending; 
+                                      return NSOrderedDescending;
                                   }
                                   else 
                                   {
                                       return NSOrderedAscending;
                                   }
                                   
-                              }] forKey:key];
-    }
-    int count = 0;
-    for (NSString *key in self.stops)
-    {
-        if (count == 0)
-        {
-            self.nextBuses = [[NSMutableArray alloc] initWithArray:[self.stops objectForKey:key]];
-            for (int i = 0; i < [self.nextBuses count]; i++)
-            {
-                NSArray *arr = [[NSArray alloc] initWithObjects:[self.nextBuses objectAtIndex:i], key, nil];
-                [self.nextBuses replaceObjectAtIndex:i withObject:arr];
-            }
-            count++; 
-            continue;
-        }
-        NSArray *arr = [self.stops objectForKey:key];
-        unsigned int flags = NSHourCalendarUnit | NSMinuteCalendarUnit;
-        NSDateComponents *currentTimeComponents = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date]];
-        NSDate *currentTime = [[NSCalendar currentCalendar] dateFromComponents:currentTimeComponents];
-        NSLog(@"%@",self.nextBuses);
-        for (int i = 0; i < 5; i ++)
-        {
-            if (i >= [self.nextBuses count])
-            {
-                [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
-            }
-            else if (i >= [arr count])
-            {
-                break;
-            }
-            else{
-                NSLog(@"in here %i", i);
-                NSDateComponents *timeAComponents = [[NSDateComponents alloc] init]; 
-                [timeAComponents setHour:[(NSString*)[[self.nextBuses objectAtIndex:i] objectAtIndex:0] integerValue]];
-                [timeAComponents setMinute:[[[(NSString*)[[self.nextBuses objectAtIndex:i] objectAtIndex:0] componentsSeparatedByString:@":"] objectAtIndex:0] integerValue]];
-                NSDateComponents *timeBComponents = [[NSDateComponents alloc] init]; 
-                [timeBComponents setHour:[(NSString*)[arr objectAtIndex:i] integerValue]];
-                [timeBComponents setMinute:[[[(NSString*)[arr objectAtIndex:i] componentsSeparatedByString:@":"] objectAtIndex:0] integerValue]];
-                NSDate *dateA = [[NSCalendar currentCalendar] dateFromComponents:timeAComponents];
-                NSDate *dateB = [[NSCalendar currentCalendar] dateFromComponents:timeBComponents];
-                if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:dateB])
-                {
-                    NSLog(@"1");
-                    if ([[dateA earlierDate:dateB] isEqualToDate:dateB])
-                        [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
-                }
-                if ([[dateA earlierDate:currentTime] isEqualToDate:currentTime] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
-                {
-                    if ([[dateA earlierDate:dateB] isEqualToDate:dateB])
-                        [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];
-                    NSLog(@"b");
-                }
-                else if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:currentTime])
-                {
-                    NSLog(@"c");
-                    [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];            
-                }
-                else if ([[dateA earlierDate:currentTime] isEqualToDate:dateA] && [[dateB earlierDate:currentTime] isEqualToDate:dateB])
-                {
-                    NSLog(@"d");
-                    [self.nextBuses insertObject:[[NSArray alloc] initWithObjects:[arr objectAtIndex:i],key,nil] atIndex:i];            
-                }
-            }
-        }
+                              }]];
     }
     NSLog(@"%@", self.nextBuses);
 }
