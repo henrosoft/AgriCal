@@ -20,10 +20,26 @@
 @synthesize busStops = _busStops;
 @synthesize cal1cardLocations = _cal1cardLocations;
 @synthesize annotationSelector = _annotationSelector;
+@synthesize webView = _webView;
+@synthesize doneButton = _doneButton;
+@synthesize toolBar = _toolBar;
 @synthesize cal1Callout = _cal1Callout;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", @"Cal1Card Locations", nil];
+	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
+	segmentedControl.frame = CGRectMake(2, 2, 308, 34);
+	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.selectedSegmentIndex = 0;
+	[segmentedControl addTarget:self
+	                     action:@selector(switchAnnotations:)
+	           forControlEvents:UIControlEventValueChanged];
+    self.annotationSelector = segmentedControl;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+    [self.toolBar setItems:[NSArray arrayWithObject:barButton] animated:YES];
+	
     self.busStops = [[NSMutableArray alloc] init];
     self.cal1cardLocations = [[NSMutableArray alloc] init];
     self.mapView.delegate = self;
@@ -145,10 +161,11 @@
             callout.url = ((BasicMapAnnotation*)annotation).url;
             callout.title = ((BasicMapAnnotation*)annotation).title;
         }
+        callout.url = ((BasicMapAnnotation*)annotation).url;
+        callout.title = ((BasicMapAnnotation*)annotation).title;
         callout.parentAnnotationView = self.selectedAnnotation;
         callout.mapView = self.mapView;
         callout.textLabel.text = ((BasicMapAnnotation*)annotation).title;
-        NSLog(@"%@%@", ((BasicMapAnnotation*)annotation).url, ((BasicMapAnnotation*)annotation).title);
         
         return callout;
     }
@@ -199,9 +216,48 @@
             break;
     }
 }
-
+- (void)displayWebsite:(NSString *)url
+{
+    NSURL *u = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:u];
+    [self.webView setHidden:NO];
+    [self.webView loadRequest:request];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", @"Cal1Card Locations", nil];
+	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
+	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.selectedSegmentIndex = 0;
+	[segmentedControl addTarget:self
+	                     action:@selector(switchAnnotations:)
+	           forControlEvents:UIControlEventValueChanged];
+    self.annotationSelector = segmentedControl;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPushed:)];
+    segmentedControl.frame = CGRectMake(2, 2, 250, 34);
+    [self.toolBar setItems:[NSArray arrayWithObjects:barButton,doneButton,nil] animated:YES];
+    [segmentedControl setEnabled:NO forSegmentAtIndex:0];
+    [segmentedControl setEnabled:NO forSegmentAtIndex:1];
+}
+- (IBAction)doneButtonPushed:(id)sender
+{
+    
+    [self.webView setHidden:YES];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", @"Cal1Card Locations", nil];
+	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
+	segmentedControl.frame = CGRectMake(2, 2, 308, 34);
+	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.selectedSegmentIndex = 1;
+	[segmentedControl addTarget:self
+	                     action:@selector(switchAnnotations:)
+	           forControlEvents:UIControlEventValueChanged];
+    self.annotationSelector = segmentedControl;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+    [self.toolBar setItems:[NSArray arrayWithObject:barButton] animated:YES];
+}
 - (void)viewDidUnload {
     [self setAnnotationSelector:nil];
+    [self setWebView:nil];
+    [self setToolBar:nil];
+    [self setDoneButton:nil];
     [super viewDidUnload];
 }
 @end

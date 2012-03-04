@@ -84,11 +84,10 @@
 }
 
 - (void) calloutAccessoryTapped {
-	if ([self.mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)]) {
-		[self.mapView.delegate mapView:self.mapView 
-						annotationView:self.parentAnnotationView 
-		 calloutAccessoryControlTapped:self.accessory];
-	}
+	if ([self.mapView.delegate respondsToSelector:@selector(displayWebsite:)])
+    {
+        [self.mapView.delegate performSelector:@selector(displayWebsite:) withObject:self.url];
+    }
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {

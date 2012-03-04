@@ -24,22 +24,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="7fF-M6-CmS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Item" style="plain" id="tGT-Z0-5py">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="xNu-W9-Aot">
-                                            <rect key="frame" x="6" y="8" width="308" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="Bus Schedule"/>
-                                                <segment title="Cal1Card"/>
-                                            </segments>
-                                            <color key="tintColor" red="0.30177904211956519" green="0.30177904211956519" blue="0.30177904211956519" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="switchAnnotations:" destination="2" eventType="valueChanged" id="2rX-oZ-pFI"/>
-                                            </connections>
-                                        </segmentedControl>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                             </toolbar>
                             <webView hidden="YES" contentMode="scaleToFill" id="VHt-Z8-l7l">
                                 <rect key="frame" x="0.0" y="44" width="320" height="367"/>
@@ -51,8 +36,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="7"/>
                     <connections>
-                        <outlet property="annotationSelector" destination="xNu-W9-Aot" id="YO3-9P-wLC"/>
                         <outlet property="mapView" destination="N0G-e7-n14" id="7dI-kL-pDk"/>
+                        <outlet property="toolBar" destination="7fF-M6-CmS" id="7Eq-ja-n22"/>
+                        <outlet property="webView" destination="VHt-Z8-l7l" id="d7l-gd-28D"/>
                     </connections>
                 </viewController>
             </objects>
@@ -113,19 +99,6 @@
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="FirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="switchAnnotations:"/>
-                <relationship kind="outlet" name="annotationSelector" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="SecondViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecondViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -22,7 +22,12 @@
 @property (strong, nonatomic) MKAnnotationView *selectedAnnotation; 
 @property (strong, nonatomic) NSMutableArray *busStops; 
 @property (strong, nonatomic) NSMutableArray *cal1cardLocations;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *annotationSelector;
+@property (weak, nonatomic) UISegmentedControl *annotationSelector;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 - (IBAction)switchAnnotations:(id)sender;
+- (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path;
+- (void)displayWebsite:(NSString*)url;
 @end
