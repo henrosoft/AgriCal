@@ -1,20 +1,18 @@
 //
-//  Cal1CardAnnotationView.m
+//  TimePopAnnotationView.m
 //  Agri Cal
 //
-//  Created by Kevin Lindkvist on 3/3/12.
+//  Created by Kevin Lindkvist on 3/4/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Cal1CardAnnotationView.h"
-#import "BasicMapAnnotationView.h"
-#import <CoreGraphics/CoreGraphics.h>
-#import <QuartzCore/QuartzCore.h>
-
+#import "TimePopAnnotationView.h"
 #define CalloutMapAnnotationViewBottomShadowBufferSize 6.0f
 #define CalloutMapAnnotationViewContentHeightBuffer 8.0f
 #define CalloutMapAnnotationViewHeightAboveParent 2.0f
-@interface Cal1CardAnnotationView()
+
+@interface TimePopAnnotationView()
+
 @property (nonatomic, readonly) CGFloat yShadowOffset;
 @property (nonatomic) BOOL animateOnNextDrawRect;
 @property (nonatomic) CGRect endFrame;
@@ -24,14 +22,12 @@
 - (void)prepareOffset;
 - (CGFloat)relativeParentXPosition;
 - (void)adjustMapRegionIfNeeded;
-@property (nonatomic, retain) UIButton *accessory;
 
 @end
 
 
-@implementation Cal1CardAnnotationView
+@implementation TimePopAnnotationView
 
-@synthesize accessory = _accessory;
 @synthesize parentAnnotationView = _parentAnnotationView;
 @synthesize mapView = _mapView;
 @synthesize contentView = _contentView;
@@ -40,92 +36,16 @@
 @synthesize yShadowOffset = _yShadowOffset;
 @synthesize offsetFromParent = _offsetFromParent;
 @synthesize contentHeight = _contentHeight;
-@synthesize title = _title;
-@synthesize url = _url;
-@synthesize textLabel = _textLabel;
-
+@synthesize titleLabel = _titleLabel;
 - (id) initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
-        self.contentHeight = 80.0;
-		self.offsetFromParent = CGPointMake(8, -14); //this works for MKPinAnnotationView
+		self.contentHeight = 80.0;
+		self.offsetFromParent = CGPointMake(15, -24
+                                            ); //this works for MKPinAnnotationView
 		self.enabled = NO;
 		self.backgroundColor = [UIColor clearColor];
-		self.accessory = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-		self.accessory.exclusiveTouch = YES;
-		self.accessory.enabled = YES;
-		[self.accessory addTarget: self 
-						   action: @selector(calloutAccessoryTapped) 
-				 forControlEvents: UIControlEventTouchUpInside | UIControlEventTouchCancel];
-		[self addSubview:self.accessory];
 	}
 	return self;
-}
-
-- (void)prepareContentFrame {
-	CGRect contentFrame = CGRectMake(self.bounds.origin.x + 10, 
-									 self.bounds.origin.y + 3, 
-									 self.bounds.size.width - 20, 
-									 self.contentHeight);
-	
-	self.contentView.frame = contentFrame;
-}
-
-- (void)prepareAccessoryFrame {
-	self.accessory.frame = CGRectMake(self.bounds.size.width - self.accessory.frame.size.width - 15, 
-									  (self.contentHeight + 3 - self.accessory.frame.size.height) / 2, 
-									  self.accessory.frame.size.width, 
-									  self.accessory.frame.size.height);
-}
-
-- (void)didMoveToSuperview {
-	[self adjustMapRegionIfNeeded];
-	[self animateIn];
-	[self prepareAccessoryFrame];
-}
-
-- (void) calloutAccessoryTapped {
-	if ([self.mapView.delegate respondsToSelector:@selector(displayWebsite:)])
-    {
-        [self.mapView.delegate performSelector:@selector(displayWebsite:) withObject:self.url];
-    }
-}
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-	
-	UIView *hitView = [super hitTest:point withEvent:event];
-	
-	//If the accessory is hit, the map view may want to select an annotation sitting below it, so we must disable the other annotations
-	//But not the parent because that will screw up the selection
-	if (hitView == self.accessory) {
-		[self preventParentSelectionChange];
-		[self performSelector:@selector(allowParentSelectionChange) withObject:nil afterDelay:1.0];
-		for (UIView *sibling in self.superview.subviews) {
-			if ([sibling isKindOfClass:[MKAnnotationView class]] && sibling != self.parentAnnotationView) {
-				((MKAnnotationView *)sibling).enabled = NO;
-				[self performSelector:@selector(enableSibling:) withObject:sibling afterDelay:1.0];
-			}
-		}
-	}
-	
-	return hitView;
-}
-
-- (void) enableSibling:(UIView *)sibling {
-	((MKAnnotationView *)sibling).enabled =
-    YES;
-}
-
-- (void) preventParentSelectionChange {
-	BasicMapAnnotationView *parentView = (BasicMapAnnotationView *)self.parentAnnotationView;
-	parentView.preventSelectionChange = YES;
-}
-
-- (void) allowParentSelectionChange {
-	//The MapView may think it has deselected the pin, so we should re-select it
-	[self.mapView selectAnnotation:self.parentAnnotationView.annotation animated:NO];
-	
-	BasicMapAnnotationView *parentView = (BasicMapAnnotationView *)self.parentAnnotationView;
-	parentView.preventSelectionChange = NO;
 }
 
 - (void)setAnnotation:(id <MKAnnotation>)annotation {
@@ -135,6 +55,7 @@
 	[self prepareContentFrame];
 	[self setNeedsDisplay];
 }
+
 - (void)prepareFrameSize {
 	CGRect frame = self.frame;
 	CGFloat height =	self.contentHeight +
@@ -142,19 +63,28 @@
 	CalloutMapAnnotationViewBottomShadowBufferSize -
 	self.offsetFromParent.y;
 	
-	frame.size = CGSizeMake(self.mapView.frame.size.width, height);
+	frame.size = CGSizeMake(self.mapView.frame.size.width/5, height);
 	self.frame = frame;
 }
+
+- (void)prepareContentFrame {
+	CGRect contentFrame = CGRectMake(self.bounds.origin.x + 10, 
+									 self.bounds.origin.y + 3, 
+									 self.bounds.size.width - 20, 
+									 self.contentHeight);
+    
+	self.contentView.frame = contentFrame;
+}
+
 - (void)prepareOffset {
 	CGPoint parentOrigin = [self.mapView convertPoint:self.parentAnnotationView.frame.origin 
 											 fromView:self.parentAnnotationView.superview];
 	
-	CGFloat xOffset =	(self.mapView.frame.size.width / 2) - 
-    (parentOrigin.x + self.offsetFromParent.x);
+	CGFloat xOffset = 0;
 	
 	//Add half our height plus half of the height of the annotation we are tied to so that our bottom lines up to its top
 	//Then take into account its offset and the extra space needed for our drop shadow
-	CGFloat yOffset = -(self.frame.size.height / 2 + 
+	CGFloat yOffset = -(self.frame.size.height/2  + 
 						self.parentAnnotationView.frame.size.height / 2) + 
     self.offsetFromParent.y + 
     CalloutMapAnnotationViewBottomShadowBufferSize;
@@ -194,8 +124,8 @@
 		
 		CLLocationCoordinate2D newCenterCoordinate = {self.mapView.region.center.latitude + latitudinalShift, 
 			self.mapView.region.center.longitude + longitudinalShift};
-		if (abs((newCenterCoordinate.latitude - self.mapView.centerCoordinate.latitude)) < 1)
-            [self.mapView setCenterCoordinate:newCenterCoordinate animated:YES];
+		
+		//[self.mapView setCenterCoordinate:newCenterCoordinate animated:YES];
 		
 		//fix for now
 		self.frame = CGRectMake(self.frame.origin.x - xPixelShift,
@@ -255,6 +185,10 @@
 	[UIView commitAnimations];
 }
 
+- (void)didMoveToSuperview {
+	[self animateIn];
+}
+
 - (void)drawRect:(CGRect)rect {
 	CGFloat stroke = 1.0;
 	CGFloat radius = 7.0;
@@ -276,11 +210,11 @@
 	CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y + rect.size.height - radius);
 	CGPathAddArc(path, NULL, rect.origin.x + radius, rect.origin.y + rect.size.height - radius, 
 				 radius, M_PI, M_PI / 2, 1);
-	CGPathAddLineToPoint(path, NULL, parentX - 15, 
+	CGPathAddLineToPoint(path, NULL, parentX + 7, 
 						 rect.origin.y + rect.size.height);
-	CGPathAddLineToPoint(path, NULL, parentX, 
+	CGPathAddLineToPoint(path, NULL, parentX + 17, 
 						 rect.origin.y + rect.size.height + 15);
-	CGPathAddLineToPoint(path, NULL, parentX + 15, 
+	CGPathAddLineToPoint(path, NULL, parentX + 27, 
 						 rect.origin.y + rect.size.height);
 	CGPathAddLineToPoint(path, NULL, rect.origin.x + rect.size.width - radius, 
 						 rect.origin.y + rect.size.height);
@@ -402,9 +336,11 @@
 		_contentView = [[UIView alloc] init];
 		self.contentView.backgroundColor = [UIColor clearColor];
 		self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 306, 35)];
-        [self.textLabel setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:self.textLabel];
+        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.backgroundColor = [UIColor clearColor]; 
+        self.titleLabel.frame = CGRectMake(0,0,60,30);
+        self.titleLabel.textColor = [UIColor whiteColor];
+        [self.contentView addSubview:self.titleLabel];
 		[self addSubview:self.contentView];
 	}
 	return _contentView;

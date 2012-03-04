@@ -13,8 +13,12 @@
 #import "BasicMapAnnotationView.h"
 #import "Cal1CardAnnotation.h"
 #import "Cal1CardAnnotationView.h"
+#import "TimePopAnnotationView.h"
 
 @interface FirstViewController : UIViewController <MKMapViewDelegate>
+{
+    BOOL _timePoping;
+}
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) BasicMapAnnotation *testAnnotation;
 @property (strong, nonatomic) BusStopAnnotation *testCallout;
@@ -26,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (strong, nonatomic) NSMutableArray *timePopUps;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path;

@@ -22,6 +22,7 @@
 @property (nonatomic) NSMutableDictionary *routes; 
 @property (nonatomic, strong) NSMutableArray *nextBuses;
 @property (nonatomic) id delegate;
+@property (nonatomic, strong) NSString *title;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes

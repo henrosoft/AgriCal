@@ -14,6 +14,7 @@
 @synthesize routes = _routes;
 @synthesize nextBuses = _nextBuses;
 @synthesize delegate = _delegate;
+@synthesize title = _title;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes
@@ -34,7 +35,10 @@
 	coordinate.longitude = self.longitude;
 	return coordinate;
 }
-
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.title;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return MIN([self.nextBuses count], 5);

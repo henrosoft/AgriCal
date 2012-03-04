@@ -89,6 +89,9 @@
 
 //if the pin is too close to the edge of the map view we need to shift the map view so the callout will fit.
 - (void)adjustMapRegionIfNeeded {
+    if (![self relativeParentXPosition])
+        return;
+    NSLog(@"%d", [self relativeParentXPosition]);
 	//Longitude
 	CGFloat xPixelShift = 0;
 	if ([self relativeParentXPosition] < 38) {
@@ -120,7 +123,8 @@
 		CLLocationCoordinate2D newCenterCoordinate = {self.mapView.region.center.latitude + latitudinalShift, 
 			self.mapView.region.center.longitude + longitudinalShift};
 		
-		[self.mapView setCenterCoordinate:newCenterCoordinate animated:YES];
+        if (abs((newCenterCoordinate.latitude - self.mapView.centerCoordinate.latitude)) < 1)
+            [self.mapView setCenterCoordinate:newCenterCoordinate animated:YES];
 		
 		//fix for now
 		self.frame = CGRectMake(self.frame.origin.x - xPixelShift,
@@ -359,6 +363,7 @@
 	if (CGRectContainsPoint(self.tableView.frame, point)) {
 		[self preventParentSelectionChange];
 		[self performSelector:@selector(allowParentSelectionChange) withObject:nil afterDelay:1.0];
+        
 		for (UIView *sibling in self.superview.subviews) {
 			if ([sibling isKindOfClass:[MKAnnotationView class]] && sibling != self.parentAnnotationView) {
 				((MKAnnotationView *)sibling).enabled = NO;

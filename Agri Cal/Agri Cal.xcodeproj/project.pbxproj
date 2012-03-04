@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
 		6393DE09150301F3003B77F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE08150301F3003B77F5 /* UIKit.framework */; };
 		6393DE0B150301F3003B77F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0A150301F3003B77F5 /* Foundation.framework */; };
 		6393DE0D150301F3003B77F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0C150301F3003B77F5 /* CoreGraphics.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		638EE2EE150374210031FC10 /* TimePopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePopAnnotationView.h; path = ../TimePopAnnotationView.h; sourceTree = "<group>"; };
+		638EE2EF150374210031FC10 /* TimePopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePopAnnotationView.m; path = ../TimePopAnnotationView.m; sourceTree = "<group>"; };
 		6393DE04150301F3003B77F5 /* Agri Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agri Cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6393DE08150301F3003B77F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6393DE0A150301F3003B77F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +219,8 @@
 				6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */,
 				6393DE8215033E1A003B77F5 /* Cal1CardAnnotationView.h */,
 				6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */,
+				638EE2EE150374210031FC10 /* TimePopAnnotationView.h */,
+				638EE2EF150374210031FC10 /* TimePopAnnotationView.m */,
 			);
 			name = "Map Annotations";
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				6393DE5B150303FD003B77F5 /* BusStopAnnotationView.m in Sources */,
 				6393DE8015033E09003B77F5 /* Cal1CardAnnotation.m in Sources */,
 				6393DE8415033E1A003B77F5 /* Cal1CardAnnotationView.m in Sources */,
+				638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
