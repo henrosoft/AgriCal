@@ -11,6 +11,7 @@
 	CGFloat _contentHeight;
     UITextView* _titleView;
     UITableView* _tableView;
+    
 }
 
 @property (nonatomic, retain) MKAnnotationView *parentAnnotationView;
@@ -20,6 +21,7 @@
 @property (nonatomic) CGFloat contentHeight;
 @property (nonatomic, strong) UITextView* titleView;
 @property (nonatomic, strong) UITableView* tableView;
+@property (nonatomic) BOOL preventSelectionChange;
 - (void)animateIn;
 - (void)animateInStepTwo;
 - (void)animateInStepThree;

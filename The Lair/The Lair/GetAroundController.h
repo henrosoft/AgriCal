@@ -30,4 +30,5 @@
 @property (strong, nonatomic) NSMutableArray* wifiAnnotations;
 @property (strong, nonatomic) NSMutableArray* cal1Annotations;
 - (IBAction)changeAnnotations:(id)sender;
+- (void)highlightStops:(NSString*)name;
 @end

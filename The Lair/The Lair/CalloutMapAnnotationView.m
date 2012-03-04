@@ -33,6 +33,7 @@
 @synthesize contentHeight = _contentHeight;
 @synthesize titleView = _title;
 @synthesize tableView = _tableView;
+@synthesize preventSelectionChange = _preventSelectionChange;
 - (id) initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
 		self.contentHeight = 80.0;
@@ -50,8 +51,31 @@
 	[self prepareContentFrame];
 	[self setNeedsDisplay];
 }
+/*
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    UIView *hitView = [super hitTest:point withEvent:event];
+    if (CGRectContainsPoint(self.tableView.frame, point))
+    {
+        [self preventParentSelectionChange];
+        [self performSelector:@selector(allowParentSelectionChange) withObject:nil afterDelay:1];
+    }
+    return hitView;
+}
+*/
+- (void)preventParentSelectionChange
+{
+    NSLog(@"prevent parent %@", self);
+    ((CalloutMapAnnotationView*) self.parentAnnotationView.annotation).preventSelectionChange = YES;
+}
 
+-(void)allowParentSelectionChange
+{
+    NSLog(@"allow parent");
+    ((CalloutMapAnnotationView*) self.parentAnnotationView.annotation).preventSelectionChange = NO;
+}
 - (void)prepareFrameSize {
+    
 	CGRect frame = self.frame;
 	CGFloat height =	self.contentHeight +
 	CalloutMapAnnotationViewContentHeightBuffer +

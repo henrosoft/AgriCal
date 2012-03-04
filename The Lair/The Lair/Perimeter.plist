@@ -8,54 +8,54 @@
 		<dict>
 			<key>49</key>
 			<array>
-				<string>13:55</string>
+				<string>13:55:49</string>
 			</array>
 			<key>f</key>
 			<array>
-				<string>7:09</string>
+				<string>7:09:f</string>
 			</array>
 			<key>perimeter</key>
 			<array>
-				<string>6:49</string>
-				<string>7:04</string>
-				<string>7:19</string>
-				<string>7:34</string>
-				<string>7:49</string>
-				<string>8:04</string>
-				<string>8:19</string>
-				<string>8:34</string>
-				<string>8:49</string>
-				<string>9:04</string>
-				<string>9:19</string>
-				<string>9:34</string>
-				<string>9:49</string>
-				<string>10:04</string>
-				<string>10:19</string>
-				<string>10:34</string>
-				<string>10:49</string>
-				<string>11:04</string>
-				<string>11:34</string>
-				<string>12:04</string>
-				<string>12:34</string>
-				<string>13:04</string>
-				<string>13:34</string>
-				<string>14:04</string>
-				<string>14:34</string>
-				<string>15:04</string>
-				<string>15:34</string>
-				<string>16:04</string>
-				<string>16:19</string>
-				<string>16:34</string>
-				<string>16:49</string>
-				<string>17:04</string>
-				<string>17:19</string>
-				<string>17:34</string>
-				<string>17:49</string>
-				<string>18:04</string>
-				<string>18:19</string>
-				<string>18:34</string>
-				<string>18:49</string>
-				<string>19:04</string>
+				<string>6:49:perimeter</string>
+				<string>7:04:perimeter</string>
+				<string>7:19:perimeter</string>
+				<string>7:34:perimeter</string>
+				<string>7:49:perimeter</string>
+				<string>8:04:perimeter</string>
+				<string>8:19:perimeter</string>
+				<string>8:34:perimeter</string>
+				<string>8:49:perimeter</string>
+				<string>9:04:perimeter</string>
+				<string>9:19:perimeter</string>
+				<string>9:34:perimeter</string>
+				<string>9:49:perimeter</string>
+				<string>10:04:perimeter</string>
+				<string>10:19:perimeter</string>
+				<string>10:34:perimeter</string>
+				<string>10:49:perimeter</string>
+				<string>11:04:perimeter</string>
+				<string>11:34:perimeter</string>
+				<string>12:04:perimeter</string>
+				<string>12:34:perimeter</string>
+				<string>13:04:perimeter</string>
+				<string>13:34:perimeter</string>
+				<string>14:04:perimeter</string>
+				<string>14:34:perimeter</string>
+				<string>15:04:perimeter</string>
+				<string>15:34:perimeter</string>
+				<string>16:04:perimeter</string>
+				<string>16:19:perimeter</string>
+				<string>16:34:perimeter</string>
+				<string>16:49:perimeter</string>
+				<string>17:04:perimeter</string>
+				<string>17:19:perimeter</string>
+				<string>17:34:perimeter</string>
+				<string>17:49:perimeter</string>
+				<string>18:04:perimeter</string>
+				<string>18:19:perimeter</string>
+				<string>18:34:perimeter</string>
+				<string>18:49:perimeter</string>
+				<string>19:04:perimeter</string>
 			</array>
 		</dict>
 		<key>long</key>

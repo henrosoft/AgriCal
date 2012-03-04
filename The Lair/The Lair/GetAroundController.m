@@ -9,9 +9,9 @@
 #import "GetAroundController.h"
 
 @interface GetAroundController ()
-    @property (nonatomic, retain) CalloutMapAnnotation *calloutAnnotation;
-    @property (nonatomic, retain) BasicMapAnnotation *customAnnotation;
-    @property (nonatomic, retain) BasicMapAnnotation *normalAnnotation;
+@property (nonatomic, retain) CalloutMapAnnotation *calloutAnnotation;
+@property (nonatomic, retain) BasicMapAnnotation *customAnnotation;
+@property (nonatomic, retain) BasicMapAnnotation *normalAnnotation;
 @end
 
 @implementation GetAroundController
@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     self.mapView.delegate = self;
-
+    
 	CLLocationCoordinate2D coordinate = {38.315, -90.2045};
 	[self.mapView setRegion:MKCoordinateRegionMake(coordinate, 
 												   MKCoordinateSpanMake(1, 1))];  
@@ -49,7 +49,7 @@
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:[current objectForKey:@"times"]];
+        CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:[current objectForKey:@"times"] andDelegate:self];
         [self.busAnnotations addObject:ano];	
     }
     plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
@@ -60,7 +60,7 @@
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:nil];
+        CalloutMapAnnotation* ano = [[CalloutMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andName:stop andStops:nil andDelegate:self];
         [self.cal1Annotations addObject:ano];	
     }
     [self.mapView addAnnotations:self.busAnnotations];
@@ -70,21 +70,31 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     self.calloutAnnotation = nil;
     CalloutMapAnnotation* annotation = (CalloutMapAnnotation*)view.annotation;
-    self.calloutAnnotation = [[CalloutMapAnnotation alloc] initWithLatitude:annotation.coordinate.latitude andLongitude:annotation.coordinate.longitude andName:[annotation name] andStops:annotation.stops];
+    self.calloutAnnotation = [[CalloutMapAnnotation alloc] initWithLatitude:annotation.coordinate.latitude andLongitude:annotation.coordinate.longitude andName:[annotation name] andStops:annotation.stops andDelegate:self];
     [self.mapView addAnnotation:self.calloutAnnotation];
     self.selectedAnnotationView = view;
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-    [self.mapView removeAnnotation: self.calloutAnnotation];
+    NSLog(@"deselect");
+    if (!((CalloutMapAnnotation*)view.annotation).preventSelectionChange)
+    {
+        [self.mapView removeAnnotation: self.calloutAnnotation];
+    }
+    else {
+        [self.mapView addAnnotation:view.annotation];
+    }
 }
-
+- (void)highlightStops:(NSString*)name
+{
+    NSLog(@"name %@", name);
+}
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	if (annotation == self.calloutAnnotation) {
 		CalloutMapAnnotationView *calloutMapAnnotationView = (CalloutMapAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CalloutAnnotation"];
 		if (!calloutMapAnnotationView) {
 			calloutMapAnnotationView = [[CalloutMapAnnotationView alloc] initWithAnnotation:annotation 
-																			 reuseIdentifier:@"CalloutAnnotation"];
+                                                                            reuseIdentifier:@"CalloutAnnotation"];
 			calloutMapAnnotationView.contentHeight = 78.0f;
         }
         calloutMapAnnotationView.tableView.delegate = annotation;
@@ -94,6 +104,7 @@
 		calloutMapAnnotationView.parentAnnotationView = self.selectedAnnotationView;
 		calloutMapAnnotationView.mapView = self.mapView;
         calloutMapAnnotationView.titleView.text = [(CalloutMapAnnotation*)annotation name];
+        NSLog(@"callout");
 		return calloutMapAnnotationView;
 	}
     if ([self.busAnnotations containsObject:annotation])

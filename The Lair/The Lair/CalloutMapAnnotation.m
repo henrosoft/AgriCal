@@ -12,19 +12,36 @@
 @synthesize name = _name;
 @synthesize stops = _stops;
 @synthesize nextBuses = _nextBuses;
+@synthesize preventSelectionChange = _preventSelectionChange;
+@synthesize delegate = _delegate;
 
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
                andName:(NSString*)name
-              andStops:(NSDictionary*)stops{
+              andStops:(NSDictionary*)stops
+           andDelegate:(id)delegate{
 	if (self = [super init]) {
 		self.latitude = latitude;
 		self.longitude = longitude;
         self.name = name;
         self.stops = [[NSMutableDictionary alloc] initWithDictionary:stops];
         self.nextBuses = [[NSMutableArray alloc] init];
+        self.delegate = delegate;
 	}
 	return self;
+}
+
+- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier])
+    {
+        self.latitude = ((CalloutMapAnnotation*)annotation).latitude;
+        self.longitude = ((CalloutMapAnnotation*)annotation).longitude;
+        self.name = ((CalloutMapAnnotation*)annotation).name;
+        self.stops = ((CalloutMapAnnotation*)annotation).stops;
+        self.nextBuses = ((CalloutMapAnnotation*)annotation).nextBuses;
+    }
+    return self;
 }
 
 - (CLLocationCoordinate2D)coordinate {
@@ -34,13 +51,20 @@
 	return coordinate;
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    if (!self.preventSelectionChange)
+        [super setSelected:selected animated:animated];
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Normal"];
     cell.textLabel.text = @"testing";
+    int offset = 0;
     if ([self.stops objectForKey:@"perimeter"] != nil)
     {
-        cell.textLabel.text = [[self.nextBuses objectAtIndex:indexPath.row] objectAtIndex:1];
+        cell.textLabel.text = [self.nextBuses objectAtIndex:indexPath.row];
     }
     
     return cell;
@@ -55,6 +79,14 @@
 {
     return 1;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"wtf %@", self.delegate);
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *stop = cell.textLabel.text;
+    [self.delegate performSelector:@selector(highlightStops:) withObject:stop];
+} 
 
 - (void)sortStops
 {
@@ -108,7 +140,6 @@
                                   
                               }]];
     }
-    NSLog(@"%@", self.nextBuses);
 }
 
 @end

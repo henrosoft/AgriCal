@@ -14,10 +14,14 @@
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSMutableDictionary* stops;
 @property (nonatomic, strong) NSMutableArray* nextBuses;
+@property (nonatomic) BOOL preventSelectionChange; 
+@property (nonatomic, weak) id delegate;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
                andName:(NSString*)name
-              andStops:(NSMutableDictionary*)stops;
+              andStops:(NSMutableDictionary*)stops
+           andDelegate:(id)delegate;
 
 - (void)sortStops;
+- (void)highlightStops;
 @end
