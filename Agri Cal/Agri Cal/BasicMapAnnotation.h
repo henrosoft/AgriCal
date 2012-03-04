@@ -13,8 +13,11 @@
     CLLocationDegrees _longitude; 
     NSString *_title; 
     NSMutableDictionary *_routes;
+    NSString *_url;
 }
+@property (nonatomic, retain) NSString *title;
 @property (nonatomic, strong) NSMutableDictionary *routes; 
+@property (nonatomic, strong) NSString *url;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
           andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes;

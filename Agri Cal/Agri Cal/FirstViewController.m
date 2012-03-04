@@ -20,6 +20,7 @@
 @synthesize busStops = _busStops;
 @synthesize cal1cardLocations = _cal1cardLocations;
 @synthesize annotationSelector = _annotationSelector;
+@synthesize cal1Callout = _cal1Callout;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,6 +58,8 @@
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
         BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[[NSMutableDictionary alloc] init]];
+        ano.url = [current objectForKey:@"url"];
+        ano.title = stop;
         [self.cal1cardLocations addObject:ano];	
     }
     [self.mapView addAnnotations:self.busStops];
@@ -79,6 +82,20 @@
         [self.mapView addAnnotation:self.testCallout];
         self.selectedAnnotation = view;
     }
+    if ([self.cal1cardLocations containsObject:view.annotation])
+    {
+        if (self.cal1Callout == nil)
+        {
+            self.cal1Callout = [[Cal1CardAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andTitle:((BasicMapAnnotation*)view.annotation).title andURL:((BasicMapAnnotation*)view.annotation).url];
+        } else {
+            self.cal1Callout.latitude = view.annotation.coordinate.latitude;
+            self.cal1Callout.longitude = view.annotation.coordinate.longitude;
+            self.cal1Callout.title = view.annotation.title;
+            self.cal1Callout.url = ((BasicMapAnnotation*)view.annotation).url;
+        }   
+        [self.mapView addAnnotation:self.cal1Callout];
+        self.selectedAnnotation = view;
+    }
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
@@ -93,6 +110,10 @@
                 view.pinColor = MKPinAnnotationColorGreen;
             }
         }
+    }
+    if (self.cal1Callout && [self.cal1cardLocations containsObject:view.annotation] && !((BasicMapAnnotationView*)view).preventSelectionChange)
+    {
+        [self.mapView removeAnnotation:self.cal1Callout];
     }
 }
 
@@ -112,6 +133,22 @@
         callout.tableView.dataSource = ((BusStopAnnotation*)annotation);
         [((BusStopAnnotation*)annotation) sortStops];
         [callout.tableView reloadData];
+        
+        return callout;
+    }
+    else if (annotation == self.cal1Callout) {
+        Cal1CardAnnotationView *callout = (Cal1CardAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"cal1callout"];
+        if (!callout)
+        {
+            callout = [[Cal1CardAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"cal1callout"];
+            callout.contentHeight = 39.0f;
+            callout.url = ((BasicMapAnnotation*)annotation).url;
+            callout.title = ((BasicMapAnnotation*)annotation).title;
+        }
+        callout.parentAnnotationView = self.selectedAnnotation;
+        callout.mapView = self.mapView;
+        callout.textLabel.text = ((BasicMapAnnotation*)annotation).title;
+        NSLog(@"%@%@", ((BasicMapAnnotation*)annotation).url, ((BasicMapAnnotation*)annotation).title);
         
         return callout;
     }
@@ -135,7 +172,6 @@
 - (void)highlightPath:(NSString *)path
 {
     path = [[path componentsSeparatedByString:@":"] objectAtIndex:2];
-    NSLog(@"%@",path);
     for (BasicMapAnnotation *anno in self.mapView.annotations)
     {
         if ([anno class] == [BasicMapAnnotation class])

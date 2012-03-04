@@ -11,11 +11,14 @@
 #import "BusStopAnnotation.h"
 #import "BusStopAnnotationView.h"
 #import "BasicMapAnnotationView.h"
+#import "Cal1CardAnnotation.h"
+#import "Cal1CardAnnotationView.h"
 
 @interface FirstViewController : UIViewController <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) BasicMapAnnotation *testAnnotation;
 @property (strong, nonatomic) BusStopAnnotation *testCallout;
+@property (strong, nonatomic) Cal1CardAnnotation *cal1Callout;
 @property (strong, nonatomic) MKAnnotationView *selectedAnnotation; 
 @property (strong, nonatomic) NSMutableArray *busStops; 
 @property (strong, nonatomic) NSMutableArray *cal1cardLocations;

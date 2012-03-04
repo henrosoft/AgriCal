@@ -33,6 +33,8 @@
 		6393DE5B150303FD003B77F5 /* BusStopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE5A150303FD003B77F5 /* BusStopAnnotationView.m */; };
 		6393DE66150310D5003B77F5 /* Stops.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE65150310D5003B77F5 /* Stops.plist */; };
 		6393DE7115033473003B77F5 /* Cal1CardLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE7015033473003B77F5 /* Cal1CardLocations.plist */; };
+		6393DE8015033E09003B77F5 /* Cal1CardAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */; };
+		6393DE8415033E1A003B77F5 /* Cal1CardAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		6393DE5A150303FD003B77F5 /* BusStopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStopAnnotationView.m; sourceTree = "<group>"; };
 		6393DE65150310D5003B77F5 /* Stops.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stops.plist; sourceTree = "<group>"; };
 		6393DE7015033473003B77F5 /* Cal1CardLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cal1CardLocations.plist; sourceTree = "<group>"; };
+		6393DE7E15033E09003B77F5 /* Cal1CardAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal1CardAnnotation.h; sourceTree = "<group>"; };
+		6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cal1CardAnnotation.m; sourceTree = "<group>"; };
+		6393DE8215033E1A003B77F5 /* Cal1CardAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal1CardAnnotationView.h; sourceTree = "<group>"; };
+		6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cal1CardAnnotationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,10 @@
 				6393DE54150303B8003B77F5 /* BusStopAnnotation.m */,
 				6393DE59150303FD003B77F5 /* BusStopAnnotationView.h */,
 				6393DE5A150303FD003B77F5 /* BusStopAnnotationView.m */,
+				6393DE7E15033E09003B77F5 /* Cal1CardAnnotation.h */,
+				6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */,
+				6393DE8215033E1A003B77F5 /* Cal1CardAnnotationView.h */,
+				6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */,
 			);
 			name = "Map Annotations";
 			sourceTree = "<group>";
@@ -338,6 +348,8 @@
 				6393DE52150303A8003B77F5 /* BasicMapAnnotationView.m in Sources */,
 				6393DE55150303B8003B77F5 /* BusStopAnnotation.m in Sources */,
 				6393DE5B150303FD003B77F5 /* BusStopAnnotationView.m in Sources */,
+				6393DE8015033E09003B77F5 /* Cal1CardAnnotation.m in Sources */,
+				6393DE8415033E1A003B77F5 /* Cal1CardAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

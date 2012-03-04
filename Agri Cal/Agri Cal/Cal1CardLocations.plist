@@ -4,6 +4,8 @@
 <dict>
 	<key>Bear Basics</key>
 	<dict>
+		<key>url</key>
+		<string></string>
 		<key>lat</key>
 		<real>37.86768</real>
 		<key>long</key>
@@ -11,6 +13,8 @@
 	</dict>
 	<key>Berkeley Thai House</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.berkeleythaihouse.com/</string>
 		<key>long</key>
 		<real>-122.258389</real>
 		<key>lat</key>
@@ -18,6 +22,8 @@
 	</dict>
 	<key>Cafe Durant</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.cafedurant.com/</string>
 		<key>lat</key>
 		<real>37.868026</real>
 		<key>long</key>
@@ -25,6 +31,8 @@
 	</dict>
 	<key>Chipotle Mexican Grill</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.chipotle.com/</string>
 		<key>lat</key>
 		<real>37.868366</real>
 		<key>long</key>
@@ -32,6 +40,8 @@
 	</dict>
 	<key>IB&apos;s Hoagies &amp; Cheesesteaks</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.ibshoagies.com/</string>
 		<key>lat</key>
 		<real>37.868018</real>
 		<key>long</key>
@@ -39,6 +49,8 @@
 	</dict>
 	<key>Johnston&apos;s Market</key>
 	<dict>
+		<key>url</key>
+		<string></string>
 		<key>lat</key>
 		<real>37.868024</real>
 		<key>long</key>
@@ -46,6 +58,8 @@
 	</dict>
 	<key>Moe&apos;s Books</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.moesbooks.com/</string>
 		<key>lat</key>
 		<real>37.865522</real>
 		<key>long</key>
@@ -53,6 +67,8 @@
 	</dict>
 	<key>Ned&apos;s Berkeley Bookstore</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.nedsbooks.com/ucb/</string>
 		<key>lat</key>
 		<real>37.868554</real>
 		<key>long</key>
@@ -60,6 +76,8 @@
 	</dict>
 	<key>UC Hair Salon &amp; Waxing</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.ucsalon.com/</string>
 		<key>lat</key>
 		<real>37.868402</real>
 		<key>long</key>
@@ -67,6 +85,8 @@
 	</dict>
 	<key>Berkeley Student Food Collective</key>
 	<dict>
+		<key>url</key>
+		<string>http://berkeleystudentfoodcollective.org/</string>
 		<key>lat</key>
 		<real>37.868402</real>
 		<key>long</key>
@@ -74,6 +94,8 @@
 	</dict>
 	<key>Blondie&apos;s Pizza</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.blondiespizza.com/</string>
 		<key>lat</key>
 		<real>37.868034</real>
 		<key>long</key>
@@ -81,6 +103,8 @@
 	</dict>
 	<key>Cheese &apos;n&apos; Stuff</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.cheesenstuff.com/</string>
 		<key>lat</key>
 		<real>37.86763</real>
 		<key>long</key>
@@ -88,6 +112,8 @@
 	</dict>
 	<key>Extreme Pizza, Shattuck Ave.</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.extremepizza.com/</string>
 		<key>lat</key>
 		<real>37.86621</real>
 		<key>long</key>
@@ -95,6 +121,8 @@
 	</dict>
 	<key>Extreme Pizza, College Ave.</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.extremepizza.com/</string>
 		<key>lat</key>
 		<real>37.851045</real>
 		<key>long</key>
@@ -102,6 +130,8 @@
 	</dict>
 	<key>Jamba Juice</key>
 	<dict>
+		<key>New item</key>
+		<string>http://www.jambajuice.com/</string>
 		<key>lat</key>
 		<real>37.868682</real>
 		<key>long</key>
@@ -109,6 +139,8 @@
 	</dict>
 	<key>Joshua-ya&apos;s Brasserie</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.joshu-ya.com/</string>
 		<key>lat</key>
 		<real>37.865234</real>
 		<key>long</key>
@@ -116,6 +148,8 @@
 	</dict>
 	<key>Naan-N-Curry</key>
 	<dict>
+		<key>url</key>
+		<string>http://naanncurryberkeley.com/</string>
 		<key>lat</key>
 		<real>37.8674</real>
 		<key>long</key>
@@ -123,6 +157,8 @@
 	</dict>
 	<key>San Francisco Soup Company</key>
 	<dict>
+		<key>url</key>
+		<string>http://www.sfsoupco.com/</string>
 		<key>lat</key>
 		<real>37.868671</real>
 		<key>long</key>
