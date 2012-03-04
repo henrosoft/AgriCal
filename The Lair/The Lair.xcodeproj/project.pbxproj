@@ -1,0 +1,517 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D34B7F514F79EB3003AFC18 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D34B7F414F79EB3003AFC18 /* CoreData.framework */; };
+		6D34B81614F87379003AFC18 /* BasicMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D34B81514F87379003AFC18 /* BasicMapAnnotation.m */; };
+		6D34B81914F87390003AFC18 /* CalloutMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D34B81814F87390003AFC18 /* CalloutMapAnnotation.m */; };
+		6D34B81C14F873A4003AFC18 /* CalloutMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D34B81B14F873A4003AFC18 /* CalloutMapAnnotationView.m */; };
+		6D34B81E14F88483003AFC18 /* Perimeter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D34B81D14F88483003AFC18 /* Perimeter.plist */; };
+		6D34B82014F8E708003AFC18 /* Cal1CardLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D34B81F14F8E708003AFC18 /* Cal1CardLocations.plist */; };
+		6DA32FED14F64D4400FE5C6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA32FEC14F64D4400FE5C6B /* UIKit.framework */; };
+		6DA32FEF14F64D4400FE5C6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA32FEE14F64D4400FE5C6B /* Foundation.framework */; };
+		6DA32FF114F64D4400FE5C6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA32FF014F64D4400FE5C6B /* CoreGraphics.framework */; };
+		6DA32FF714F64D4400FE5C6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA32FF514F64D4400FE5C6B /* InfoPlist.strings */; };
+		6DA32FF914F64D4400FE5C6B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA32FF814F64D4400FE5C6B /* main.m */; };
+		6DA32FFD14F64D4400FE5C6B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA32FFC14F64D4400FE5C6B /* AppDelegate.m */; };
+		6DA3300014F64D4400FE5C6B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA32FFE14F64D4400FE5C6B /* MainStoryboard_iPhone.storyboard */; };
+		6DA3300314F64D4400FE5C6B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA3300114F64D4400FE5C6B /* MainStoryboard_iPad.storyboard */; };
+		6DA3300614F64D4400FE5C6B /* GetAroundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3300514F64D4400FE5C6B /* GetAroundController.m */; };
+		6DA3300814F64D4400FE5C6B /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DA3300714F64D4400FE5C6B /* first.png */; };
+		6DA3300A14F64D4400FE5C6B /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DA3300914F64D4400FE5C6B /* first@2x.png */; };
+		6DA3300D14F64D4400FE5C6B /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3300C14F64D4400FE5C6B /* SecondViewController.m */; };
+		6DA3300F14F64D4400FE5C6B /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DA3300E14F64D4400FE5C6B /* second.png */; };
+		6DA3301114F64D4400FE5C6B /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DA3301014F64D4400FE5C6B /* second@2x.png */; };
+		6DA3301914F64D4500FE5C6B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA3301814F64D4500FE5C6B /* SenTestingKit.framework */; };
+		6DA3301A14F64D4500FE5C6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA32FEC14F64D4400FE5C6B /* UIKit.framework */; };
+		6DA3301B14F64D4500FE5C6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA32FEE14F64D4400FE5C6B /* Foundation.framework */; };
+		6DA3302314F64D4500FE5C6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA3302114F64D4500FE5C6B /* InfoPlist.strings */; };
+		6DA3302614F64D4500FE5C6B /* The_LairTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3302514F64D4500FE5C6B /* The_LairTests.m */; };
+		6DA3303014F64EE000FE5C6B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA3302F14F64EE000FE5C6B /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6DA3301C14F64D4500FE5C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DA32FDF14F64D4400FE5C6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DA32FE714F64D4400FE5C6B;
+			remoteInfo = "The Lair";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D34B7F414F79EB3003AFC18 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6D34B81414F87379003AFC18 /* BasicMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMapAnnotation.h; sourceTree = "<group>"; };
+		6D34B81514F87379003AFC18 /* BasicMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMapAnnotation.m; sourceTree = "<group>"; };
+		6D34B81714F87390003AFC18 /* CalloutMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutMapAnnotation.h; sourceTree = "<group>"; };
+		6D34B81814F87390003AFC18 /* CalloutMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutMapAnnotation.m; sourceTree = "<group>"; };
+		6D34B81A14F873A4003AFC18 /* CalloutMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutMapAnnotationView.h; sourceTree = "<group>"; };
+		6D34B81B14F873A4003AFC18 /* CalloutMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutMapAnnotationView.m; sourceTree = "<group>"; };
+		6D34B81D14F88483003AFC18 /* Perimeter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Perimeter.plist; sourceTree = "<group>"; };
+		6D34B81F14F8E708003AFC18 /* Cal1CardLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cal1CardLocations.plist; sourceTree = "<group>"; };
+		6DA32FE814F64D4400FE5C6B /* The Lair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Lair.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA32FEC14F64D4400FE5C6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6DA32FEE14F64D4400FE5C6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6DA32FF014F64D4400FE5C6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6DA32FF414F64D4400FE5C6B /* The Lair-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "The Lair-Info.plist"; sourceTree = "<group>"; };
+		6DA32FF614F64D4400FE5C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6DA32FF814F64D4400FE5C6B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6DA32FFA14F64D4400FE5C6B /* The Lair-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Lair-Prefix.pch"; sourceTree = "<group>"; };
+		6DA32FFB14F64D4400FE5C6B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6DA32FFC14F64D4400FE5C6B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6DA32FFF14F64D4400FE5C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		6DA3300214F64D4400FE5C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		6DA3300414F64D4400FE5C6B /* GetAroundController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetAroundController.h; sourceTree = "<group>"; };
+		6DA3300514F64D4400FE5C6B /* GetAroundController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetAroundController.m; sourceTree = "<group>"; };
+		6DA3300714F64D4400FE5C6B /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		6DA3300914F64D4400FE5C6B /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		6DA3300B14F64D4400FE5C6B /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		6DA3300C14F64D4400FE5C6B /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		6DA3300E14F64D4400FE5C6B /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		6DA3301014F64D4400FE5C6B /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		6DA3301714F64D4500FE5C6B /* The LairTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The LairTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA3301814F64D4500FE5C6B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6DA3302014F64D4500FE5C6B /* The LairTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "The LairTests-Info.plist"; sourceTree = "<group>"; };
+		6DA3302214F64D4500FE5C6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6DA3302414F64D4500FE5C6B /* The_LairTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = The_LairTests.h; sourceTree = "<group>"; };
+		6DA3302514F64D4500FE5C6B /* The_LairTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = The_LairTests.m; sourceTree = "<group>"; };
+		6DA3302F14F64EE000FE5C6B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DA32FE514F64D4400FE5C6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D34B7F514F79EB3003AFC18 /* CoreData.framework in Frameworks */,
+				6DA3303014F64EE000FE5C6B /* MapKit.framework in Frameworks */,
+				6DA32FED14F64D4400FE5C6B /* UIKit.framework in Frameworks */,
+				6DA32FEF14F64D4400FE5C6B /* Foundation.framework in Frameworks */,
+				6DA32FF114F64D4400FE5C6B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA3301314F64D4500FE5C6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA3301914F64D4500FE5C6B /* SenTestingKit.framework in Frameworks */,
+				6DA3301A14F64D4500FE5C6B /* UIKit.framework in Frameworks */,
+				6DA3301B14F64D4500FE5C6B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DA32FDD14F64D4400FE5C6B = {
+			isa = PBXGroup;
+			children = (
+				6D34B7F414F79EB3003AFC18 /* CoreData.framework */,
+				6DA3302F14F64EE000FE5C6B /* MapKit.framework */,
+				6DA32FF214F64D4400FE5C6B /* The Lair */,
+				6DA3301E14F64D4500FE5C6B /* The LairTests */,
+				6DA32FEB14F64D4400FE5C6B /* Frameworks */,
+				6DA32FE914F64D4400FE5C6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DA32FE914F64D4400FE5C6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DA32FE814F64D4400FE5C6B /* The Lair.app */,
+				6DA3301714F64D4500FE5C6B /* The LairTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DA32FEB14F64D4400FE5C6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DA32FEC14F64D4400FE5C6B /* UIKit.framework */,
+				6DA32FEE14F64D4400FE5C6B /* Foundation.framework */,
+				6DA32FF014F64D4400FE5C6B /* CoreGraphics.framework */,
+				6DA3301814F64D4500FE5C6B /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DA32FF214F64D4400FE5C6B /* The Lair */ = {
+			isa = PBXGroup;
+			children = (
+				6DA32FFB14F64D4400FE5C6B /* AppDelegate.h */,
+				6DA32FFC14F64D4400FE5C6B /* AppDelegate.m */,
+				6DA32FFE14F64D4400FE5C6B /* MainStoryboard_iPhone.storyboard */,
+				6DA3300114F64D4400FE5C6B /* MainStoryboard_iPad.storyboard */,
+				6DA3300414F64D4400FE5C6B /* GetAroundController.h */,
+				6DA3300514F64D4400FE5C6B /* GetAroundController.m */,
+				6D34B81414F87379003AFC18 /* BasicMapAnnotation.h */,
+				6D34B81514F87379003AFC18 /* BasicMapAnnotation.m */,
+				6D34B81714F87390003AFC18 /* CalloutMapAnnotation.h */,
+				6D34B81814F87390003AFC18 /* CalloutMapAnnotation.m */,
+				6D34B81A14F873A4003AFC18 /* CalloutMapAnnotationView.h */,
+				6D34B81B14F873A4003AFC18 /* CalloutMapAnnotationView.m */,
+				6DA3300714F64D4400FE5C6B /* first.png */,
+				6DA3300914F64D4400FE5C6B /* first@2x.png */,
+				6DA3300B14F64D4400FE5C6B /* SecondViewController.h */,
+				6DA3300C14F64D4400FE5C6B /* SecondViewController.m */,
+				6DA3300E14F64D4400FE5C6B /* second.png */,
+				6DA3301014F64D4400FE5C6B /* second@2x.png */,
+				6DA32FF314F64D4400FE5C6B /* Supporting Files */,
+			);
+			path = "The Lair";
+			sourceTree = "<group>";
+		};
+		6DA32FF314F64D4400FE5C6B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DA32FF414F64D4400FE5C6B /* The Lair-Info.plist */,
+				6DA32FF514F64D4400FE5C6B /* InfoPlist.strings */,
+				6D34B81D14F88483003AFC18 /* Perimeter.plist */,
+				6D34B81F14F8E708003AFC18 /* Cal1CardLocations.plist */,
+				6DA32FF814F64D4400FE5C6B /* main.m */,
+				6DA32FFA14F64D4400FE5C6B /* The Lair-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DA3301E14F64D4500FE5C6B /* The LairTests */ = {
+			isa = PBXGroup;
+			children = (
+				6DA3302414F64D4500FE5C6B /* The_LairTests.h */,
+				6DA3302514F64D4500FE5C6B /* The_LairTests.m */,
+				6DA3301F14F64D4500FE5C6B /* Supporting Files */,
+			);
+			path = "The LairTests";
+			sourceTree = "<group>";
+		};
+		6DA3301F14F64D4500FE5C6B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DA3302014F64D4500FE5C6B /* The LairTests-Info.plist */,
+				6DA3302114F64D4500FE5C6B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DA32FE714F64D4400FE5C6B /* The Lair */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA3302914F64D4500FE5C6B /* Build configuration list for PBXNativeTarget "The Lair" */;
+			buildPhases = (
+				6DA32FE414F64D4400FE5C6B /* Sources */,
+				6DA32FE514F64D4400FE5C6B /* Frameworks */,
+				6DA32FE614F64D4400FE5C6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The Lair";
+			productName = "The Lair";
+			productReference = 6DA32FE814F64D4400FE5C6B /* The Lair.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6DA3301614F64D4500FE5C6B /* The LairTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA3302C14F64D4500FE5C6B /* Build configuration list for PBXNativeTarget "The LairTests" */;
+			buildPhases = (
+				6DA3301214F64D4500FE5C6B /* Sources */,
+				6DA3301314F64D4500FE5C6B /* Frameworks */,
+				6DA3301414F64D4500FE5C6B /* Resources */,
+				6DA3301514F64D4500FE5C6B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DA3301D14F64D4500FE5C6B /* PBXTargetDependency */,
+			);
+			name = "The LairTests";
+			productName = "The LairTests";
+			productReference = 6DA3301714F64D4500FE5C6B /* The LairTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DA32FDF14F64D4400FE5C6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "UC Berkeley";
+			};
+			buildConfigurationList = 6DA32FE214F64D4400FE5C6B /* Build configuration list for PBXProject "The Lair" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6DA32FDD14F64D4400FE5C6B;
+			productRefGroup = 6DA32FE914F64D4400FE5C6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DA32FE714F64D4400FE5C6B /* The Lair */,
+				6DA3301614F64D4500FE5C6B /* The LairTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DA32FE614F64D4400FE5C6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA32FF714F64D4400FE5C6B /* InfoPlist.strings in Resources */,
+				6DA3300014F64D4400FE5C6B /* MainStoryboard_iPhone.storyboard in Resources */,
+				6DA3300314F64D4400FE5C6B /* MainStoryboard_iPad.storyboard in Resources */,
+				6DA3300814F64D4400FE5C6B /* first.png in Resources */,
+				6DA3300A14F64D4400FE5C6B /* first@2x.png in Resources */,
+				6DA3300F14F64D4400FE5C6B /* second.png in Resources */,
+				6DA3301114F64D4400FE5C6B /* second@2x.png in Resources */,
+				6D34B81E14F88483003AFC18 /* Perimeter.plist in Resources */,
+				6D34B82014F8E708003AFC18 /* Cal1CardLocations.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA3301414F64D4500FE5C6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA3302314F64D4500FE5C6B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6DA3301514F64D4500FE5C6B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DA32FE414F64D4400FE5C6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA32FF914F64D4400FE5C6B /* main.m in Sources */,
+				6DA32FFD14F64D4400FE5C6B /* AppDelegate.m in Sources */,
+				6DA3300614F64D4400FE5C6B /* GetAroundController.m in Sources */,
+				6DA3300D14F64D4400FE5C6B /* SecondViewController.m in Sources */,
+				6D34B81614F87379003AFC18 /* BasicMapAnnotation.m in Sources */,
+				6D34B81914F87390003AFC18 /* CalloutMapAnnotation.m in Sources */,
+				6D34B81C14F873A4003AFC18 /* CalloutMapAnnotationView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA3301214F64D4500FE5C6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DA3302614F64D4500FE5C6B /* The_LairTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DA3301D14F64D4500FE5C6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DA32FE714F64D4400FE5C6B /* The Lair */;
+			targetProxy = 6DA3301C14F64D4500FE5C6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6DA32FF514F64D4400FE5C6B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA32FF614F64D4400FE5C6B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6DA32FFE14F64D4400FE5C6B /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA32FFF14F64D4400FE5C6B /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		6DA3300114F64D4400FE5C6B /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA3300214F64D4400FE5C6B /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		6DA3302114F64D4500FE5C6B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DA3302214F64D4500FE5C6B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DA3302714F64D4500FE5C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6DA3302814F64D4500FE5C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DA3302A14F64D4500FE5C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "The Lair/The Lair-Prefix.pch";
+				INFOPLIST_FILE = "The Lair/The Lair-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6DA3302B14F64D4500FE5C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "The Lair/The Lair-Prefix.pch";
+				INFOPLIST_FILE = "The Lair/The Lair-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6DA3302D14F64D4500FE5C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/The Lair.app/The Lair";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "The Lair/The Lair-Prefix.pch";
+				INFOPLIST_FILE = "The LairTests/The LairTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6DA3302E14F64D4500FE5C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/The Lair.app/The Lair";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "The Lair/The Lair-Prefix.pch";
+				INFOPLIST_FILE = "The LairTests/The LairTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DA32FE214F64D4400FE5C6B /* Build configuration list for PBXProject "The Lair" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA3302714F64D4500FE5C6B /* Debug */,
+				6DA3302814F64D4500FE5C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DA3302914F64D4500FE5C6B /* Build configuration list for PBXNativeTarget "The Lair" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA3302A14F64D4500FE5C6B /* Debug */,
+				6DA3302B14F64D4500FE5C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DA3302C14F64D4500FE5C6B /* Build configuration list for PBXNativeTarget "The LairTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA3302D14F64D4500FE5C6B /* Debug */,
+				6DA3302E14F64D4500FE5C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DA32FDF14F64D4400FE5C6B /* Project object */;
+}
