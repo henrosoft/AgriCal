@@ -21,12 +21,18 @@ class MenuHandler(BaseHandler):
 
 		if menu_location:
 			try:
-				return Menu.objects.filter(location=menu_location)[0]
+				m = Menu.objects.filter(location=menu_location)[0]
+				import datetime
+				if datetime.datetime.now().date()==m.pub_date.date():
+					return Menu.objects.filter(location=menu_location)[0]
+				else:
+					pass
 			except:
-				m = Menu()
-				m.location = menu_location
-				m.save()
-				m.update()
-				return m
+				pass
+			m = Menu()
+			m.location = menu_location
+			m.save()
+			m.update()
+			return m
 		else:
 			return Menu.objects.all()

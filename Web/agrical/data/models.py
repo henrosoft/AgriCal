@@ -54,6 +54,8 @@ class BusLine(models.Model):
 class MenuItem(models.Model):
 	name = models.CharField(max_length=200)
 	type = models.CharField(max_length=50,default="Normal")
+	link = models.CharField(max_length=1000,default="#")
+	pub_date = models.DateTimeField(auto_now_add=True)
 
 class Menu(models.Model):
 	location = models.CharField(max_length=50)
@@ -61,8 +63,10 @@ class Menu(models.Model):
 	lunch = models.ManyToManyField(MenuItem,related_name="lunch")
 	brunch = models.ManyToManyField(MenuItem,related_name="brunch")
 	dinner = models.ManyToManyField(MenuItem,related_name="dinner")
+	pub_date = models.DateTimeField(auto_now_add=True)
 
 	def update(self):
+		base = "http://services.housing.berkeley.edu/FoodPro/dining/static/"
 		url = "http://services.housing.berkeley.edu/FoodPro/dining/static/todaysentrees.asp"
 		response = urllib.urlopen(url)
 		soup = BeautifulSoup.BeautifulSoup(response.read())
@@ -79,24 +83,47 @@ class Menu(models.Model):
 		breakfast = soup.find("table").find("tbody").findAll("tr",recursive=False)[1].find("table").findAll("tr",recursive=False)[1].findAll("td")[index].findAll("a")
 		lunch = soup.find("table").find("tbody").findAll("tr",recursive=False)[1].find("table").findAll("tr",recursive=False)[2].findAll("td")[index].findAll("a")
 		dinner = soup.find("table").find("tbody").findAll("tr",recursive=False)[1].find("table").findAll("tr",recursive=False)[3].findAll("td")[index].findAll("a")
+		soup_key = soup.find("table").find("tbody").findAll("tr",recursive=False)[0].findAll("td",recursive=False)[1].find("table").find("table").findAll("font")
+		key = {u'#000000':"Normal"}
+		for i in soup_key[1:4]:
+			key[i['color']] = i.contents[0]
+		print key
+
 		for i in breakfast:
 			if i.find("font"):
 				m = MenuItem()
+				m.link = base + i['href']
 				m.name = i.find("font").contents[0]
+				try:
+					m.type = key[i.find("font")['color']]
+				except:
+					pass
 				m.save()
 				self.breakfast.add(m)
 		for i in lunch:
 			if i.find("font"):
 				m = MenuItem()
+				m.link = base + i['href']
 				m.name = i.find("font").contents[0]
+				try:
+					m.type = key[i.find("font")['color']]
+				except:
+					pass
 				m.save()
 				self.lunch.add(m)
 		for i in dinner:
 			if i.find("font"):
 				m = MenuItem()
+				m.link = base + i['href']
 				m.name = i.find("font").contents[0]
+				try:
+					m.type = key[i.find("font")['color']]
+				except:
+					pass
 				m.save()
 				self.dinner.add(m)
+	class Meta:
+		ordering = ['-pub_date']
 # Create your models here.
 
 admin.site.register(BusLine)
