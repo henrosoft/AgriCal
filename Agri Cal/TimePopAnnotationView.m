@@ -77,8 +77,6 @@
 }
 
 - (void)prepareOffset {
-	CGPoint parentOrigin = [self.mapView convertPoint:self.parentAnnotationView.frame.origin 
-											 fromView:self.parentAnnotationView.superview];
 	
 	CGFloat xOffset = 0;
 	
@@ -94,48 +92,8 @@
 
 //if the pin is too close to the edge of the map view we need to shift the map view so the callout will fit.
 - (void)adjustMapRegionIfNeeded {
-	//Longitude
-	CGFloat xPixelShift = 0;
-	if ([self relativeParentXPosition] < 38) {
-		xPixelShift = 38 - [self relativeParentXPosition];
-	} else if ([self relativeParentXPosition] > self.frame.size.width - 38) {
-		xPixelShift = (self.frame.size.width - 38) - [self relativeParentXPosition];
+    return;
 	}
-	
-	
-	//Latitude
-	CGPoint mapViewOriginRelativeToParent = [self.mapView convertPoint:self.mapView.frame.origin toView:self.parentAnnotationView];
-	CGFloat yPixelShift = 0;
-	CGFloat pixelsFromTopOfMapView = -(mapViewOriginRelativeToParent.y + self.frame.size.height - CalloutMapAnnotationViewBottomShadowBufferSize);
-	CGFloat pixelsFromBottomOfMapView = self.mapView.frame.size.height + mapViewOriginRelativeToParent.y - self.parentAnnotationView.frame.size.height;
-	if (pixelsFromTopOfMapView < 7) {
-		yPixelShift = 7 - pixelsFromTopOfMapView;
-	} else if (pixelsFromBottomOfMapView < 10) {
-		yPixelShift = -(10 - pixelsFromBottomOfMapView);
-	}
-	
-	//Calculate new center point, if needed
-	if (xPixelShift || yPixelShift) {
-		CGFloat pixelsPerDegreeLongitude = self.mapView.frame.size.width / self.mapView.region.span.longitudeDelta;
-		CGFloat pixelsPerDegreeLatitude = self.mapView.frame.size.height / self.mapView.region.span.latitudeDelta;
-		
-		CLLocationDegrees longitudinalShift = -(xPixelShift / pixelsPerDegreeLongitude);
-		CLLocationDegrees latitudinalShift = yPixelShift / pixelsPerDegreeLatitude;
-		
-		CLLocationCoordinate2D newCenterCoordinate = {self.mapView.region.center.latitude + latitudinalShift, 
-			self.mapView.region.center.longitude + longitudinalShift};
-		
-		//[self.mapView setCenterCoordinate:newCenterCoordinate animated:YES];
-		
-		//fix for now
-		self.frame = CGRectMake(self.frame.origin.x - xPixelShift,
-								self.frame.origin.y - yPixelShift,
-								self.frame.size.width, 
-								self.frame.size.height);
-		//fix for later (after zoom or other action that resets the frame)
-		self.centerOffset = CGPointMake(self.centerOffset.x - xPixelShift, self.centerOffset.y);
-	}
-}
 
 - (CGFloat)xTransformForScale:(CGFloat)scale {
 	CGFloat xDistanceFromCenterToParent = self.endFrame.size.width / 2 - [self relativeParentXPosition];

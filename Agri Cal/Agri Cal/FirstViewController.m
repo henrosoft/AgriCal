@@ -129,7 +129,7 @@
         {
             if ([anno class] == [BasicMapAnnotation class])
             {
-                BasicMapAnnotationView *view = [self.mapView viewForAnnotation:anno];
+                BasicMapAnnotationView *view = (BasicMapAnnotationView*)[self.mapView viewForAnnotation:anno];
                 view.pinColor = MKPinAnnotationColorGreen;
             }
         }
@@ -212,22 +212,42 @@
 {
     [self.mapView removeAnnotations:self.timePopUps];
     self.timePopUps = [[NSMutableArray alloc] init];
-    path = [[path componentsSeparatedByString:@":"] objectAtIndex:2];
-    for (BasicMapAnnotation *anno in self.mapView.annotations)
+    NSString *pathTime = [[path componentsSeparatedByString:@":"] objectAtIndex:0];
+    NSString *pathMinute = [[path componentsSeparatedByString:@":"] objectAtIndex:1];
+    NSString *pathName = [[path componentsSeparatedByString:@":"] objectAtIndex:2];
+    NSLog(@"%i",[self.busStops indexOfObject:self.selectedAnnotation.annotation]);
+    for (BasicMapAnnotation *anno in self.busStops)
     {
-        if ([anno class] == [BasicMapAnnotation class])
-        {
-            if ([anno.routes objectForKey:path])
+            if ([anno.routes objectForKey:pathName])
             {
-                BasicMapAnnotationView *view = [self.mapView viewForAnnotation:anno];
+                NSString *closestTime = @"N/A";
+                NSArray *times = [anno.routes objectForKey:pathName];
+                for (NSString *time in times)
+                {
+                    if ([[[time componentsSeparatedByString:@":"] objectAtIndex:0] integerValue] == [pathTime integerValue])
+                    {
+                        if ([[[time componentsSeparatedByString:@":"] objectAtIndex:1] integerValue] > [pathMinute integerValue])
+                        {
+                            closestTime = time;
+                            path = closestTime;
+                            break;
+                        }
+                    }
+                    if ([[[time componentsSeparatedByString:@":"] objectAtIndex:0] integerValue] > [pathTime integerValue])
+                    {
+                        closestTime = time;
+                        path = closestTime;
+                        break;
+                    }
+                }
+                BasicMapAnnotationView *view = (BasicMapAnnotationView*)[self.mapView viewForAnnotation:anno];
                 view.pinColor = MKPinAnnotationColorRed;
                 BasicMapAnnotation *v = [[BasicMapAnnotation alloc] initWithLatitude:anno.coordinate.latitude andLongitude:anno.coordinate.longitude andRoutes:nil];
-                v.title = @"6:49";
+                v.title = [NSString stringWithFormat:@"%@:%@", [[closestTime componentsSeparatedByString:@":"] objectAtIndex:0],[[closestTime componentsSeparatedByString:@":"] objectAtIndex:1]];
                 v.url = @"testing";
                 if (!(anno == self.selectedAnnotation.annotation))
                     [self.timePopUps addObject:v];
             }
-        }
     }
     [self.mapView addAnnotations:self.timePopUps];
 }

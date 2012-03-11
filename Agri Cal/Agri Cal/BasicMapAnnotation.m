@@ -17,7 +17,7 @@
 @synthesize longitude = _longitude;
 @synthesize routes = _routes;
 @synthesize url = _url;
-
+@synthesize routeNumbers;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes{

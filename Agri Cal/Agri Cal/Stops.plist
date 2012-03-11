@@ -14,7 +14,7 @@
 			<array>
 				<string>7:09:f</string>
 			</array>
-			<key>perimeter</key>
+			<key>perimeter:2</key>
 			<array>
 				<string>6:49:perimeter</string>
 				<string>7:04:perimeter</string>
@@ -67,7 +67,7 @@
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:3</key>
 			<array>
 				<string>6:50:perimeter</string>
 				<string>7:05:perimeter</string>
@@ -122,7 +122,7 @@
 		<real>37.875344</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:4</key>
 			<array>
 				<string>6:51:perimeter</string>
 				<string>7:06:perimeter</string>
@@ -175,7 +175,7 @@
 		<real>37.873498</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:5</key>
 			<array>
 				<string>6:53:perimeter</string>
 				<string>7:08:perimeter</string>
@@ -226,7 +226,7 @@
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:6</key>
 			<array>
 				<string>6:55:perimeter</string>
 				<string>7:10:perimeter</string>
@@ -279,7 +279,7 @@
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:7</key>
 			<array>
 				<string>6:56:perimeter</string>
 				<string>7:11:perimeter</string>
@@ -328,11 +328,11 @@
 		<key>lat</key>
 		<real>37.871041</real>
 	</dict>
-	<key>International House</key>
+	<key>International House:8</key>
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:8</key>
 			<array>
 				<string>6:57:perimeter</string>
 				<string>7:12:perimeter</string>
@@ -383,7 +383,7 @@
 	</dict>
 	<key>Piedmont Avenue</key>
 	<dict>
-		<key>times</key>
+		<key>times:9</key>
 		<dict>
 			<key>perimeter</key>
 			<array>
@@ -440,7 +440,7 @@
 		<real>37.867489</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:10</key>
 			<array>
 				<string>7:03:perimeter</string>
 				<string>7:18:perimeter</string>
@@ -495,7 +495,7 @@
 		<real>-122.254591</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:11</key>
 			<array>
 				<string>7:05:perimeter</string>
 				<string>7:20:perimeter</string>
@@ -548,7 +548,7 @@
 		<real>-122.256899</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:12</key>
 			<array>
 				<string>7:06:perimeter</string>
 				<string>7:21:perimeter</string>
@@ -601,7 +601,7 @@
 		<real>-122.260204</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:13</key>
 			<array>
 				<string>7:08:perimeter</string>
 				<string>7:23:perimeter</string>
@@ -654,7 +654,7 @@
 		<real>-122.261461</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:14</key>
 			<array>
 				<string>7:10:perimeter</string>
 				<string>7:25:perimeter</string>
@@ -707,7 +707,7 @@
 		<real>-122.267711</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:15</key>
 			<array>
 				<string>7:12:perimeter</string>
 				<string>7:27:perimeter</string>
@@ -760,7 +760,7 @@
 		<real>37.868489</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:16</key>
 			<array>
 				<string>7:13:perimeter</string>
 				<string>7:28:perimeter</string>
@@ -813,7 +813,7 @@
 		<real>37.871252</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:0</key>
 			<array>
 				<string>6:45:perimeter</string>
 				<string>7:00:perimeter</string>
@@ -866,7 +866,7 @@
 		<real>37.872392</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter</key>
+			<key>perimeter:1</key>
 			<array>
 				<string>6:47:perimeter</string>
 				<string>7:02:perimeter</string>

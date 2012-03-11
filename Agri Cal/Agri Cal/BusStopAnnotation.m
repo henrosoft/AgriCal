@@ -57,6 +57,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%i", [[self.delegate performSelector:@selector(busStops)] indexOfObject:self]);
     if ([self.delegate respondsToSelector:@selector(highlightPath:)])
         [self.delegate performSelector:@selector(highlightPath:) withObject:[[tableView cellForRowAtIndexPath:indexPath] textLabel].text];
 }

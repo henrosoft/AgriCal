@@ -91,7 +91,7 @@
 - (void)adjustMapRegionIfNeeded {
     if (![self relativeParentXPosition])
         return;
-    NSLog(@"%d", [self relativeParentXPosition]);
+    NSLog(@"%f", [self relativeParentXPosition]);
 	//Longitude
 	CGFloat xPixelShift = 0;
 	if ([self relativeParentXPosition] < 38) {
