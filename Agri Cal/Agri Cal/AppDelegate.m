@@ -11,7 +11,8 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-
+@synthesize username = _username;
+@synthesize password = _password;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

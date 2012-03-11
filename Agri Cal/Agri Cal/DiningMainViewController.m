@@ -19,6 +19,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated]; 
+    self.navigationItem.title = @"Dining Commons";
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -67,6 +73,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DiningDetailViewController *viewController = [[DiningDetailViewController alloc] init];
+    viewController.title = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    NSString *urlAddon = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    if ([urlAddon isEqualToString:@"Clark Kerr"]) 
+        urlAddon = @"ckc";
+    NSString *queryString = [NSString stringWithFormat:[NSString stringWithFormat:@"http://localhost:8000/api/menu/%@",urlAddon]];
+    NSURL *requestURL = [NSURL URLWithString:queryString];
+    NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
+    
+    // Use GCD to perform request in background, and then jump back on the main thread 
+    // to update the UI
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        NSURLResponse *response = nil;
+        NSError *error = nil;
+        NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
+                                                     returningResponse:&response
+                                                                 error:&error];
+        NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];   
+        NSLog(@"%@", viewController.lunch = [dict objectForKey:@"lunch"]);
+        viewController.dinner = [dict objectForKey:@"dinner"];
+        viewController.brunch = [dict objectForKey:@"brunch"];
+        viewController.lateNight = [dict objectForKey:@"latenight"];
+        viewController.breakfast = [dict objectForKey:@"breakfast"];
+        dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+        dispatch_async(updateUIQueue, ^{
+            [viewController.tableView reloadData];
+        });
+    });
+    self.navigationItem.title = @"Back";
     [self.navigationController pushViewController:viewController animated:YES];
 }
 @end

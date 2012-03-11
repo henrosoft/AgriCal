@@ -10,6 +10,7 @@
 		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
 		638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42DC150C68620031A9F6 /* DiningMainViewController.m */; };
 		638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */; };
+		638F42E4150C8E7C0031A9F6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E3150C8E7C0031A9F6 /* LoginViewController.m */; };
 		6393DE09150301F3003B77F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE08150301F3003B77F5 /* UIKit.framework */; };
 		6393DE0B150301F3003B77F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0A150301F3003B77F5 /* Foundation.framework */; };
 		6393DE0D150301F3003B77F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0C150301F3003B77F5 /* CoreGraphics.framework */; };
@@ -57,6 +58,8 @@
 		638F42DC150C68620031A9F6 /* DiningMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningMainViewController.m; sourceTree = "<group>"; };
 		638F42DF150C6D3E0031A9F6 /* DiningDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailViewController.h; sourceTree = "<group>"; };
 		638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailViewController.m; sourceTree = "<group>"; };
+		638F42E2150C8E7C0031A9F6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		638F42E3150C8E7C0031A9F6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6393DE04150301F3003B77F5 /* Agri Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agri Cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6393DE08150301F3003B77F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6393DE0A150301F3003B77F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -170,6 +173,8 @@
 				638F42DC150C68620031A9F6 /* DiningMainViewController.m */,
 				638F42DF150C6D3E0031A9F6 /* DiningDetailViewController.h */,
 				638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */,
+				638F42E2150C8E7C0031A9F6 /* LoginViewController.h */,
+				638F42E3150C8E7C0031A9F6 /* LoginViewController.m */,
 				6393DE5D15030FC5003B77F5 /* Models */,
 				6393DE23150301F3003B77F5 /* first.png */,
 				6393DE25150301F3003B77F5 /* first@2x.png */,
@@ -368,6 +373,7 @@
 				638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */,
 				638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */,
 				638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */,
+				638F42E4150C8E7C0031A9F6 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
