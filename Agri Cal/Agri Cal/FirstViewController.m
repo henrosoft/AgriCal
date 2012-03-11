@@ -63,7 +63,8 @@
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[current objectForKey:@"times"]];
+        int index = [(NSNumber*)[current objectForKey:@"index"] integerValue];
+        BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[current objectForKey:@"times"] andIndex:index];
         ano.title = stop;
         [self.busStops addObject:ano];	
     }
@@ -75,7 +76,7 @@
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[[NSMutableDictionary alloc] init]];
+        BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[[NSMutableDictionary alloc] init] andIndex:0];
         ano.url = [current objectForKey:@"url"];
         ano.title = stop;
         [self.cal1cardLocations addObject:ano];	
@@ -91,7 +92,7 @@
     {
         if (self.testCallout == nil) 
         {
-            self.testCallout = [[BusStopAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andRoutes:((BasicMapAnnotation*)view.annotation).routes andDelegate:self];
+            self.testCallout = [[BusStopAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andRoutes:((BasicMapAnnotation*)view.annotation).routes andDelegate:self andIndex:((BasicMapAnnotation*)view.annotation).index];
             self.testCallout.title = view.annotation.title;
         }
         else {
@@ -99,6 +100,7 @@
             self.testCallout.latitude = view.annotation.coordinate.latitude;
             self.testCallout.longitude = view.annotation.coordinate.longitude;
             self.testCallout.routes = ((BasicMapAnnotation*)view.annotation).routes;
+            self.testCallout.routeIndex = ((BasicMapAnnotation*)view.annotation).index;
         }
         
         [self.mapView addAnnotation:self.testCallout];
@@ -208,42 +210,34 @@
     return nil;
 }
 
-- (void)highlightPath:(NSString *)path
+- (void)highlightPath:(NSString *)path:(NSString*)indexes
 {
     [self.mapView removeAnnotations:self.timePopUps];
     self.timePopUps = [[NSMutableArray alloc] init];
-    NSString *pathTime = [[path componentsSeparatedByString:@":"] objectAtIndex:0];
-    NSString *pathMinute = [[path componentsSeparatedByString:@":"] objectAtIndex:1];
+    NSString *timeIndex = [[indexes componentsSeparatedByString:@":"] objectAtIndex:0];
+    NSString *routeIndex = [[indexes componentsSeparatedByString:@":"] objectAtIndex:1];
     NSString *pathName = [[path componentsSeparatedByString:@":"] objectAtIndex:2];
-    NSLog(@"%i",[self.busStops indexOfObject:self.selectedAnnotation.annotation]);
+    NSLog(@"highlight path with start index %@",indexes);
     for (BasicMapAnnotation *anno in self.busStops)
     {
             if ([anno.routes objectForKey:pathName])
             {
-                NSString *closestTime = @"N/A";
                 NSArray *times = [anno.routes objectForKey:pathName];
-                for (NSString *time in times)
-                {
-                    if ([[[time componentsSeparatedByString:@":"] objectAtIndex:0] integerValue] == [pathTime integerValue])
-                    {
-                        if ([[[time componentsSeparatedByString:@":"] objectAtIndex:1] integerValue] > [pathMinute integerValue])
-                        {
-                            closestTime = time;
-                            path = closestTime;
-                            break;
-                        }
-                    }
-                    if ([[[time componentsSeparatedByString:@":"] objectAtIndex:0] integerValue] > [pathTime integerValue])
-                    {
-                        closestTime = time;
-                        path = closestTime;
-                        break;
-                    }
+                NSString *closestTime = @"N/A";
+                if ([routeIndex integerValue] > anno.index) {
+                    if (!([timeIndex integerValue]+2 > [times count]))
+                        closestTime = [times objectAtIndex:[timeIndex integerValue]+2];
+                }
+                else {
+                    closestTime = [times objectAtIndex:[timeIndex integerValue]];
                 }
                 BasicMapAnnotationView *view = (BasicMapAnnotationView*)[self.mapView viewForAnnotation:anno];
                 view.pinColor = MKPinAnnotationColorRed;
-                BasicMapAnnotation *v = [[BasicMapAnnotation alloc] initWithLatitude:anno.coordinate.latitude andLongitude:anno.coordinate.longitude andRoutes:nil];
-                v.title = [NSString stringWithFormat:@"%@:%@", [[closestTime componentsSeparatedByString:@":"] objectAtIndex:0],[[closestTime componentsSeparatedByString:@":"] objectAtIndex:1]];
+                BasicMapAnnotation *v = [[BasicMapAnnotation alloc] initWithLatitude:anno.coordinate.latitude andLongitude:anno.coordinate.longitude andRoutes:nil andIndex:0];
+                if (![closestTime isEqualToString:@"N/A"])
+                    v.title = [NSString stringWithFormat:@"%@:%@", [[closestTime componentsSeparatedByString:@":"] objectAtIndex:0],[[closestTime componentsSeparatedByString:@":"] objectAtIndex:1]];
+                else 
+                    v.title = closestTime;
                 v.url = @"testing";
                 if (!(anno == self.selectedAnnotation.annotation))
                     [self.timePopUps addObject:v];

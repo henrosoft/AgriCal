@@ -33,6 +33,6 @@
 @property (strong, nonatomic) NSMutableArray *timePopUps;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
-- (void)highlightPath:(NSString*)path;
+- (void)highlightPath:(NSString*)path:(NSString*)indexes;
 - (void)displayWebsite:(NSString*)url;
 @end

@@ -4,6 +4,8 @@
 <dict>
 	<key>Tolman Hall</key>
 	<dict>
+		<key>index</key>
+		<integer>2</integer>
 		<key>times</key>
 		<dict>
 			<key>49</key>
@@ -14,7 +16,7 @@
 			<array>
 				<string>7:09:f</string>
 			</array>
-			<key>perimeter:2</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:49:perimeter</string>
 				<string>7:04:perimeter</string>
@@ -65,9 +67,11 @@
 	</dict>
 	<key>North Gate Hall</key>
 	<dict>
+		<key>index</key>
+		<integer>3</integer>
 		<key>times</key>
 		<dict>
-			<key>perimeter:3</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:50:perimeter</string>
 				<string>7:05:perimeter</string>
@@ -120,9 +124,11 @@
 	<dict>
 		<key>lat</key>
 		<real>37.875344</real>
+		<key>index</key>
+		<integer>4</integer>
 		<key>times</key>
 		<dict>
-			<key>perimeter:4</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:51:perimeter</string>
 				<string>7:06:perimeter</string>
@@ -173,9 +179,11 @@
 	<dict>
 		<key>lat</key>
 		<real>37.873498</real>
+		<key>index</key>
+		<integer>5</integer>
 		<key>times</key>
 		<dict>
-			<key>perimeter:5</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:53:perimeter</string>
 				<string>7:08:perimeter</string>
@@ -226,7 +234,7 @@
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter:6</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:55:perimeter</string>
 				<string>7:10:perimeter</string>
@@ -270,6 +278,8 @@
 				<string>19:10:perimeter</string>
 			</array>
 		</dict>
+		<key>index</key>
+		<integer>6</integer>
 		<key>long</key>
 		<real>-122.253952</real>
 		<key>lat</key>
@@ -279,7 +289,7 @@
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter:7</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:56:perimeter</string>
 				<string>7:11:perimeter</string>
@@ -323,16 +333,18 @@
 				<string>19:11:perimeter</string>
 			</array>
 		</dict>
+		<key>index</key>
+		<integer>7</integer>
 		<key>long</key>
 		<real>-122.252867</real>
 		<key>lat</key>
 		<real>37.871041</real>
 	</dict>
-	<key>International House:8</key>
+	<key>International House</key>
 	<dict>
 		<key>times</key>
 		<dict>
-			<key>perimeter:8</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:57:perimeter</string>
 				<string>7:12:perimeter</string>
@@ -376,6 +388,8 @@
 				<string>19:12:perimeter</string>
 			</array>
 		</dict>
+		<key>index</key>
+		<integer>8</integer>
 		<key>long</key>
 		<real>-122.252625</real>
 		<key>lat</key>
@@ -383,7 +397,7 @@
 	</dict>
 	<key>Piedmont Avenue</key>
 	<dict>
-		<key>times:9</key>
+		<key>times</key>
 		<dict>
 			<key>perimeter</key>
 			<array>
@@ -429,6 +443,8 @@
 				<string>19:14:perimeter</string>
 			</array>
 		</dict>
+		<key>index</key>
+		<integer>9</integer>
 		<key>long</key>
 		<real>-122.252212</real>
 		<key>lat</key>
@@ -440,7 +456,7 @@
 		<real>37.867489</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:10</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:03:perimeter</string>
 				<string>7:18:perimeter</string>
@@ -484,6 +500,8 @@
 				<string>19:18:perimeter</string>
 			</array>
 		</dict>
+		<key>index</key>
+		<integer>10</integer>
 		<key>long</key>
 		<real>-122.254262</real>
 	</dict>
@@ -491,11 +509,13 @@
 	<dict>
 		<key>lat</key>
 		<real>37.869296</real>
+		<key>index</key>
+		<integer>11</integer>
 		<key>long</key>
 		<real>-122.254591</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:11</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:05:perimeter</string>
 				<string>7:20:perimeter</string>
@@ -544,11 +564,13 @@
 	<dict>
 		<key>lat</key>
 		<real>37.869003</real>
+		<key>index</key>
+		<integer>12</integer>
 		<key>long</key>
 		<real>-122.256899</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:12</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:06:perimeter</string>
 				<string>7:21:perimeter</string>
@@ -597,11 +619,13 @@
 	<dict>
 		<key>lat</key>
 		<real>37.868759</real>
+		<key>index</key>
+		<integer>13</integer>
 		<key>long</key>
 		<real>-122.260204</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:13</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:08:perimeter</string>
 				<string>7:23:perimeter</string>
@@ -648,13 +672,15 @@
 	</dict>
 	<key>RSF</key>
 	<dict>
+		<key>index</key>
+		<integer>14</integer>
 		<key>lat</key>
 		<real>37.868425</real>
 		<key>long</key>
 		<real>-122.261461</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:14</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:10:perimeter</string>
 				<string>7:25:perimeter</string>
@@ -701,13 +727,15 @@
 	</dict>
 	<key>Banway Building</key>
 	<dict>
+		<key>index</key>
+		<integer>15</integer>
 		<key>lat</key>
 		<real>37.867607</real>
 		<key>long</key>
 		<real>-122.267711</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:15</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:12:perimeter</string>
 				<string>7:27:perimeter</string>
@@ -756,11 +784,13 @@
 	<dict>
 		<key>long</key>
 		<real>-122.267802</real>
+		<key>index</key>
+		<integer>16</integer>
 		<key>lat</key>
 		<real>37.868489</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:16</key>
+			<key>perimeter</key>
 			<array>
 				<string>7:13:perimeter</string>
 				<string>7:28:perimeter</string>
@@ -807,13 +837,15 @@
 	</dict>
 	<key>BART</key>
 	<dict>
+		<key>index</key>
+		<integer>0</integer>
 		<key>long</key>
 		<real>-122.267689</real>
 		<key>lat</key>
 		<real>37.871252</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:0</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:45:perimeter</string>
 				<string>7:00:perimeter</string>
@@ -862,11 +894,13 @@
 	<dict>
 		<key>long</key>
 		<real>-122.266163</real>
+		<key>index</key>
+		<integer>1</integer>
 		<key>lat</key>
 		<real>37.872392</real>
 		<key>times</key>
 		<dict>
-			<key>perimeter:1</key>
+			<key>perimeter</key>
 			<array>
 				<string>6:47:perimeter</string>
 				<string>7:02:perimeter</string>

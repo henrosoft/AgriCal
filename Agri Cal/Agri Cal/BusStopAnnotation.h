@@ -21,11 +21,13 @@
 @property (nonatomic) CLLocationDegrees longitude;
 @property (nonatomic) NSMutableDictionary *routes; 
 @property (nonatomic, strong) NSMutableArray *nextBuses;
+@property (nonatomic) NSInteger routeIndex;
 @property (nonatomic) id delegate;
 @property (nonatomic, strong) NSString *title;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes
-           andDelegate:(id)delegate;
+           andDelegate:(id)delegate
+              andIndex:(NSInteger)index;
 - (void)sortStops;
 @end

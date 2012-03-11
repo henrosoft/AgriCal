@@ -15,16 +15,20 @@
 @synthesize nextBuses = _nextBuses;
 @synthesize delegate = _delegate;
 @synthesize title = _title;
+@synthesize routeIndex = _routeIndex;
+
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes
-           andDelegate:(id)delegate{
+           andDelegate:(id)delegate
+              andIndex:(NSInteger)index{
 	if (self = [super init]) {
 		self.latitude = latitude;
 		self.longitude = longitude;
         self.routes = routes;
         self.nextBuses = [[NSMutableArray alloc] init];
         self.delegate = delegate;
+        self.routeIndex = index;
 	}
 	return self;
 }
@@ -57,9 +61,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%i", [[self.delegate performSelector:@selector(busStops)] indexOfObject:self]);
-    if ([self.delegate respondsToSelector:@selector(highlightPath:)])
-        [self.delegate performSelector:@selector(highlightPath:) withObject:[[tableView cellForRowAtIndexPath:indexPath] textLabel].text];
+    if ([self.delegate respondsToSelector:@selector(highlightPath::)])
+    {
+        NSString *pathSelected = [[[tableView cellForRowAtIndexPath:indexPath].textLabel.text componentsSeparatedByString:@":"] objectAtIndex:2];
+        NSString *indexes = [NSString stringWithFormat:@"%i:%i", [[self.routes objectForKey:pathSelected] indexOfObject:[tableView cellForRowAtIndexPath:indexPath].textLabel.text],self.routeIndex];
+        NSLog(@"%@",indexes);
+        [self.delegate performSelector:@selector(highlightPath::) withObject:[[tableView cellForRowAtIndexPath:indexPath] textLabel].text withObject:indexes];
+    }
 }
 
 - (void)sortStops

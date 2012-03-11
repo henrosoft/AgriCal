@@ -17,14 +17,16 @@
 @synthesize longitude = _longitude;
 @synthesize routes = _routes;
 @synthesize url = _url;
-@synthesize routeNumbers;
+@synthesize index = _index;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
-             andRoutes:(NSMutableDictionary*)routes{
+             andRoutes:(NSMutableDictionary*)routes
+              andIndex:(NSInteger)index{
 	if (self = [super init]) {
 		self.latitude = latitude;
 		self.longitude = longitude;
-        self.routes = routes; 
+        self.routes = routes;
+        self.index = index;
 	}
 	return self;
 }

@@ -19,9 +19,10 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, strong) NSMutableDictionary *routes; 
 @property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSMutableDictionary *routeNumbers;
+@property (nonatomic) NSInteger index;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
           andLongitude:(CLLocationDegrees)longitude
-             andRoutes:(NSMutableDictionary*)routes;
+             andRoutes:(NSMutableDictionary*)routes
+              andIndex:(NSInteger)index;
 - (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate;
 @end
