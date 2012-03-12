@@ -36,3 +36,29 @@ class MenuHandler(BaseHandler):
 			return m
 		else:
 			return Menu.objects.all()
+
+class DiningTimeHandler(BaseHandler):
+	allowed_methods = ("GET",)
+	model = DiningTime
+	fields = (('timespans',('days','type','span')),)
+	def read(self,request):
+		dt = None
+		try:
+			dt = DiningTime.objects.all()[0]
+			import datetime
+			if datetime.datetime.now().date()==m.pub_date.date():
+				dt.update()
+				dt.save()
+			else:
+				dt = None
+		except:
+			pass
+		if dt == None:
+			dt = DiningTime()
+			dt.save()
+			dt.update()
+		l = {}
+		l["pub_date"] = dt.pub_date
+		for location in dt.locations.all():
+			l[location.location] = location
+		return l 

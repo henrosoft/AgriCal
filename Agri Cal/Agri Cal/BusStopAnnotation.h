@@ -19,10 +19,10 @@
 
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
-@property (nonatomic) NSMutableDictionary *routes; 
+@property (nonatomic,strong) NSMutableDictionary *routes; 
 @property (nonatomic, strong) NSMutableArray *nextBuses;
 @property (nonatomic) NSInteger routeIndex;
-@property (nonatomic) id delegate;
+@property (nonatomic,strong) id delegate;
 @property (nonatomic, strong) NSString *title;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude

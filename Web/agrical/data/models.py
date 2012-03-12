@@ -124,9 +124,87 @@ class Menu(models.Model):
 				self.dinner.add(m)
 	class Meta:
 		ordering = ['-pub_date']
+
+class TimeSpan(models.Model):
+	days = models.CharField(max_length=50)
+	type = models.CharField(max_length=50)
+	span = models.CharField(max_length=50)
+class Location(models.Model):
+	location = models.CharField(max_length=50) 
+	timespans = models.ManyToManyField(TimeSpan)
+def clean(s):
+	s2 = s
+	s2 = s2.replace("<strong>","")
+	s2 = s2.replace("</strong>","")
+	s2 = s2.replace("<p>","")
+	s2 = s2.replace("</p>","")
+	s2 = s2.replace("\n","")
+	s2 = s2.replace("&amp;","&")
+	return s2.strip()
+
+class DiningTime(models.Model):
+	locations = models.ManyToManyField(Location)
+	pub_date = models.DateTimeField(auto_now_add=True)
+
+	def update(self):
+		url = "http://caldining.berkeley.edu/hours.html"
+		response = urllib.urlopen(url)
+		soup = BeautifulSoup.BeautifulSoup(response.read())
+
+		#crossroads
+		def addLocation(name,ls):
+			times = str(ls[0]).split("<br />")
+			l = Location()
+			l.location = name
+			l.save()
+
+			for i in range(1,len(times)):
+				ts = TimeSpan()
+				ts.days = clean(times[0])
+				ts.type = clean(times[i].split(" ")[0])
+				ts.span = clean(''.join(times[i].split()[1:]))
+				ts.save()
+				l.timespans.add(ts)
+				l.save()
+			l.save()
+
+			times = str(ls[1]).split("<br />")
+
+			for i in range(1,len(times)):
+				ts = TimeSpan()
+				ts.days = clean(times[0])
+				ts.type = clean(times[i].strip().split(" ")[0])
+				ts.span = clean(''.join(times[i].split()[1:]))
+				ts.save()
+				l.timespans.add(ts)
+				l.save()
+			l.save()
+			self.locations.add(l)
+			self.save()
+		ls = soup.find("table").findAll("tr",recursive=False)[1].findAll("td",recursive=False)[1].find("table").findAll("tr",recursive=False)[3].find("td").findAll("p")
+		addLocation("crossroads",ls)
+
+		ls = soup.find("table").findAll("tr",recursive=False)[1].findAll("td",recursive=False)[1].find("table").findAll("tr",recursive=False)[3].findAll("td",recursive=False)[1].findAll("p")
+		addLocation("ckc",ls)
+
+		ls = soup.find("table").findAll("tr",recursive=False)[1].findAll("td",recursive=False)[1].find("table").findAll("tr",recursive=False)[8].findAll("td",recursive=False)[0].findAll("p")
+		addLocation("cafe3",ls)
+
+		ls = soup.find("table").findAll("tr",recursive=False)[1].findAll("td",recursive=False)[1].find("table").findAll("tr",recursive=False)[8].findAll("td",recursive=False)[1].findAll("p")
+		addLocation("foothill",ls)
+
+		self.save()
+
+	class Meta:
+		ordering = ['-pub_date']
+
+
 # Create your models here.
 
 admin.site.register(BusLine)
 admin.site.register(BusVehicle)
 admin.site.register(MenuItem)
 admin.site.register(Menu)
+admin.site.register(DiningTime)
+admin.site.register(Location)
+admin.site.register(TimeSpan)

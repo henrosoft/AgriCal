@@ -22,7 +22,7 @@
 }
 @property (nonatomic, retain) MKAnnotationView *parentAnnotationView;
 @property (nonatomic, retain) MKMapView *mapView;
-@property (nonatomic) UIView *contentView;
+@property (nonatomic,strong) UIView *contentView;
 @property (nonatomic) CGPoint offsetFromParent;
 @property (nonatomic) CGFloat contentHeight;
 @property (nonatomic, strong) UITableView *tableView;
