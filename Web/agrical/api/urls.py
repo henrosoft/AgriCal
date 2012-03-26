@@ -6,6 +6,7 @@ bus_line_handler = Resource(BusLineHandler)
 
 menu_handler = Resource(MenuHandler)
 dining_time_handler = Resource(DiningTimeHandler)
+course_handler = Resource(CourseHandler)
 
 
 urlpatterns = patterns('',
@@ -16,4 +17,7 @@ urlpatterns = patterns('',
 		url(r'^menu/(?P<menu_location>\w+)/$',menu_handler),
 		url(r'^menu/$',menu_handler),
 		url(r'^dining_times/$',dining_time_handler),
+
+		#courses
+		url(r'^courses/$',course_handler),
 )

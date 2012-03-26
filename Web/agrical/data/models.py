@@ -140,6 +140,9 @@ def clean(s):
 	s2 = s2.replace("</p>","")
 	s2 = s2.replace("\n","")
 	s2 = s2.replace("&amp;","&")
+	s2 = s2.replace("&nbsp;","")
+	s2 = s2.replace("&#160;","")
+	s2 = s2.replace("...","")
 	return s2.strip()
 
 class DiningTime(models.Model):
@@ -198,6 +201,21 @@ class DiningTime(models.Model):
 	class Meta:
 		ordering = ['-pub_date']
 
+class Course(models.Model):
+	semester = models.CharField(max_length=30,default="Spring")
+	year = models.CharField(max_length=20,null=True)
+	ccn = models.CharField(max_length=20,null=True)
+	abbreviation = models.CharField(max_length=50,null=True)
+	number = models.CharField(max_length=50,null=True)
+	section = models.CharField(max_length=20,null=True)
+	type = models.CharField(max_length=20,null=True)
+	title = models.CharField(max_length=500,null=True)
+	instructor = models.CharField(max_length=100,null=True)
+	time = models.CharField(max_length=100,null=True)
+	location = models.CharField(max_length=100,null=True)
+	units = models.CharField(max_length=20,null=True)
+	exam_group = models.CharField(max_length=20,null=True)
+
 
 # Create your models here.
 
@@ -208,3 +226,4 @@ admin.site.register(Menu)
 admin.site.register(DiningTime)
 admin.site.register(Location)
 admin.site.register(TimeSpan)
+admin.site.register(Course)

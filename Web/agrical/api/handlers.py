@@ -1,6 +1,13 @@
 from piston.handler import BaseHandler
 from data.models import *
 
+class CourseHandler(BaseHandler):
+	allowed_methods = ("GET",)
+	model = Course
+
+	def read(self,department=None):
+		return Course.objects.all()
+
 class BusLineHandler(BaseHandler):
 	allowed_methods = ("GET",)
 	model = BusLine
