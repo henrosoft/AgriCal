@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from django.core.urlresolvers import reverse
 
 import BeautifulSoup
 import urllib
@@ -200,21 +201,59 @@ class DiningTime(models.Model):
 
 	class Meta:
 		ordering = ['-pub_date']
+class Section(models.Model):
+	ccn = models.CharField(max_length=20,default="",null=True)
+	instructor = models.CharField(max_length=100,default="",null=True)
+	time = models.CharField(max_length=100,default="",null=True)
+	location = models.CharField(max_length=100,default="",null=True)
+	units = models.CharField(max_length=20,default="",null=True)
+	exam_group = models.CharField(max_length=20,default="",null=True)
+	type = models.CharField(max_length=20,default="",null=True)
+
+	limit = models.CharField(max_length=10,default="",null=True)
+	enrolled = models.CharField(max_length=10,default="",null=True)
+	waitlist = models.CharField(max_length=10,default="",null=True)
+	available_seats = models.CharField(max_length=10,default="",null=True)
 
 class Course(models.Model):
-	semester = models.CharField(max_length=30,default="Spring")
-	year = models.CharField(max_length=20,null=True)
-	ccn = models.CharField(max_length=20,null=True)
-	abbreviation = models.CharField(max_length=50,null=True)
-	number = models.CharField(max_length=50,null=True)
-	section = models.CharField(max_length=20,null=True)
-	type = models.CharField(max_length=20,null=True)
-	title = models.CharField(max_length=500,null=True)
-	instructor = models.CharField(max_length=100,null=True)
-	time = models.CharField(max_length=100,null=True)
-	location = models.CharField(max_length=100,null=True)
-	units = models.CharField(max_length=20,null=True)
-	exam_group = models.CharField(max_length=20,null=True)
+	semester = models.CharField(max_length=30,default="Spring",null=True)
+	year = models.CharField(max_length=20,default="",null=True)
+	ccn = models.CharField(max_length=20,default="",null=True)
+	abbreviation = models.CharField(max_length=50,default="",null=True)
+	number = models.CharField(max_length=50,default="",null=True)
+	section = models.CharField(max_length=20,default="",null=True)
+	type = models.CharField(max_length=20,default="",null=True)
+	title = models.CharField(max_length=500,default="",null=True)
+	instructor = models.CharField(max_length=100,default="",null=True)
+	time = models.CharField(max_length=100,default="",null=True)
+	location = models.CharField(max_length=100,default="",null=True)
+	units = models.CharField(max_length=20,default="",null=True)
+	exam_group = models.CharField(max_length=20,default="",null=True)
+	days = models.CharField(max_length=100,default="",null=True)
+	pnp = models.CharField(max_length=10,default="",null=True)
+	sections = models.ManyToManyField(Section)
+
+	limit = models.CharField(max_length=10,default="",null=True)
+	enrolled = models.CharField(max_length=10,default="",null=True)
+	waitlist = models.CharField(max_length=10,default="",null=True)
+	available_seats = models.CharField(max_length=10,default="",null=True)
+	def webcast(self):
+		all_webcasts = Webcast.objects.all()
+		these_webcasts = []
+		for w in all_webcasts:
+			if w.description and w.description in self.title:
+				these_webcasts.append(w)
+		if len(these_webcasts)!=0:
+			return "true"
+		else:
+			return "false"
+
+class Webcast(models.Model):
+	title = models.CharField(max_length=200,default="",null=True)
+	description = models.CharField(max_length=200,default="",null=True)
+	url = models.CharField(max_length=1000,default="",null=True)
+	number = models.CharField(max_length=200,default="",null=True)
+
 
 
 # Create your models here.
@@ -227,3 +266,5 @@ admin.site.register(DiningTime)
 admin.site.register(Location)
 admin.site.register(TimeSpan)
 admin.site.register(Course)
+admin.site.register(Webcast)
+admin.site.register(Section)

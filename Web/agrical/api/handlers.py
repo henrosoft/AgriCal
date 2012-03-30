@@ -1,12 +1,52 @@
 from piston.handler import BaseHandler
 from data.models import *
+from data.util import *
+
 
 class CourseHandler(BaseHandler):
 	allowed_methods = ("GET",)
 	model = Course
+	fields = ('id','webcast','semester','year','ccn','abbreviation','number','section','type','title','instructor','time','location','units','exam_group','days','pnp','sections','limit','enrolled','waitlist','available_seats')
 
-	def read(self,department=None):
+	def read(self,request,department=None,department_id=None):
+		if 'username' in request.GET and 'password' in request.GET:
+			username = request.GET['username']
+			password = request.GET['password']
+			return get_schedule(username,password)
+		elif department_id:
+			return Course.objects.filter(id=department_id)
+		elif department:
+			if department == "departments":
+				d = set()
+				for course in Course.objects.all():
+					d.add((course.abbreviation,0))
+				return list(d) 
+			return Course.objects.filter(abbreviation=department)
 		return Course.objects.all()
+class WebcastHandler(BaseHandler):
+	allowed_methods = ("GET",)
+	model = Webcast
+
+	def read(self,request,course_id=None):
+		if course_id:
+			c = Course.objects.get(id=course_id)
+			all_webcasts = Webcast.objects.all()
+			these_webcasts = []
+			for w in all_webcasts:
+				if w.description and w.description in c.title:
+					these_webcasts.append(w)
+			return these_webcasts
+		else:
+			return Webcast.objects.all()
+class CourseDepartmentHandler(BaseHandler):
+	allowed_methods = ("GET",)
+	model = BusVehicle 
+
+	def read(self,request):
+		departments = set()
+		for course in Course.objects.all():
+			departments.add(course.abbreviation)
+		return list(departments) 
 
 class BusLineHandler(BaseHandler):
 	allowed_methods = ("GET",)
