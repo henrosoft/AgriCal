@@ -35,7 +35,7 @@
     self.courses = [[NSMutableDictionary alloc] init];
     self.courseInfo = [[NSMutableDictionary alloc] init];
     self.navigationItem.title = self.department;
-    NSString *queryString = [NSString stringWithFormat:@"http://127.0.0.1:8000/api/courses/%@", self.department]; 
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/courses/%@", ServerURL, self.department]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
@@ -154,6 +154,7 @@
             NSString *str = [[self.courseInfo objectForKey:title] objectForKey:@"time"];
             NSString *enrolled = [[self.courseInfo objectForKey:title] objectForKey:@"enrolled"];
             NSString *limit = [[self.courseInfo objectForKey:title] objectForKey:@"limit"];
+            NSString *webcast = [[self.courseInfo objectForKey:title] objectForKey:@"webcast"];
             if ([str isEqualToString:@""])
                 str = @"N/A";
             if ([enrolled isEqualToString:@""])
@@ -162,6 +163,8 @@
             }
             else 
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@/%@ Enrolled", str, enrolled, limit];
+            if (![webcast isEqualToString:@"false"])
+                cell.imageView.image = [UIImage imageNamed:@"TV.png"];
         }
     }
     else 
@@ -218,11 +221,9 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"prepare");
     if ([[sender class] isSubclassOfClass:[NSArray class]])
     {
         sender = [((NSArray*)sender) objectAtIndex:0];
-        NSLog(@"in here %@", ((UITableViewCell*)sender).textLabel.text);
         NSString *title = ((UITableViewCell*)sender).textLabel.text;
         ((CourseInfoViewController*)segue.destinationViewController).info = [self.courseInfo objectForKey:title];
         ((CourseInfoViewController*)segue.destinationViewController).navigationItem.title = title;

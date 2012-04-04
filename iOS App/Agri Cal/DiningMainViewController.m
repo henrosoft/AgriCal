@@ -79,7 +79,7 @@
     NSString *urlAddon = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     if ([urlAddon isEqualToString:@"Clark Kerr"]) 
         urlAddon = @"ckc";
-    NSString *queryString = [NSString stringWithFormat:[NSString stringWithFormat:@"http://127.0.0.1:8000/api/menu/%@",urlAddon]];
+    NSString *queryString = [NSString stringWithFormat:[NSString stringWithFormat:@"%@/api/menu/%@",ServerURL, urlAddon]];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
     

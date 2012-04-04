@@ -7,6 +7,8 @@
 //
 // 
 
+/* This controller manages the map view and all the related map annotations. */
+
 #import "FirstViewController.h"
 
 @interface FirstViewController ()
@@ -29,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    // Create the segmented control that occupies the navigation bar.
     NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", @"Cal1Card Locations", nil];
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
 	segmentedControl.frame = CGRectMake(2, 2, 308, 34);
@@ -42,11 +44,13 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
     [self.toolBar setItems:[NSArray arrayWithObject:barButton] animated:YES];
 	
+    // Allocate memory for all the arrays that keep track of the busstops. 
     self.busStops = [[NSMutableArray alloc] init];
     self.timePopUps = [[NSMutableArray alloc] init];
     self.cal1cardLocations = [[NSMutableArray alloc] init];
-    self.mapView.delegate = self;
     
+    // Initialize the mapview and set it up to focus on Berkeley.
+    self.mapView.delegate = self;
 	CLLocationCoordinate2D coordinate = {38.315, -90.2045};
 	[self.mapView setRegion:MKCoordinateRegionMake(coordinate, 
 												   MKCoordinateSpanMake(1, 1))];  
@@ -55,6 +59,7 @@
     MKCoordinateRegion region = {coord, span};
     [self.mapView setRegion:region];
     
+    // Load the schedule information from the included plist. 
     NSString* plistpath = [[NSBundle mainBundle] pathForResource:@"Stops" ofType:@"plist"];
     NSDictionary* stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
     NSEnumerator* enumerator = [stops keyEnumerator];
@@ -69,6 +74,8 @@
         ano.title = stop;
         [self.busStops addObject:ano];	
     }
+    
+    // Load the information about the cal1card locations from a plist. 
     plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
     stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
     enumerator = [stops keyEnumerator];
@@ -84,12 +91,12 @@
     }
     [self.mapView addAnnotations:self.busStops];
     
-    self.mapView.showsUserLocation = YES;
-    
+    self.mapView.showsUserLocation = YES;    
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    // If the selected annotation is a busstop, display the appropriate callout. 
     if ([self.busStops containsObject:view.annotation])
     {
         if (self.testCallout == nil) 
@@ -108,6 +115,7 @@
         [self.mapView addAnnotation:self.testCallout];
         self.selectedAnnotation = view;
     }
+    // If the selected annotation is a cal1card location, display the appropriate callout. 
     if ([self.cal1cardLocations containsObject:view.annotation])
     {
         if (self.cal1Callout == nil)
@@ -125,6 +133,8 @@
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
+    // Make sure that the deselection wasn't as a result of a tab inside the callout table view, then deselect 
+    // the correct annotation. 
     if (self.testCallout && [self.busStops containsObject:view.annotation] && !((BasicMapAnnotationView*)view).preventSelectionChange)
     {
         [self.mapView removeAnnotation:self.testCallout];
@@ -146,6 +156,7 @@
 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+    // This is a lot of customization code that allows for all the different kinds of annotations
     if ([annotation isKindOfClass:[MKUserLocation class]])
          return nil;
     if (annotation == self.testCallout)
@@ -214,6 +225,8 @@
 
 - (void)highlightPath:(NSString *)path:(NSString*)indexes
 {
+    // This method allows for a selected path to be highlighted, making sure that 
+    // the correct times are displayed etc. 
     [self.mapView removeAnnotations:self.timePopUps];
     self.timePopUps = [[NSMutableArray alloc] init];
     NSString *timeIndex = [[indexes componentsSeparatedByString:@":"] objectAtIndex:0];
@@ -249,6 +262,9 @@
 }
 
 - (IBAction)switchAnnotations:(id)sender {
+    
+    // Basically does what the method name says, removes the current annotations then adds new 
+    // ones depending on which alternative is selected. 
     [self.mapView removeAnnotations:self.busStops];
     [self.mapView removeAnnotations:self.cal1cardLocations];
     [self.mapView removeAnnotations:self.timePopUps];
@@ -293,6 +309,7 @@
 }
 - (void)displayWebsite:(NSString *)url
 {
+    // Displays the website that is related to the specified url. 
     NSURL *u = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:u];
     [self.webView setHidden:NO];
@@ -319,7 +336,8 @@
 }
 - (IBAction)doneButtonPushed:(id)sender
 {
-    
+    // When the user taps the done button after viewing a website, this method returns the mapview and 
+    // updates the segmented control. 
     [self.webView setHidden:YES];
     NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
     if ([balance isEqualToString:@"-1"] || !balance)

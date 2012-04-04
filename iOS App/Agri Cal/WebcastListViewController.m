@@ -29,8 +29,7 @@
     [super viewWillAppear:animated];
 
     self.webcasts = [[NSArray alloc] init];
-    NSString *queryString = [NSString stringWithFormat:@"http://127.0.0.1:8000/%@", self.url]; 
-    NSLog(@"%@",queryString);
+    NSString *queryString = [NSString stringWithFormat:@"%@/%@", ServerURL, self.url]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
@@ -55,18 +54,6 @@
             NSLog(@"Error");
         }
     });
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
@@ -104,6 +91,6 @@
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-((WebcastViewController*)segue.destinationViewController).url = [[self.webcasts objectAtIndex:[self.tableView indexPathForCell:(UITableViewCell*)sender].row] objectForKey:@"url"];
+    ((WebcastViewController*)segue.destinationViewController).url = [[self.webcasts objectAtIndex:[self.tableView indexPathForCell:(UITableViewCell*)sender].row] objectForKey:@"url"];
 }
 @end
