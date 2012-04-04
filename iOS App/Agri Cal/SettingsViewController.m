@@ -15,14 +15,12 @@
 @implementation SettingsViewController
 @synthesize username;
 @synthesize password;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     self.password.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
 }
-
 - (void)viewDidUnload
 {
     [self setUsername:nil];

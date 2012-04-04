@@ -13,6 +13,7 @@
 @synthesize window = _window;
 @synthesize username = _username;
 @synthesize password = _password;
+@synthesize web = _web;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -42,14 +43,19 @@
                                                          returningResponse:&response
                                                                      error:&error];
             NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
-            if (!bal)
-                NSLog(@"recieved %@", [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
             [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
         }
         @catch (NSException *e) {
             NSLog(@"error when scraping cal1card data");
         }
     });
+    
+    // Autologin to airbears
+    self.web = [[UIWebView alloc] init];
+    self.web.delegate = self;
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login?renew=true&service=https://auth.berkeley.edu/"];
+    NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
+    [self.web loadRequest:wifiRequest];
     return YES;
 }
 							
@@ -67,13 +73,11 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/balance/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+    // Update the cal1card balance.
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/?username=%@&password=%@", ServerURL,[[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSMutableURLRequest *jsonRequest = [NSMutableURLRequest requestWithURL:requestURL];
-    
-    // Use GCD to perform request in background, and then jump back on the main thread 
-    // to update the UI
-    
+
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         NSURLResponse *response = nil;
@@ -86,8 +90,20 @@
         [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
     });
 
+    // Autologin to airbears
+    self.web = [[UIWebView alloc] init];
+    self.web.delegate = self;
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login?renew=true&service=https://auth.berkeley.edu/"];
+    NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
+    [self.web loadRequest:wifiRequest];
 }
-
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.web stringByEvaluatingJavaScriptFromString:@"document.getElementById('loginsubmit').submit()"];
+    [self.web stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('username').value='%@';", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"]]];
+    [self.web stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('password').value='%@';", [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]];
+    [self.web stringByEvaluatingJavaScriptFromString:@"document.forms[0].submit();"];
+}
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
