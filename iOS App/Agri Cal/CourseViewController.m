@@ -36,7 +36,7 @@
         NSLog(@"Departments nil, trying to reload");
         self.departments = [[NSMutableDictionary alloc] init];
         self.departmentNumbers = [[NSMutableArray alloc] init];
-        NSString *queryString = @"http://192.168.1.68:8000/api/courses/departments";
+        NSString *queryString = @"http://127.0.0.1:8000/api/courses/departments";
         NSURL *requestURL = [NSURL URLWithString:queryString];
         NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
         
@@ -70,7 +70,7 @@
                         [self.departments setObject:[NSMutableArray arrayWithObjects:title,nil] forKey:firstLetter];
                     }
                 }
-                NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/schedule/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+                NSString *queryString = [NSString stringWithFormat:@"http://127.0.0.1:8000/api/schedule/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
                 queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 NSURL *requestURL = [NSURL URLWithString:queryString];
                 NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
@@ -109,7 +109,7 @@
             @try {
                 NSURLResponse *response = nil;
                 NSError *error = nil;
-                NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/schedule/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+                NSString *queryString = [NSString stringWithFormat:@"http://127.0.0.1:8000/api/schedule/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
                 queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 NSURL *requestURL = [NSURL URLWithString:queryString];
                 NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];

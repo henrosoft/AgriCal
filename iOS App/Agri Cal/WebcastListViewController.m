@@ -29,7 +29,7 @@
     [super viewWillAppear:animated];
 
     self.webcasts = [[NSArray alloc] init];
-    NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000%@", self.url]; 
+    NSString *queryString = [NSString stringWithFormat:@"http://127.0.0.1:8000/%@", self.url]; 
     NSLog(@"%@",queryString);
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];

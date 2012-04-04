@@ -5,6 +5,7 @@
 //  Created by Kevin Lindkvist on 3/3/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+// 
 
 #import "FirstViewController.h"
 
@@ -271,7 +272,12 @@
             break;
         case 1:
             [self.mapView addAnnotations:self.cal1cardLocations];
-            itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@$", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]], nil];
+            NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
+            if ([balance isEqualToString:@"-1"] || !balance)
+                balance = @"N/A";
+            else 
+                balance = [NSString stringWithFormat:@"%@$", balance];
+            itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@", balance], nil];
             segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
             segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
             segmentedControl.selectedSegmentIndex = 1;
@@ -291,7 +297,12 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:u];
     [self.webView setHidden:NO];
     [self.webView loadRequest:request];
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@$", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]], nil];
+    NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
+    if ([balance isEqualToString:@"-1"] || !balance)
+        balance = @"N/A";
+    else 
+        balance = [NSString stringWithFormat:@"%@$", balance];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@", balance], nil];
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
 	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentedControl.selectedSegmentIndex = 0;
@@ -310,7 +321,12 @@
 {
     
     [self.webView setHidden:YES];
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@$", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]], nil];
+    NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
+    if ([balance isEqualToString:@"-1"] || !balance)
+        balance = @"N/A";
+    else 
+        balance = [NSString stringWithFormat:@"%@$", balance];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@", balance], nil];
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
 	segmentedControl.frame = CGRectMake(2, 2, 308, 34);
 	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;

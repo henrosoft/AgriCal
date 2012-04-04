@@ -35,7 +35,7 @@
     self.courses = [[NSMutableDictionary alloc] init];
     self.courseInfo = [[NSMutableDictionary alloc] init];
     self.navigationItem.title = self.department;
-    NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/courses/%@", self.department]; 
+    NSString *queryString = [NSString stringWithFormat:@"http://127.0.0.1:8000/api/courses/%@", self.department]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
