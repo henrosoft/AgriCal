@@ -164,7 +164,9 @@
             else 
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@/%@ Enrolled", str, enrolled, limit];
             if (![webcast isEqualToString:@"false"])
-                cell.imageView.image = [UIImage imageNamed:@"TV.png"];
+                cell.imageView.image = [UIImage imageNamed:@"monitor.png"];
+            else 
+                cell.imageView.image = nil;
         }
     }
     else 

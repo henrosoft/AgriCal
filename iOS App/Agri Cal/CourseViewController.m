@@ -116,9 +116,9 @@
                 {
                     if([[current objectForKey:@"title"] isEqualToString:@""])
                         toRemove = current;
+                    if (toRemove)
+                        [dict removeObject:toRemove];
                 }
-                if (toRemove)
-                    [dict removeObject:toRemove];
                 [self.departments setObject:dict forKey:@"*"];
                 dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
                 dispatch_async(updateUIQueue, ^{
@@ -177,7 +177,7 @@
     if (tableView == self.tableView)
     {
         NSArray *indexArray = [[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        return [[self.departments objectForKey:[indexArray objectAtIndex:section]] count];
+        return MAX([[self.departments objectForKey:[indexArray objectAtIndex:section]] count], 1);
     }
     else
     {
@@ -189,6 +189,16 @@
 {
     if (tableView == self.tableView)
     {
+        if (!self.departments)
+        {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Loading"];
+            if (!cell){
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Loading"];
+            }
+            cell.textLabel.text = @"Loading departments...";
+            
+            return cell; 
+        }
         if (indexPath.section == 0)
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Personal"];

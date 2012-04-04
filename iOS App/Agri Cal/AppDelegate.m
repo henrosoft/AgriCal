@@ -15,11 +15,9 @@
 @synthesize password = _password;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/balance/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/?username=%@&password=%@",ServerURL, [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
-    //[request setHTTPMethod:@"POST"];
-    //[request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
@@ -34,7 +32,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
         }
         @catch (NSException *e) {
-            NSLog(@"error");
+            NSLog(@"error when scraping cal1card data");
         }
     });
     return YES;
