@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BusStopAnnotation.h"
+#import "FirstViewController.h"
 @interface ScheduleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSArray *items;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) BusStopAnnotation *stop;
+
 @end

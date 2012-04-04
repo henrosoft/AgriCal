@@ -27,25 +27,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSLog(@"%@", self.info);
 }
 
-- (void)viewDidUnload
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    return [[self.info objectForKey:@"sections"] count] + 1;
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+-(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (section == 0) {
+        return 8;
+    }
+    return 6;
 }
-
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return @"Course Info";
+    }
+    else {
+        return [NSString stringWithFormat:@"Section %i", section];
+    }
+}
 #pragma mark - Table view data source
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -56,68 +61,107 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Cell"];
     }
-    switch (indexPath.row) {
-        case 0:
-            cell.detailTextLabel.text = [self.info objectForKey:@"title"];
-            cell.textLabel.text = @"Title";
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            break;
-        case 1: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"time"];
-            cell.textLabel.text = @"Time";            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
-            break;
-        case 2: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"instructor"];
-            cell.textLabel.text = @"Instructor";            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
-            break;
-        case 3: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"location"];
-            cell.textLabel.text = @"Location";
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
-            break;
-        case 4: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"ccn"];
-            cell.textLabel.text = @"CCN";            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
-            break;
-        case 5: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"units"];
-            cell.textLabel.text = @"Units";            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
-            break;
-        case 6: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"exam_group"];
-            cell.textLabel.text = @"Exam";            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
-            break;
-        case 7: 
-            cell.detailTextLabel.text = [self.info objectForKey:@"webcast"];
-            if ([cell.detailTextLabel.text isEqualToString:@"false"])
-            {
-                cell.detailTextLabel.text = @"N/A";
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;                
-            }
-            else {
-                cell.detailTextLabel.text = @"Available";
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.selectionStyle = UITableViewCellSelectionStyleGray;                            
-            }
-            cell.textLabel.text = @"Webcast";
-            break;
-        default:
-            break;
+    if (indexPath.section == 0)
+    {
+        switch (indexPath.row) {
+            case 0:
+                cell.detailTextLabel.text = [self.info objectForKey:@"title"];
+                cell.textLabel.text = @"Title";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                break;
+            case 1: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"time"];
+                cell.textLabel.text = @"Time";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 2: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"instructor"];
+                cell.textLabel.text = @"Instructor";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 3: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"location"];
+                cell.textLabel.text = @"Location";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 4: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"ccn"];
+                cell.textLabel.text = @"CCN";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 5: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"units"];
+                cell.textLabel.text = @"Units";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 6: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"exam_group"];
+                cell.textLabel.text = @"Exam";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 7: 
+                cell.detailTextLabel.text = [self.info objectForKey:@"webcast"];
+                if ([cell.detailTextLabel.text isEqualToString:@"false"])
+                {
+                    cell.detailTextLabel.text = @"N/A";
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;                
+                }
+                else {
+                    cell.detailTextLabel.text = @"Available";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.selectionStyle = UITableViewCellSelectionStyleGray;                            
+                }
+                cell.textLabel.text = @"Webcast";
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        NSDictionary *dict = [[self.info objectForKey:@"sections"] objectAtIndex:indexPath.section-1];
+        switch (indexPath.row) {
+            case 0:
+                cell.detailTextLabel.text = [dict objectForKey:@"type"];
+                cell.textLabel.text = @"Type";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                break;
+            case 1: 
+                cell.detailTextLabel.text = [dict objectForKey:@"time"];
+                cell.textLabel.text = @"Time";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 2: 
+                cell.detailTextLabel.text = [dict objectForKey:@"instructor"];
+                cell.textLabel.text = @"Instructor";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 3: 
+                cell.detailTextLabel.text = [dict objectForKey:@"location"];
+                cell.textLabel.text = @"Location";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 4: 
+                cell.detailTextLabel.text = [dict objectForKey:@"ccn"];
+                cell.textLabel.text = @"CCN";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            case 6: 
+                cell.detailTextLabel.text = [dict objectForKey:@"exam_group"];
+                cell.textLabel.text = @"Exam";            
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+                break;
+            default:
+                break;
+        }
     }
 
     return cell;
 }
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 7)
+    if (indexPath.section == 0 && indexPath.row == 7)
     {
         NSLog(@"%@",[tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text);
         if (![[tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text isEqualToString:@"N/A"])

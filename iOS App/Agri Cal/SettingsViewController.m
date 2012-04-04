@@ -21,11 +21,6 @@
     [super viewDidLoad];
     self.username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     self.password.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -33,15 +28,22 @@
     [self setUsername:nil];
     [self setPassword:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    [UIView setAnimationDelay:0.05];
+    CGRect frame = self.view.frame;
+    frame.origin.y -= 200;
+    self.view.frame = frame;
+    [UIView commitAnimations];
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField == self.username)
@@ -53,6 +55,12 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    CGRect frame = self.view.frame;
+    frame.origin.y += 200;
+    self.view.frame = frame;
+    [UIView commitAnimations];
     return YES;
 }
 

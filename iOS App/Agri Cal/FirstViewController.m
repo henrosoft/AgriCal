@@ -358,7 +358,10 @@
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-        ((ScheduleViewController*)segue.destinationViewController).items = ((BusStopAnnotation*)sender).nextBuses;
+    [self.mapView removeAnnotations:self.timePopUps];
+    ((ScheduleViewController*)segue.destinationViewController).items = ((BusStopAnnotation*)sender).nextBuses;
+    ((ScheduleViewController*)segue.destinationViewController).delegate = self;
+    ((ScheduleViewController*)segue.destinationViewController).stop = sender;    
 }
 - (void)viewDidUnload {
     [self setAnnotationSelector:nil];
