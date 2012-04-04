@@ -5,3 +5,26 @@ Get enrolement data - DONE
 
 Add webcast icon on table view for courses
 Deal with names/locations that dont fit in the table view cell
+
+
+
+
+
+
+Bugs:
+	Department names with spaces or commas
+	Letters too small on course names
+	Menu seems to be rescraping every time
+
+Ideas:
+	Fun facts
+	Phone numbers/email addresses
+		-police
+		-tipsyt
+*	Building map
+	Departments should have links to actual pages
+	Athletics website
+	Link to ninja courses
+	"Reload info" button
+
+	
