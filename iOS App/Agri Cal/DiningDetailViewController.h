@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MealViewController.h"
 
 @interface DiningDetailViewController : UITableViewController
 {

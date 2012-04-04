@@ -118,7 +118,7 @@
 {
     // Return the number of sections.
     if (tableView == self.tableView)
-        return [self.courses count];
+        return MAX([self.courses count], 1);
     else 
         return 1;
 }
@@ -129,7 +129,13 @@
     if (tableView == self.tableView)
     {
         NSArray *indexArray = [[self.courses allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        return [[self.courses objectForKey:[indexArray objectAtIndex:section]] count];
+        if ([indexArray count])
+        {
+            return [[self.courses objectForKey:[indexArray objectAtIndex:section]] count];
+        }
+        else {
+            return 1;
+        }
     }
     else return [self.searchResults count];
 }
@@ -145,26 +151,39 @@
     if (tableView == self.tableView)
     {
         NSArray *indexArray = [[self.courses allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        NSString *title = [[self.courses objectForKey:[indexArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-        cell.textLabel.text = title;
-        if ([[self.courseInfo objectForKey:title] class] == [NSMutableDictionary class])
-            cell.detailTextLabel.text = [[self.courseInfo objectForKey:title] objectForKey:@"number"];
-        else 
+        if (![indexArray count])
         {
-            NSString *str = [[self.courseInfo objectForKey:title] objectForKey:@"time"];
-            NSString *enrolled = [[self.courseInfo objectForKey:title] objectForKey:@"enrolled"];
-            NSString *limit = [[self.courseInfo objectForKey:title] objectForKey:@"limit"];
-            NSString *webcast = [[self.courseInfo objectForKey:title] objectForKey:@"webcast"];
-            if ([str isEqualToString:@""])
-                str = @"N/A";
-            if ([enrolled isEqualToString:@""])
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Loading"];
+            if (!cell)
             {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - Enrollment info N/A", str];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Loading"];
             }
+            cell.textLabel.text = @"Loading courses...";
+        }else{
+            NSArray *indexArray = [[self.courses allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            NSString *title = [[self.courses objectForKey:[indexArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+            cell.textLabel.text = title;
+            if ([[self.courseInfo objectForKey:title] class] == [NSMutableDictionary class])
+                cell.detailTextLabel.text = [[self.courseInfo objectForKey:title] objectForKey:@"number"];
             else 
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@/%@ Enrolled", str, enrolled, limit];
-            if (![webcast isEqualToString:@"false"])
-                cell.imageView.image = [UIImage imageNamed:@"TV.png"];
+            {
+                NSString *str = [[self.courseInfo objectForKey:title] objectForKey:@"time"];
+                NSString *enrolled = [[self.courseInfo objectForKey:title] objectForKey:@"enrolled"];
+                NSString *limit = [[self.courseInfo objectForKey:title] objectForKey:@"limit"];
+                NSString *webcast = [[self.courseInfo objectForKey:title] objectForKey:@"webcast"];
+                if ([str isEqualToString:@""])
+                    str = @"N/A";
+                if ([enrolled isEqualToString:@""])
+                {
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - Enrollment info N/A", str];
+                }
+                else 
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@/%@ Enrolled", str, enrolled, limit];
+                if (![webcast isEqualToString:@"false"])
+                    cell.imageView.image = [UIImage imageNamed:@"monitor.png"];
+                else 
+                    cell.imageView.image = nil;
+            }
         }
     }
     else 
@@ -177,7 +196,7 @@
 }
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (tableView == self.tableView)
+    if (tableView == self.tableView && [[self.courses allKeys] count])
         return [[[self.courses allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
     else 
         return @"";

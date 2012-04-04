@@ -116,9 +116,9 @@
                 {
                     if([[current objectForKey:@"title"] isEqualToString:@""])
                         toRemove = current;
+                    if (toRemove)
+                        [dict removeObject:toRemove];
                 }
-                if (toRemove)
-                    [dict removeObject:toRemove];
                 [self.departments setObject:dict forKey:@"*"];
                 dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
                 dispatch_async(updateUIQueue, ^{
@@ -166,7 +166,7 @@
 {
     // Return the number of sections.
     if (tableView == self.tableView) 
-        return [self.departments count];
+        return MAX([self.departments count],1);
     else 
         return 1;
 }
@@ -177,7 +177,10 @@
     if (tableView == self.tableView)
     {
         NSArray *indexArray = [[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        return [[self.departments objectForKey:[indexArray objectAtIndex:section]] count];
+        if ([indexArray count])
+            return [[self.departments objectForKey:[indexArray objectAtIndex:section]] count];
+        else 
+            return 1;
     }
     else
     {
@@ -189,6 +192,17 @@
 {
     if (tableView == self.tableView)
     {
+        NSArray *indexArray = [[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        if (![indexArray count])
+        {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Loading"];
+            if (!cell){
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Loading"];
+            }
+            cell.textLabel.text = @"Loading departments...";
+            
+            return cell; 
+        }
         if (indexPath.section == 0)
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Personal"];
@@ -226,7 +240,9 @@
 {
     if (tableView == self.tableView)
     {
-        NSString *str = [[[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
+        NSString *str = @"";
+        if ([[self.departments allKeys] count])
+            str = [[[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
         if ([str isEqualToString:@"*"])
             return @"Your registered courses";
         else return str;

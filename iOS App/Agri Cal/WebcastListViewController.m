@@ -67,7 +67,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.webcasts count];
+    return MAX([self.webcasts count], 1);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,7 +79,10 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"Lecture %@", [[self.webcasts objectAtIndex:indexPath.row] objectForKey:@"number"]];
+    if ([self.webcasts count])
+        cell.textLabel.text = [NSString stringWithFormat:@"Lecture %@", [[self.webcasts objectAtIndex:indexPath.row] objectForKey:@"number"]];
+    else 
+        cell.textLabel.text = @"Loading webcasts...";
     return cell;
 }
 

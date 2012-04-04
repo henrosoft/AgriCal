@@ -16,6 +16,7 @@
 @synthesize items = _items;
 @synthesize tableView = _tableView;
 @synthesize delegate = _delegate;
+@synthesize stop = _stop;
 
 - (void)viewDidLoad
 {
@@ -71,7 +72,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if ([self.delegate respondsToSelector:@selector(highlightPath::)])
+    {
+        NSString *pathSelected = [tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text ;
+        NSString *indexOfSelectedTime = [NSString stringWithFormat:@"%@:%@", [tableView cellForRowAtIndexPath:indexPath].textLabel.text, pathSelected];
+        NSString *indexes = [NSString stringWithFormat:@"%i:%i", [[self.stop.routes objectForKey:pathSelected] indexOfObject:indexOfSelectedTime],self.stop.routeIndex];
+        [self.delegate performSelector:@selector(highlightPath::) withObject:[[tableView cellForRowAtIndexPath:indexPath] detailTextLabel].text withObject:indexes];
+        [((FirstViewController*)self.delegate) dismissModalViewControllerAnimated:YES];
+    }
 }
 
 @end

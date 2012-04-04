@@ -13,30 +13,49 @@
 @synthesize window = _window;
 @synthesize username = _username;
 @synthesize password = _password;
+@synthesize web = _web;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/balance/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+    
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/?username=%@&password=%@",ServerURL, [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+    /*
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
-    //[request setHTTPMethod:@"POST"];
-    //[request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
+    */
+    NSString *post = @"username=kevinlindkvist&password=19910721Kl";
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:queryString]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         @try {
-        NSURLResponse *response = nil;
-        NSError *error = nil;
-        NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
-                                                     returningResponse:&response
-                                                                 error:&error];
-        NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
-        NSLog(@"recieved %@", bal);
-        [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
+            NSURLResponse *response = nil;
+            NSError *error = nil;
+            NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
+                                                         returningResponse:&response
+                                                                     error:&error];
+            NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
+            [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
         }
         @catch (NSException *e) {
-            NSLog(@"error");
+            NSLog(@"error when scraping cal1card data");
         }
     });
+    
+    // Autologin to airbears
+    self.web = [[UIWebView alloc] init];
+    self.web.delegate = self;
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login?renew=true&service=https://auth.berkeley.edu/"];
+    NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
+    [self.web loadRequest:wifiRequest];
     return YES;
 }
 							
@@ -54,13 +73,11 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    NSString *queryString = [NSString stringWithFormat:@"http://192.168.1.68:8000/api/balance/?username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+    // Update the cal1card balance.
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/?username=%@&password=%@", ServerURL,[[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSMutableURLRequest *jsonRequest = [NSMutableURLRequest requestWithURL:requestURL];
-    
-    // Use GCD to perform request in background, and then jump back on the main thread 
-    // to update the UI
-    
+
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         NSURLResponse *response = nil;
@@ -73,8 +90,20 @@
         [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
     });
 
+    // Autologin to airbears
+    self.web = [[UIWebView alloc] init];
+    self.web.delegate = self;
+    NSURL *url = [NSURL URLWithString:@"https://auth.berkeley.edu/cas/login?renew=true&service=https://auth.berkeley.edu/"];
+    NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
+    [self.web loadRequest:wifiRequest];
 }
-
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.web stringByEvaluatingJavaScriptFromString:@"document.getElementById('loginsubmit').submit()"];
+    [self.web stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('username').value='%@';", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"]]];
+    [self.web stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('password').value='%@';", [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]];
+    [self.web stringByEvaluatingJavaScriptFromString:@"document.forms[0].submit();"];
+}
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.

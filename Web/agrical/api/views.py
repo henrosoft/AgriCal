@@ -2,9 +2,10 @@
 
 from data.util import *
 from django.http import HttpResponse
-
+from django.views.decorators.csrf import csrf_exempt
 def enrollment(request,ccn):
 	return HttpResponse(enrollment_info(ccn))
+@csrf_exempt
 def balance(request):
 	try:
 		if request.method=="GET":

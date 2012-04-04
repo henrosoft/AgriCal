@@ -57,10 +57,11 @@
 		63999502152BDA5E00356F87 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999501152BDA5E00356F87 /* Default@2x.png */; };
 		63999504152BDA6000356F87 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999503152BDA6000356F87 /* Default.png */; };
 		63999506152BDA9E00356F87 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999505152BDA9E00356F87 /* Icon@2x.png */; };
-		63999508152BDF5A00356F87 /* TV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999507152BDF5A00356F87 /* TV@2x.png */; };
-		6399950A152BDF7000356F87 /* TV.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999509152BDF7000356F87 /* TV.png */; };
+		6399950D152C1AD100356F87 /* monitor.png in Resources */ = {isa = PBXBuildFile; fileRef = 6399950B152C1AD100356F87 /* monitor.png */; };
+		6399950E152C1AD100356F87 /* monitor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6399950C152C1AD100356F87 /* monitor@2x.png */; };
 		63B2E3EC15204BBF00AA7848 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EB15204BBF00AA7848 /* CourseViewController.m */; };
 		63B2E3EF1520642000AA7848 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */; };
+		6D489920152C33D20060CBA6 /* MealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D48991F152C33D20060CBA6 /* MealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,12 +146,14 @@
 		63999501152BDA5E00356F87 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		63999503152BDA6000356F87 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		63999505152BDA9E00356F87 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		63999507152BDF5A00356F87 /* TV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TV@2x.png"; sourceTree = "<group>"; };
-		63999509152BDF7000356F87 /* TV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TV.png; sourceTree = "<group>"; };
+		6399950B152C1AD100356F87 /* monitor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monitor.png; sourceTree = "<group>"; };
+		6399950C152C1AD100356F87 /* monitor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monitor@2x.png"; sourceTree = "<group>"; };
 		63B2E3EA15204BBF00AA7848 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		63B2E3EB15204BBF00AA7848 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		63B2E3ED1520642000AA7848 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
 		63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+		6D48991E152C33D20060CBA6 /* MealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealViewController.h; sourceTree = "<group>"; };
+		6D48991F152C33D20060CBA6 /* MealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,8 @@
 				638F42DC150C68620031A9F6 /* DiningMainViewController.m */,
 				638F42DF150C6D3E0031A9F6 /* DiningDetailViewController.h */,
 				638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */,
+				6D48991E152C33D20060CBA6 /* MealViewController.h */,
+				6D48991F152C33D20060CBA6 /* MealViewController.m */,
 				638F42E5150CB96B0031A9F6 /* SettingsViewController.h */,
 				638F42E6150CB96B0031A9F6 /* SettingsViewController.m */,
 				63B2E3EA15204BBF00AA7848 /* CourseViewController.h */,
@@ -327,8 +332,8 @@
 				639994F6152BD3C500356F87 /* crossroads@2x.png */,
 				639994FD152BD9AE00356F87 /* homepage.png */,
 				639994FE152BD9AE00356F87 /* homepage@2x.png */,
-				63999507152BDF5A00356F87 /* TV@2x.png */,
-				63999509152BDF7000356F87 /* TV.png */,
+				6399950B152C1AD100356F87 /* monitor.png */,
+				6399950C152C1AD100356F87 /* monitor@2x.png */,
 			);
 			name = "Tabbar images";
 			sourceTree = "<group>";
@@ -426,8 +431,8 @@
 				63999502152BDA5E00356F87 /* Default@2x.png in Resources */,
 				63999504152BDA6000356F87 /* Default.png in Resources */,
 				63999506152BDA9E00356F87 /* Icon@2x.png in Resources */,
-				63999508152BDF5A00356F87 /* TV@2x.png in Resources */,
-				6399950A152BDF7000356F87 /* TV.png in Resources */,
+				6399950D152C1AD100356F87 /* monitor.png in Resources */,
+				6399950E152C1AD100356F87 /* monitor@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +487,7 @@
 				6326ABA515226E51005F1537 /* WebcastListViewController.m in Sources */,
 				6326ABA815227213005F1537 /* WebcastViewController.m in Sources */,
 				634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */,
+				6D489920152C33D20060CBA6 /* MealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
