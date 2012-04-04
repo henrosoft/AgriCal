@@ -1,0 +1,678 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6326ABA115211429005F1537 /* CourseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA015211429005F1537 /* CourseInfoViewController.m */; };
+		6326ABA515226E51005F1537 /* WebcastListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA415226E51005F1537 /* WebcastListViewController.m */; };
+		6326ABA815227213005F1537 /* WebcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA715227213005F1537 /* WebcastViewController.m */; };
+		634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634208A41522C0BF00981C46 /* ScheduleViewController.m */; };
+		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
+		638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42DC150C68620031A9F6 /* DiningMainViewController.m */; };
+		638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */; };
+		638F42E7150CB96C0031A9F6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E6150CB96B0031A9F6 /* SettingsViewController.m */; };
+		6393DE09150301F3003B77F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE08150301F3003B77F5 /* UIKit.framework */; };
+		6393DE0B150301F3003B77F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0A150301F3003B77F5 /* Foundation.framework */; };
+		6393DE0D150301F3003B77F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0C150301F3003B77F5 /* CoreGraphics.framework */; };
+		6393DE13150301F3003B77F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE11150301F3003B77F5 /* InfoPlist.strings */; };
+		6393DE15150301F3003B77F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE14150301F3003B77F5 /* main.m */; };
+		6393DE19150301F3003B77F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE18150301F3003B77F5 /* AppDelegate.m */; };
+		6393DE1C150301F3003B77F5 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE1A150301F3003B77F5 /* MainStoryboard_iPhone.storyboard */; };
+		6393DE1F150301F3003B77F5 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE1D150301F3003B77F5 /* MainStoryboard_iPad.storyboard */; };
+		6393DE22150301F3003B77F5 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE21150301F3003B77F5 /* FirstViewController.m */; };
+		6393DE24150301F3003B77F5 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE23150301F3003B77F5 /* first.png */; };
+		6393DE26150301F3003B77F5 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE25150301F3003B77F5 /* first@2x.png */; };
+		6393DE29150301F3003B77F5 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE28150301F3003B77F5 /* SecondViewController.m */; };
+		6393DE2B150301F3003B77F5 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE2A150301F3003B77F5 /* second.png */; };
+		6393DE2D150301F3003B77F5 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE2C150301F3003B77F5 /* second@2x.png */; };
+		6393DE35150301F3003B77F5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE34150301F3003B77F5 /* SenTestingKit.framework */; };
+		6393DE36150301F3003B77F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE08150301F3003B77F5 /* UIKit.framework */; };
+		6393DE37150301F3003B77F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE0A150301F3003B77F5 /* Foundation.framework */; };
+		6393DE3F150301F3003B77F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE3D150301F3003B77F5 /* InfoPlist.strings */; };
+		6393DE42150301F3003B77F5 /* Agri_CalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE41150301F3003B77F5 /* Agri_CalTests.m */; };
+		6393DE4C1503022E003B77F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393DE4B1503022E003B77F5 /* MapKit.framework */; };
+		6393DE4F15030395003B77F5 /* BasicMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE4E15030395003B77F5 /* BasicMapAnnotation.m */; };
+		6393DE52150303A8003B77F5 /* BasicMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE51150303A8003B77F5 /* BasicMapAnnotationView.m */; };
+		6393DE55150303B8003B77F5 /* BusStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE54150303B8003B77F5 /* BusStopAnnotation.m */; };
+		6393DE5B150303FD003B77F5 /* BusStopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE5A150303FD003B77F5 /* BusStopAnnotationView.m */; };
+		6393DE66150310D5003B77F5 /* Stops.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE65150310D5003B77F5 /* Stops.plist */; };
+		6393DE7115033473003B77F5 /* Cal1CardLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE7015033473003B77F5 /* Cal1CardLocations.plist */; };
+		6393DE8015033E09003B77F5 /* Cal1CardAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */; };
+		6393DE8415033E1A003B77F5 /* Cal1CardAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */; };
+		639994E3152BC93500356F87 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E2152BC93500356F87 /* Icon.png */; };
+		639994E6152BCFCD00356F87 /* preferences@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E5152BCFCD00356F87 /* preferences@2x.png */; };
+		639994E8152BD01A00356F87 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E7152BD01A00356F87 /* preferences.png */; };
+		639994EA152BD03F00356F87 /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E9152BD03F00356F87 /* world@2x.png */; };
+		639994EC152BD05100356F87 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994EB152BD05100356F87 /* world.png */; };
+		639994EE152BD08500356F87 /* Calendar-Month@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994ED152BD08500356F87 /* Calendar-Month@2x.png */; };
+		639994F0152BD09900356F87 /* Calendar-Month.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994EF152BD09900356F87 /* Calendar-Month.png */; };
+		639994F7152BD3C500356F87 /* crossroads.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994F5152BD3C400356F87 /* crossroads.png */; };
+		639994F8152BD3C500356F87 /* crossroads@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994F6152BD3C500356F87 /* crossroads@2x.png */; };
+		639994FF152BD9AE00356F87 /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994FD152BD9AE00356F87 /* homepage.png */; };
+		63999500152BD9AE00356F87 /* homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994FE152BD9AE00356F87 /* homepage@2x.png */; };
+		63999502152BDA5E00356F87 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999501152BDA5E00356F87 /* Default@2x.png */; };
+		63999504152BDA6000356F87 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999503152BDA6000356F87 /* Default.png */; };
+		63999506152BDA9E00356F87 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999505152BDA9E00356F87 /* Icon@2x.png */; };
+		63999508152BDF5A00356F87 /* TV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999507152BDF5A00356F87 /* TV@2x.png */; };
+		6399950A152BDF7000356F87 /* TV.png in Resources */ = {isa = PBXBuildFile; fileRef = 63999509152BDF7000356F87 /* TV.png */; };
+		63B2E3EC15204BBF00AA7848 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EB15204BBF00AA7848 /* CourseViewController.m */; };
+		63B2E3EF1520642000AA7848 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6393DE38150301F3003B77F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6393DDFB150301F3003B77F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6393DE03150301F3003B77F5;
+			remoteInfo = "Agri Cal";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6326AB9F15211429005F1537 /* CourseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoViewController.h; sourceTree = "<group>"; };
+		6326ABA015211429005F1537 /* CourseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoViewController.m; sourceTree = "<group>"; };
+		6326ABA315226E51005F1537 /* WebcastListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastListViewController.h; sourceTree = "<group>"; };
+		6326ABA415226E51005F1537 /* WebcastListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastListViewController.m; sourceTree = "<group>"; };
+		6326ABA615227212005F1537 /* WebcastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastViewController.h; sourceTree = "<group>"; };
+		6326ABA715227213005F1537 /* WebcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastViewController.m; sourceTree = "<group>"; };
+		634208A31522C0BF00981C46 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		634208A41522C0BF00981C46 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		638EE2EE150374210031FC10 /* TimePopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePopAnnotationView.h; path = ../TimePopAnnotationView.h; sourceTree = "<group>"; };
+		638EE2EF150374210031FC10 /* TimePopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePopAnnotationView.m; path = ../TimePopAnnotationView.m; sourceTree = "<group>"; };
+		638F42DB150C68620031A9F6 /* DiningMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningMainViewController.h; sourceTree = "<group>"; };
+		638F42DC150C68620031A9F6 /* DiningMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningMainViewController.m; sourceTree = "<group>"; };
+		638F42DF150C6D3E0031A9F6 /* DiningDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailViewController.h; sourceTree = "<group>"; };
+		638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailViewController.m; sourceTree = "<group>"; };
+		638F42E5150CB96B0031A9F6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		638F42E6150CB96B0031A9F6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		6393DE04150301F3003B77F5 /* Agri Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Agri Cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6393DE08150301F3003B77F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6393DE0A150301F3003B77F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6393DE0C150301F3003B77F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6393DE10150301F3003B77F5 /* Agri Cal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Agri Cal-Info.plist"; sourceTree = "<group>"; };
+		6393DE12150301F3003B77F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6393DE14150301F3003B77F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6393DE16150301F3003B77F5 /* Agri Cal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Agri Cal-Prefix.pch"; sourceTree = "<group>"; };
+		6393DE17150301F3003B77F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6393DE18150301F3003B77F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6393DE1B150301F3003B77F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		6393DE1E150301F3003B77F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		6393DE20150301F3003B77F5 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		6393DE21150301F3003B77F5 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		6393DE23150301F3003B77F5 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		6393DE25150301F3003B77F5 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		6393DE27150301F3003B77F5 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		6393DE28150301F3003B77F5 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		6393DE2A150301F3003B77F5 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		6393DE2C150301F3003B77F5 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		6393DE33150301F3003B77F5 /* Agri CalTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Agri CalTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6393DE34150301F3003B77F5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6393DE3C150301F3003B77F5 /* Agri CalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Agri CalTests-Info.plist"; sourceTree = "<group>"; };
+		6393DE3E150301F3003B77F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6393DE40150301F3003B77F5 /* Agri_CalTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Agri_CalTests.h; sourceTree = "<group>"; };
+		6393DE41150301F3003B77F5 /* Agri_CalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Agri_CalTests.m; sourceTree = "<group>"; };
+		6393DE4B1503022E003B77F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6393DE4D15030395003B77F5 /* BasicMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMapAnnotation.h; sourceTree = "<group>"; };
+		6393DE4E15030395003B77F5 /* BasicMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMapAnnotation.m; sourceTree = "<group>"; };
+		6393DE50150303A7003B77F5 /* BasicMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMapAnnotationView.h; sourceTree = "<group>"; };
+		6393DE51150303A8003B77F5 /* BasicMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMapAnnotationView.m; sourceTree = "<group>"; };
+		6393DE53150303B8003B77F5 /* BusStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStopAnnotation.h; sourceTree = "<group>"; };
+		6393DE54150303B8003B77F5 /* BusStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStopAnnotation.m; sourceTree = "<group>"; };
+		6393DE59150303FD003B77F5 /* BusStopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStopAnnotationView.h; sourceTree = "<group>"; };
+		6393DE5A150303FD003B77F5 /* BusStopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStopAnnotationView.m; sourceTree = "<group>"; };
+		6393DE65150310D5003B77F5 /* Stops.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stops.plist; sourceTree = "<group>"; };
+		6393DE7015033473003B77F5 /* Cal1CardLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cal1CardLocations.plist; sourceTree = "<group>"; };
+		6393DE7E15033E09003B77F5 /* Cal1CardAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal1CardAnnotation.h; sourceTree = "<group>"; };
+		6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cal1CardAnnotation.m; sourceTree = "<group>"; };
+		6393DE8215033E1A003B77F5 /* Cal1CardAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal1CardAnnotationView.h; sourceTree = "<group>"; };
+		6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cal1CardAnnotationView.m; sourceTree = "<group>"; };
+		639994E2152BC93500356F87 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		639994E5152BCFCD00356F87 /* preferences@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preferences@2x.png"; sourceTree = "<group>"; };
+		639994E7152BD01A00356F87 /* preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preferences.png; sourceTree = "<group>"; };
+		639994E9152BD03F00356F87 /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
+		639994EB152BD05100356F87 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
+		639994ED152BD08500356F87 /* Calendar-Month@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-Month@2x.png"; sourceTree = "<group>"; };
+		639994EF152BD09900356F87 /* Calendar-Month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-Month.png"; sourceTree = "<group>"; };
+		639994F5152BD3C400356F87 /* crossroads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossroads.png; sourceTree = "<group>"; };
+		639994F6152BD3C500356F87 /* crossroads@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crossroads@2x.png"; sourceTree = "<group>"; };
+		639994FD152BD9AE00356F87 /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage.png; sourceTree = "<group>"; };
+		639994FE152BD9AE00356F87 /* homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homepage@2x.png"; sourceTree = "<group>"; };
+		63999501152BDA5E00356F87 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		63999503152BDA6000356F87 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		63999505152BDA9E00356F87 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		63999507152BDF5A00356F87 /* TV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TV@2x.png"; sourceTree = "<group>"; };
+		63999509152BDF7000356F87 /* TV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TV.png; sourceTree = "<group>"; };
+		63B2E3EA15204BBF00AA7848 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
+		63B2E3EB15204BBF00AA7848 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
+		63B2E3ED1520642000AA7848 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
+		63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6393DE01150301F3003B77F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393DE4C1503022E003B77F5 /* MapKit.framework in Frameworks */,
+				6393DE09150301F3003B77F5 /* UIKit.framework in Frameworks */,
+				6393DE0B150301F3003B77F5 /* Foundation.framework in Frameworks */,
+				6393DE0D150301F3003B77F5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393DE2F150301F3003B77F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393DE35150301F3003B77F5 /* SenTestingKit.framework in Frameworks */,
+				6393DE36150301F3003B77F5 /* UIKit.framework in Frameworks */,
+				6393DE37150301F3003B77F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6393DDF9150301F3003B77F5 = {
+			isa = PBXGroup;
+			children = (
+				63999505152BDA9E00356F87 /* Icon@2x.png */,
+				63999503152BDA6000356F87 /* Default.png */,
+				63999501152BDA5E00356F87 /* Default@2x.png */,
+				639994E2152BC93500356F87 /* Icon.png */,
+				6393DE4B1503022E003B77F5 /* MapKit.framework */,
+				6393DE0E150301F3003B77F5 /* Agri Cal */,
+				6393DE3A150301F3003B77F5 /* Agri CalTests */,
+				6393DE07150301F3003B77F5 /* Frameworks */,
+				6393DE05150301F3003B77F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6393DE05150301F3003B77F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE04150301F3003B77F5 /* Agri Cal.app */,
+				6393DE33150301F3003B77F5 /* Agri CalTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6393DE07150301F3003B77F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE08150301F3003B77F5 /* UIKit.framework */,
+				6393DE0A150301F3003B77F5 /* Foundation.framework */,
+				6393DE0C150301F3003B77F5 /* CoreGraphics.framework */,
+				6393DE34150301F3003B77F5 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6393DE0E150301F3003B77F5 /* Agri Cal */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE17150301F3003B77F5 /* AppDelegate.h */,
+				6393DE18150301F3003B77F5 /* AppDelegate.m */,
+				6393DE1A150301F3003B77F5 /* MainStoryboard_iPhone.storyboard */,
+				6393DE1D150301F3003B77F5 /* MainStoryboard_iPad.storyboard */,
+				6393DE20150301F3003B77F5 /* FirstViewController.h */,
+				6393DE21150301F3003B77F5 /* FirstViewController.m */,
+				6393DE5C15030FA5003B77F5 /* Map Annotations */,
+				638F42DB150C68620031A9F6 /* DiningMainViewController.h */,
+				638F42DC150C68620031A9F6 /* DiningMainViewController.m */,
+				638F42DF150C6D3E0031A9F6 /* DiningDetailViewController.h */,
+				638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */,
+				638F42E5150CB96B0031A9F6 /* SettingsViewController.h */,
+				638F42E6150CB96B0031A9F6 /* SettingsViewController.m */,
+				63B2E3EA15204BBF00AA7848 /* CourseViewController.h */,
+				63B2E3EB15204BBF00AA7848 /* CourseViewController.m */,
+				63B2E3ED1520642000AA7848 /* CourseDetailViewController.h */,
+				63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */,
+				6326AB9F15211429005F1537 /* CourseInfoViewController.h */,
+				6326ABA015211429005F1537 /* CourseInfoViewController.m */,
+				6326ABA315226E51005F1537 /* WebcastListViewController.h */,
+				6326ABA415226E51005F1537 /* WebcastListViewController.m */,
+				6326ABA615227212005F1537 /* WebcastViewController.h */,
+				6326ABA715227213005F1537 /* WebcastViewController.m */,
+				639994E4152BCFBC00356F87 /* Tabbar images */,
+				6393DE5D15030FC5003B77F5 /* Models */,
+				6393DE23150301F3003B77F5 /* first.png */,
+				6393DE25150301F3003B77F5 /* first@2x.png */,
+				6393DE27150301F3003B77F5 /* SecondViewController.h */,
+				6393DE28150301F3003B77F5 /* SecondViewController.m */,
+				6393DE2A150301F3003B77F5 /* second.png */,
+				6393DE2C150301F3003B77F5 /* second@2x.png */,
+				6393DE0F150301F3003B77F5 /* Supporting Files */,
+			);
+			path = "Agri Cal";
+			sourceTree = "<group>";
+		};
+		6393DE0F150301F3003B77F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE10150301F3003B77F5 /* Agri Cal-Info.plist */,
+				6393DE65150310D5003B77F5 /* Stops.plist */,
+				6393DE7015033473003B77F5 /* Cal1CardLocations.plist */,
+				6393DE11150301F3003B77F5 /* InfoPlist.strings */,
+				6393DE14150301F3003B77F5 /* main.m */,
+				6393DE16150301F3003B77F5 /* Agri Cal-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6393DE3A150301F3003B77F5 /* Agri CalTests */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE40150301F3003B77F5 /* Agri_CalTests.h */,
+				6393DE41150301F3003B77F5 /* Agri_CalTests.m */,
+				6393DE3B150301F3003B77F5 /* Supporting Files */,
+			);
+			path = "Agri CalTests";
+			sourceTree = "<group>";
+		};
+		6393DE3B150301F3003B77F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE3C150301F3003B77F5 /* Agri CalTests-Info.plist */,
+				6393DE3D150301F3003B77F5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6393DE5C15030FA5003B77F5 /* Map Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				6393DE4D15030395003B77F5 /* BasicMapAnnotation.h */,
+				6393DE4E15030395003B77F5 /* BasicMapAnnotation.m */,
+				6393DE50150303A7003B77F5 /* BasicMapAnnotationView.h */,
+				6393DE51150303A8003B77F5 /* BasicMapAnnotationView.m */,
+				6393DE53150303B8003B77F5 /* BusStopAnnotation.h */,
+				6393DE54150303B8003B77F5 /* BusStopAnnotation.m */,
+				6393DE59150303FD003B77F5 /* BusStopAnnotationView.h */,
+				6393DE5A150303FD003B77F5 /* BusStopAnnotationView.m */,
+				6393DE7E15033E09003B77F5 /* Cal1CardAnnotation.h */,
+				6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */,
+				6393DE8215033E1A003B77F5 /* Cal1CardAnnotationView.h */,
+				6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */,
+				638EE2EE150374210031FC10 /* TimePopAnnotationView.h */,
+				638EE2EF150374210031FC10 /* TimePopAnnotationView.m */,
+				634208A31522C0BF00981C46 /* ScheduleViewController.h */,
+				634208A41522C0BF00981C46 /* ScheduleViewController.m */,
+			);
+			name = "Map Annotations";
+			sourceTree = "<group>";
+		};
+		6393DE5D15030FC5003B77F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		639994E4152BCFBC00356F87 /* Tabbar images */ = {
+			isa = PBXGroup;
+			children = (
+				639994E5152BCFCD00356F87 /* preferences@2x.png */,
+				639994E7152BD01A00356F87 /* preferences.png */,
+				639994E9152BD03F00356F87 /* world@2x.png */,
+				639994EB152BD05100356F87 /* world.png */,
+				639994ED152BD08500356F87 /* Calendar-Month@2x.png */,
+				639994EF152BD09900356F87 /* Calendar-Month.png */,
+				639994F5152BD3C400356F87 /* crossroads.png */,
+				639994F6152BD3C500356F87 /* crossroads@2x.png */,
+				639994FD152BD9AE00356F87 /* homepage.png */,
+				639994FE152BD9AE00356F87 /* homepage@2x.png */,
+				63999507152BDF5A00356F87 /* TV@2x.png */,
+				63999509152BDF7000356F87 /* TV.png */,
+			);
+			name = "Tabbar images";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6393DE03150301F3003B77F5 /* Agri Cal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6393DE45150301F3003B77F5 /* Build configuration list for PBXNativeTarget "Agri Cal" */;
+			buildPhases = (
+				6393DE00150301F3003B77F5 /* Sources */,
+				6393DE01150301F3003B77F5 /* Frameworks */,
+				6393DE02150301F3003B77F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Agri Cal";
+			productName = "Agri Cal";
+			productReference = 6393DE04150301F3003B77F5 /* Agri Cal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6393DE32150301F3003B77F5 /* Agri CalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6393DE48150301F3003B77F5 /* Build configuration list for PBXNativeTarget "Agri CalTests" */;
+			buildPhases = (
+				6393DE2E150301F3003B77F5 /* Sources */,
+				6393DE2F150301F3003B77F5 /* Frameworks */,
+				6393DE30150301F3003B77F5 /* Resources */,
+				6393DE31150301F3003B77F5 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6393DE39150301F3003B77F5 /* PBXTargetDependency */,
+			);
+			name = "Agri CalTests";
+			productName = "Agri CalTests";
+			productReference = 6393DE33150301F3003B77F5 /* Agri CalTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6393DDFB150301F3003B77F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 6393DDFE150301F3003B77F5 /* Build configuration list for PBXProject "Agri Cal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6393DDF9150301F3003B77F5;
+			productRefGroup = 6393DE05150301F3003B77F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6393DE03150301F3003B77F5 /* Agri Cal */,
+				6393DE32150301F3003B77F5 /* Agri CalTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6393DE02150301F3003B77F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393DE13150301F3003B77F5 /* InfoPlist.strings in Resources */,
+				6393DE1C150301F3003B77F5 /* MainStoryboard_iPhone.storyboard in Resources */,
+				6393DE1F150301F3003B77F5 /* MainStoryboard_iPad.storyboard in Resources */,
+				6393DE24150301F3003B77F5 /* first.png in Resources */,
+				6393DE26150301F3003B77F5 /* first@2x.png in Resources */,
+				6393DE2B150301F3003B77F5 /* second.png in Resources */,
+				6393DE2D150301F3003B77F5 /* second@2x.png in Resources */,
+				6393DE66150310D5003B77F5 /* Stops.plist in Resources */,
+				6393DE7115033473003B77F5 /* Cal1CardLocations.plist in Resources */,
+				639994E3152BC93500356F87 /* Icon.png in Resources */,
+				639994E6152BCFCD00356F87 /* preferences@2x.png in Resources */,
+				639994E8152BD01A00356F87 /* preferences.png in Resources */,
+				639994EA152BD03F00356F87 /* world@2x.png in Resources */,
+				639994EC152BD05100356F87 /* world.png in Resources */,
+				639994EE152BD08500356F87 /* Calendar-Month@2x.png in Resources */,
+				639994F0152BD09900356F87 /* Calendar-Month.png in Resources */,
+				639994F7152BD3C500356F87 /* crossroads.png in Resources */,
+				639994F8152BD3C500356F87 /* crossroads@2x.png in Resources */,
+				639994FF152BD9AE00356F87 /* homepage.png in Resources */,
+				63999500152BD9AE00356F87 /* homepage@2x.png in Resources */,
+				63999502152BDA5E00356F87 /* Default@2x.png in Resources */,
+				63999504152BDA6000356F87 /* Default.png in Resources */,
+				63999506152BDA9E00356F87 /* Icon@2x.png in Resources */,
+				63999508152BDF5A00356F87 /* TV@2x.png in Resources */,
+				6399950A152BDF7000356F87 /* TV.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393DE30150301F3003B77F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393DE3F150301F3003B77F5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6393DE31150301F3003B77F5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6393DE00150301F3003B77F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393DE15150301F3003B77F5 /* main.m in Sources */,
+				6393DE19150301F3003B77F5 /* AppDelegate.m in Sources */,
+				6393DE22150301F3003B77F5 /* FirstViewController.m in Sources */,
+				6393DE29150301F3003B77F5 /* SecondViewController.m in Sources */,
+				6393DE4F15030395003B77F5 /* BasicMapAnnotation.m in Sources */,
+				6393DE52150303A8003B77F5 /* BasicMapAnnotationView.m in Sources */,
+				6393DE55150303B8003B77F5 /* BusStopAnnotation.m in Sources */,
+				6393DE5B150303FD003B77F5 /* BusStopAnnotationView.m in Sources */,
+				6393DE8015033E09003B77F5 /* Cal1CardAnnotation.m in Sources */,
+				6393DE8415033E1A003B77F5 /* Cal1CardAnnotationView.m in Sources */,
+				638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */,
+				638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */,
+				638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */,
+				638F42E7150CB96C0031A9F6 /* SettingsViewController.m in Sources */,
+				63B2E3EC15204BBF00AA7848 /* CourseViewController.m in Sources */,
+				63B2E3EF1520642000AA7848 /* CourseDetailViewController.m in Sources */,
+				6326ABA115211429005F1537 /* CourseInfoViewController.m in Sources */,
+				6326ABA515226E51005F1537 /* WebcastListViewController.m in Sources */,
+				6326ABA815227213005F1537 /* WebcastViewController.m in Sources */,
+				634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393DE2E150301F3003B77F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393DE42150301F3003B77F5 /* Agri_CalTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6393DE39150301F3003B77F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6393DE03150301F3003B77F5 /* Agri Cal */;
+			targetProxy = 6393DE38150301F3003B77F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6393DE11150301F3003B77F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6393DE12150301F3003B77F5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6393DE1A150301F3003B77F5 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6393DE1B150301F3003B77F5 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		6393DE1D150301F3003B77F5 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6393DE1E150301F3003B77F5 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		6393DE3D150301F3003B77F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6393DE3E150301F3003B77F5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6393DE43150301F3003B77F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6393DE44150301F3003B77F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6393DE46150301F3003B77F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Agri Cal/Agri Cal-Prefix.pch";
+				INFOPLIST_FILE = "Agri Cal/Agri Cal-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6393DE47150301F3003B77F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Agri Cal/Agri Cal-Prefix.pch";
+				INFOPLIST_FILE = "Agri Cal/Agri Cal-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6393DE49150301F3003B77F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Agri Cal.app/Agri Cal";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Agri Cal/Agri Cal-Prefix.pch";
+				INFOPLIST_FILE = "Agri CalTests/Agri CalTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6393DE4A150301F3003B77F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Agri Cal.app/Agri Cal";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Agri Cal/Agri Cal-Prefix.pch";
+				INFOPLIST_FILE = "Agri CalTests/Agri CalTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6393DDFE150301F3003B77F5 /* Build configuration list for PBXProject "Agri Cal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393DE43150301F3003B77F5 /* Debug */,
+				6393DE44150301F3003B77F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6393DE45150301F3003B77F5 /* Build configuration list for PBXNativeTarget "Agri Cal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393DE46150301F3003B77F5 /* Debug */,
+				6393DE47150301F3003B77F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6393DE48150301F3003B77F5 /* Build configuration list for PBXNativeTarget "Agri CalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393DE49150301F3003B77F5 /* Debug */,
+				6393DE4A150301F3003B77F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6393DDFB150301F3003B77F5 /* Project object */;
+}
