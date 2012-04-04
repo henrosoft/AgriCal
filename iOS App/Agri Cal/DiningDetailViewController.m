@@ -34,7 +34,7 @@
         case 2:
             return [self.lunch count];
         case 3:
-            return [self.dinner count]; 
+            return MAX([self.dinner count], 1); 
     }
     return 5;
 }
@@ -82,10 +82,42 @@
             cell.detailTextLabel.text = [[self.lunch objectAtIndex:indexPath.row] objectForKey:@"type"];
             break;
         case 3:
-            cell.textLabel.text = [[self.dinner objectAtIndex:indexPath.row] objectForKey:@"name"]; 
-            cell.detailTextLabel.text = [[self.dinner objectAtIndex:indexPath.row] objectForKey:@"type"];
+            if ([self.dinner count])
+            {
+                cell.textLabel.text = [[self.dinner objectAtIndex:indexPath.row] objectForKey:@"name"]; 
+                cell.detailTextLabel.text = [[self.dinner objectAtIndex:indexPath.row] objectForKey:@"type"];
+            }else {
+                cell = [tableView dequeueReusableCellWithIdentifier:@"Loading"];
+                if (!cell)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Loading"];
+                }
+                cell.textLabel.text = @"Loading menu...";
+            }
             break;
     }
     return cell;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    MealViewController *dvc = segue.destinationViewController;
+    switch (indexPath.section) {
+        case 0:
+            dvc.items = [self.breakfast objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            dvc.items = [self.brunch objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            dvc.items = [self.lunch objectAtIndex:indexPath.row];
+            break;
+        case 3:
+            dvc.items = [self.dinner objectAtIndex:indexPath.row];
+            break;
+    }
+    
+}
+
 @end

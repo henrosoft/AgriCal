@@ -72,9 +72,10 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DiningDetailViewController *viewController = [[DiningDetailViewController alloc] init];
+    DiningDetailViewController *viewController = ((DiningDetailViewController*)segue.destinationViewController);
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     viewController.title = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     NSString *urlAddon = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     if ([urlAddon isEqualToString:@"Clark Kerr"]) 
@@ -94,7 +95,6 @@
                                                      returningResponse:&response
                                                                  error:&error];
         NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];   
-        NSLog(@"%@", viewController.lunch = [dict objectForKey:@"lunch"]);
         viewController.dinner = [dict objectForKey:@"dinner"];
         viewController.brunch = [dict objectForKey:@"brunch"];
         viewController.lateNight = [dict objectForKey:@"latenight"];
@@ -104,7 +104,5 @@
             [viewController.tableView reloadData];
         });
     });
-    self.navigationItem.title = @"Back";
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 @end

@@ -15,21 +15,36 @@
 @synthesize password = _password;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/?username=%@&password=%@",ServerURL, [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
+    /*
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+    */
+    NSString *post = @"username=kevinlindkvist&password=19910721Kl";
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:queryString]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         @try {
-        NSURLResponse *response = nil;
-        NSError *error = nil;
-        NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
-                                                     returningResponse:&response
-                                                                 error:&error];
-        NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
-        NSLog(@"recieved %@", bal);
-        [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
+            NSURLResponse *response = nil;
+            NSError *error = nil;
+            NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
+                                                         returningResponse:&response
+                                                                     error:&error];
+            NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
+            if (!bal)
+                NSLog(@"recieved %@", [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
+            [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
         }
         @catch (NSException *e) {
             NSLog(@"error when scraping cal1card data");
