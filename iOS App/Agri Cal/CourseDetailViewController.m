@@ -22,13 +22,13 @@
 {
     [super viewDidLoad];
     self.searchResults = [[NSMutableArray alloc] init];
-    self.courses = [[NSMutableArray alloc] init];
     self.navigationItem.title = self.department;
     NSString *queryString = [NSString stringWithFormat:@"%@/api/courses/%@", ServerURL, self.department]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
-    
+    if (!(self.courses = [[NSUserDefaults standardUserDefaults] objectForKey:self.department]))
+        self.courses = [[NSMutableArray alloc] init];
     // Use GCD to perform request in background, and then jump back on the main thread 
     // to update the UI
     
@@ -47,6 +47,7 @@
                 NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"number"  ascending:YES];
                 [self.courses sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
             }
+            [[NSUserDefaults standardUserDefaults] setObject:self.courses forKey:self.department];
             dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
             dispatch_async(updateUIQueue, ^{
                 [self.tableView reloadData];
@@ -87,7 +88,10 @@
     }
     else return [self.searchResults count];
 }
-
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.adjustsFontSizeToFitWidth = NO;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -95,7 +99,7 @@
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
-        cell.textLabel.lineBreakMode = UILineBreakModeTailTruncation;
+        cell.textLabel.adjustsFontSizeToFitWidth = NO;
     }
     if (tableView == self.tableView)
     {
