@@ -304,8 +304,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="(510) 642-9255 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="8Th-Kp-37y">
-                                                    <rect key="frame" x="10" y="24" width="100" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="510-642-9255 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="8Th-Kp-37y">
+                                                    <rect key="frame" x="10" y="24" width="92" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -323,14 +323,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="UCPD Non-Emergency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="i9C-kG-lEc">
-                                                    <rect key="frame" x="10" y="2" width="197" height="22"/>
+                                                    <rect key="frame" x="10" y="2" width="195" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="(510) 642‑6760" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="YNW-mN-FTL">
-                                                    <rect key="frame" x="10" y="24" width="96" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="510-642‑6760" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="YNW-mN-FTL">
+                                                    <rect key="frame" x="10" y="24" width="88" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -354,8 +354,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="(510) 642-2000 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="hjA-IJ-oB9">
-                                                    <rect key="frame" x="10" y="24" width="100" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="510-642-2000 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="hjA-IJ-oB9">
+                                                    <rect key="frame" x="10" y="24" width="92" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -383,8 +383,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="(510) 485-4848" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="bbJ-Yh-htm">
-                                                    <rect key="frame" x="10" y="24" width="96" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="510-485-4848" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="bbJ-Yh-htm">
+                                                    <rect key="frame" x="10" y="24" width="88" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -408,8 +408,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="(510) 234-5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="8l0-ok-BdN">
-                                                    <rect key="frame" x="10" y="24" width="96" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="510-234-5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="8l0-ok-BdN">
+                                                    <rect key="frame" x="10" y="24" width="88" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -474,6 +474,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1005,6 +1006,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4p2-G0-jrg"/>
+        <segue reference="Jez-VB-6wb"/>
     </inferredMetricsTieBreakers>
 </document>

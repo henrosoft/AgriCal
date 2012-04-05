@@ -77,8 +77,8 @@
                 [request setHTTPBody:postData];
                 
                 receivedData = [NSURLConnection sendSynchronousRequest:request
-                                                             returningResponse:&response
-                                                                         error:&error];
+                                                     returningResponse:&response
+                                                                 error:&error];
                 NSMutableArray *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
                 
                 dict = [NSMutableArray arrayWithArray:dict];
@@ -146,7 +146,7 @@
                     [self.tableView reloadData];
                 });
                 [[NSUserDefaults standardUserDefaults] setObject:self.departments forKey:@"dep"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:@"depTitles"];                
+                [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:@"depTitles"];                
             }
             @catch (NSException *e) {
                 NSLog(@"error");
@@ -219,6 +219,7 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Loading"];
             if (!cell){
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Loading"];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             cell.textLabel.text = @"Loading departments...";
             
@@ -229,6 +230,7 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Personal"];
             if (!cell){
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Personal"];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             cell.textLabel.text = [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"title"];
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"days"], [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"time"]];
@@ -246,6 +248,7 @@
             if (!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             NSArray *indexArray = [[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             cell.textLabel.text = [[self.departments objectForKey:[indexArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
