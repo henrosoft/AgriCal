@@ -17,12 +17,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/?username=%@&password=%@",ServerURL, [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
-    /*
-    NSURL *requestURL = [NSURL URLWithString:queryString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
-    */
-    NSString *post = @"username=kevinlindkvist&password=19910721Kl";
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/", ServerURL];
+
+    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
@@ -44,6 +41,7 @@
                                                                      error:&error];
             NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
             [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
+            [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"mealpoints"];
         }
         @catch (NSException *e) {
             NSLog(@"error when scraping cal1card data");

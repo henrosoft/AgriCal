@@ -14,7 +14,11 @@
 
 @implementation CourseInfoViewController
 @synthesize info = _info;
-
+- (void)viewDidLoad
+{
+    [super viewDidLoad]; 
+    NSLog(@"%@", self.info);
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [[self.info objectForKey:@"sections"] count] + 1;
@@ -39,15 +43,15 @@
 #pragma mark - Table view data source
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Cell"];
-    }
     if (indexPath.section == 0)
     {
+        static NSString *CellIdentifier = @"Cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Cell"];
+        }
         switch (indexPath.row) {
             case 0:
                 cell.detailTextLabel.text = [self.info objectForKey:@"title"];
@@ -101,8 +105,15 @@
             default:
                 break;
         }
+        return cell;
     }
     else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Section"];
+        
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Section"];
+        }
         NSDictionary *dict = [[self.info objectForKey:@"sections"] objectAtIndex:indexPath.section-1];
         switch (indexPath.row) {
             case 0:
@@ -130,17 +141,16 @@
                 cell.textLabel.text = @"CCN";            
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;            
                 break;
-            case 6: 
-                cell.detailTextLabel.text = [dict objectForKey:@"exam_group"];
-                cell.textLabel.text = @"Exam";            
+            case 5: 
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@", [dict objectForKey:@"enrolled"], [dict objectForKey:@"limit"]];
+                cell.textLabel.text = @"Slots";            
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;            
                 break;
             default:
                 break;
         }
+        return cell;
     }
-
-    return cell;
 }
 #pragma mark - Table view delegate
 

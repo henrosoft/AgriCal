@@ -211,6 +211,7 @@
             }
             cell.textLabel.text = [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"title"];
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"days"], [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"time"]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             return cell;
         }
