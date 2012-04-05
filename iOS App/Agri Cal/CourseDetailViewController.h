@@ -10,10 +10,8 @@
 #import "CourseInfoViewController.h"
 
 @interface CourseDetailViewController : UITableViewController
-@property (nonatomic, strong) NSMutableDictionary *courses;
-@property (nonatomic, strong) NSMutableDictionary *courseInfo;
+@property (nonatomic, strong) NSMutableArray *courses;
 @property (nonatomic, strong) NSString *department;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *searchResults;
-@property (nonatomic, strong) NSMutableArray *titles;
 @end
