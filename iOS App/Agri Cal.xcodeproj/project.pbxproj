@@ -61,6 +61,7 @@
 		6399950E152C1AD100356F87 /* monitor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6399950C152C1AD100356F87 /* monitor@2x.png */; };
 		63B2E3EC15204BBF00AA7848 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EB15204BBF00AA7848 /* CourseViewController.m */; };
 		63B2E3EF1520642000AA7848 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */; };
+		63C187B8152D90B000FF4AF1 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C187B7152D90B000FF4AF1 /* InfoViewController.m */; };
 		6D489920152C33D20060CBA6 /* MealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D48991F152C33D20060CBA6 /* MealViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,8 @@
 		63B2E3EB15204BBF00AA7848 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		63B2E3ED1520642000AA7848 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
 		63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+		63C187B6152D90B000FF4AF1 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		63C187B7152D90B000FF4AF1 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		6D48991E152C33D20060CBA6 /* MealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealViewController.h; sourceTree = "<group>"; };
 		6D48991F152C33D20060CBA6 /* MealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +237,8 @@
 				6D48991F152C33D20060CBA6 /* MealViewController.m */,
 				638F42E5150CB96B0031A9F6 /* SettingsViewController.h */,
 				638F42E6150CB96B0031A9F6 /* SettingsViewController.m */,
+				63C187B6152D90B000FF4AF1 /* InfoViewController.h */,
+				63C187B7152D90B000FF4AF1 /* InfoViewController.m */,
 				63B2E3EA15204BBF00AA7848 /* CourseViewController.h */,
 				63B2E3EB15204BBF00AA7848 /* CourseViewController.m */,
 				63B2E3ED1520642000AA7848 /* CourseDetailViewController.h */,
@@ -488,6 +493,7 @@
 				6326ABA815227213005F1537 /* WebcastViewController.m in Sources */,
 				634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */,
 				6D489920152C33D20060CBA6 /* MealViewController.m in Sources */,
+				63C187B8152D90B000FF4AF1 /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

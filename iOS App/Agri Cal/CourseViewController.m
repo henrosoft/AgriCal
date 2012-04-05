@@ -113,7 +113,7 @@
                 NSError *error = nil;
                 NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/",ServerURL];
                 
-                NSString *post = [NSString stringWithFormat:@"username=%@;password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+                NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
                 NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
                 
                 NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];

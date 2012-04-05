@@ -84,7 +84,7 @@
     // Return the number of rows in the section.
     if (tableView == self.tableView)
     {
-        return [self.courses count];
+        return MAX([self.courses count],1);
     }
     else return [self.searchResults count];
 }
