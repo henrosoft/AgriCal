@@ -62,13 +62,23 @@
                         [self.departments setObject:[NSMutableArray arrayWithObjects:title,nil] forKey:firstLetter];
                     }
                 }
-                NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/?username=%@&password=%@",ServerURL, [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
-                queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                NSURL *requestURL = [NSURL URLWithString:queryString];
-                NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
-                receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
-                                                     returningResponse:&response
-                                                                 error:&error];
+                NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/",ServerURL];
+                
+                NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+                NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+                
+                NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+                
+                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+                [request setURL:[NSURL URLWithString:queryString]];
+                [request setHTTPMethod:@"POST"];
+                [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+                [request setHTTPBody:postData];
+                
+                receivedData = [NSURLConnection sendSynchronousRequest:request
+                                                             returningResponse:&response
+                                                                         error:&error];
                 NSMutableArray *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
                 
                 dict = [NSMutableArray arrayWithArray:dict];
@@ -101,13 +111,24 @@
             @try {
                 NSURLResponse *response = nil;
                 NSError *error = nil;
-                NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/?username=%@&password=%@",ServerURL, [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]]; 
-                queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                NSURL *requestURL = [NSURL URLWithString:queryString];
-                NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
-                NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
+                NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/",ServerURL];
+                
+                NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+                NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+                
+                NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+                
+                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+                [request setURL:[NSURL URLWithString:queryString]];
+                [request setHTTPMethod:@"POST"];
+                [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+                
+                [request setHTTPBody:postData];
+                NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
                                                              returningResponse:&response
                                                                          error:&error];
+                NSLog(@"%@", [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
                 NSMutableArray *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
                 
                 dict = [NSMutableArray arrayWithArray:dict];
@@ -212,7 +233,11 @@
             cell.textLabel.text = [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"title"];
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"days"], [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"time"]];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
+            NSString *webcast = [NSString stringWithFormat:@"%@ %@",[[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"days"], [[[self.departments objectForKey:@"*"] objectAtIndex:indexPath.row] objectForKey:@"webcast"]];
+            if (![webcast isEqualToString:@" false"])
+                cell.imageView.image = [UIImage imageNamed:@"monitor.png"];
+            else 
+                cell.imageView.image = nil;
             return cell;
         }
         else {

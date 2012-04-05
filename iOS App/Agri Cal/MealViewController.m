@@ -14,59 +14,15 @@
 
 @implementation MealViewController
 @synthesize items;
-- (id)initWithStyle:(UITableViewStyle)style
+@synthesize web;
+- (void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super viewWillAppear:animated];
+    self.web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 400, 480)];
+    self.web.backgroundColor = [UIColor clearColor];
+    NSURL *url = [NSURL URLWithString:[self.items objectForKey:@"link"]];
+    [self.web loadRequest:[NSURLRequest requestWithURL:url]];
+    self.web.delegate = self;
+    [self.view addSubview:self.web];
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-    }
-    switch (indexPath.row) {
-        case 0:
-            cell.detailTextLabel.text = [self.items objectForKey:@"name"];
-            cell.textLabel.text = @"Name";
-            break;
-        case 1:
-            cell.textLabel.text = @"Type";
-            cell.detailTextLabel.text = [self.items objectForKey:@"type"];            
-        default:
-            break;
-    }
-    
-    return cell;
-}
-
 @end

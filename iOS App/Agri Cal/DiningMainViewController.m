@@ -69,7 +69,13 @@
     return cell;
 }
 
-
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"])
+        return [NSString stringWithFormat:@"%@ Meal Points", [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"]];
+    else 
+        return @"Meal Points N/A";
+}
 #pragma mark - Table view delegate
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -97,7 +103,7 @@
         NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];   
         viewController.dinner = [dict objectForKey:@"dinner"];
         viewController.brunch = [dict objectForKey:@"brunch"];
-        viewController.lateNight = [dict objectForKey:@"latenight"];
+        viewController.lunch = [dict objectForKey:@"lunch"];
         viewController.breakfast = [dict objectForKey:@"breakfast"];
         dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
         dispatch_async(updateUIQueue, ^{
