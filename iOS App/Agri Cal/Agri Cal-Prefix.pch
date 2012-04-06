@@ -12,5 +12,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <MapKit/MapKit.h>  
-    static NSString *ServerURL = @"http://growing-earth-4303.herokuapp.com";
+    static NSString *ServerURL = @"https://growing-earth-4303.herokuapp.com";
 #endif
