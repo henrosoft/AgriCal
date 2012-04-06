@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSString *department;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *searchResults;
+@property (nonatomic, strong) NSString *semester;
 @end

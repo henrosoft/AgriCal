@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSMutableArray *departmentNumbers;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) NSMutableArray *personalCourses;
 - (IBAction)selectedSemester:(id)sender;
 @end

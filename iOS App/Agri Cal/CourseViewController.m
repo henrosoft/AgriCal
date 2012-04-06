@@ -17,27 +17,34 @@
 @synthesize departmentNumbers = _departmentNumbers;
 @synthesize searchResults = _searchResults;
 @synthesize segmentedControl = _segmentedControl;
-
+@synthesize personalCourses = _personalCourses;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
-    self.departments = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:semester]];
-    self.departmentNumbers = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@num", semester]]];  
+    NSArray *oldPersonal = [[NSUserDefaults standardUserDefaults] objectForKey:semester];
+    if (!oldPersonal)
+        oldPersonal = [[NSArray alloc] init];
+
+    self.personalCourses = [NSMutableArray arrayWithArray:oldPersonal];
+
+    self.departments = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"departments"]];
+    self.departmentNumbers = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"departmentNum"]];  
     [self.tableView reloadData];
     
-    if (!self.departments)
+    if ([self.departments count] <= 10)
+    {
         [self performSelector:@selector(loadDepartments)];
+    }
     [self performSelector:@selector(loadPersonalCourses)];
 }
 - (void)loadDepartments
 {
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
-
+    
     self.searchResults = [[NSMutableArray alloc] init];
     self.navigationItem.title = @"Departments";
-    if (!self.departments || [[self.departments allKeys] count] == 1){
-        NSLog(@"first clause");
+    if (!self.departments || [[self.departments allKeys] count] <= 10){
         self.departments = [[NSMutableDictionary alloc] init];
         self.departmentNumbers = [[NSMutableArray alloc] init];
         NSString *queryString = [NSString stringWithFormat:@"%@/api/courses/departments/%@/", ServerURL, semester];
@@ -74,68 +81,69 @@
                         [self.departments setObject:[NSMutableArray arrayWithObjects:title,nil] forKey:firstLetter];
                     }
                 }
+                [self.departments setObject:self.personalCourses forKey:@"*"];
                 dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
                 dispatch_async(updateUIQueue, ^{
-                    NSLog(@"departments: %@", self.departments);
                     [self.tableView reloadData];
                 });
             }
             @catch (NSException *e) {
                 NSLog(@"error %@", e);
             }
-            [[NSUserDefaults standardUserDefaults] setObject:self.departments forKey:semester];
-            [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:[NSString stringWithFormat:@"%@num", semester]]; 
+            [[NSUserDefaults standardUserDefaults] setObject:self.departments forKey:@"departments"];
+            [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:@"departmentNum"]; 
         });
     }
 }
 -(void)loadPersonalCourses
 {
-        NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            @try {
-                NSURLResponse *response = nil;
-                NSError *error = nil;
-                NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/%@/",ServerURL, semester];
-                
-                NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
-                NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-                
-                NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-                
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-                [request setURL:[NSURL URLWithString:queryString]];
-                [request setHTTPMethod:@"POST"];
-                [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                
-                [request setHTTPBody:postData];
-                NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
-                                                             returningResponse:&response
-                                                                         error:&error];
-                NSMutableArray *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
-                
-                dict = [NSMutableArray arrayWithArray:dict];
-                NSDictionary *toRemove = nil;
-                for(NSDictionary *current in dict)
-                {
-                    if([[current objectForKey:@"title"] isEqualToString:@""])
-                        toRemove = current;
-                    if (toRemove)
-                        [dict removeObject:toRemove];
-                }
-                [self.departments setObject:dict forKey:@"*"];
-                dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
-                dispatch_async(updateUIQueue, ^{
-                    [self.tableView reloadData];
-                });
-                [[NSUserDefaults standardUserDefaults] setObject:self.departments forKey:semester];
-                [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:[NSString stringWithFormat:@"%@num", semester]];                
+    NSLog(@"loading personal courses");
+    NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        @try {
+            NSURLResponse *response = nil;
+            NSError *error = nil;
+            NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/%@/",ServerURL, semester];
+            
+            NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            
+            NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            [request setURL:[NSURL URLWithString:queryString]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            
+            [request setHTTPBody:postData];
+            NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
+                                                         returningResponse:&response
+                                                                     error:&error];
+            NSMutableArray *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
+            
+            dict = [NSMutableArray arrayWithArray:dict];
+            NSDictionary *toRemove = nil;
+            for(NSDictionary *current in dict)
+            {
+                if([[current objectForKey:@"title"] isEqualToString:@""])
+                    toRemove = current;
+                if (toRemove)
+                    [dict removeObject:toRemove];
             }
-            @catch (NSException *e) {
-                NSLog(@"error %@", e);
-            }         
-        });
+            [self.departments setObject:dict forKey:@"*"];
+            NSLog(@"setting %@", dict);
+            dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+            dispatch_async(updateUIQueue, ^{
+                [self.tableView reloadData];
+            });
+            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:semester];                
+        }
+        @catch (NSException *e) {
+            NSLog(@"error %@", e);
+        }         
+    });
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (tableView == self.tableView)
@@ -283,6 +291,8 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
+    ((CourseDetailViewController*)segue.destinationViewController).semester = semester;
     if ([[sender class] isSubclassOfClass:[NSArray class]])
     {
         sender = [sender objectAtIndex:0];
@@ -327,7 +337,11 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     return YES;
 }
 - (IBAction)selectedSemester:(id)sender {
-    [self.departments setObject:[[NSDictionary alloc] init] forKey:@"*"];
+    NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
+    self.personalCourses = [[NSUserDefaults standardUserDefaults] objectForKey:semester];
+    if (!self.personalCourses)
+        self.personalCourses = [[NSMutableArray alloc] init];
+    [self.departments setObject:self.personalCourses forKey:@"*"];
     [self.tableView reloadData];
     [self performSelector:@selector(loadPersonalCourses)];
 }

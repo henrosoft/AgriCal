@@ -371,10 +371,10 @@ UIGestureRecognizer* cancelGesture;
 {
     NSString *searchString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     searchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@", searchString);
-    NSURL *url = [NSURL URLWithString:@""];
-    if (![searchString isEqualToString:@""])
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&bounds=37.871657,-122.258821|37.877517,-122.262468&sensor=false", searchString]];
+    //if (![searchString isEqualToString:@""])
+    NSURL *url= [[NSURL alloc] initWithString:searchString];
     NSLog(@"%@", url);
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     @try {
@@ -383,7 +383,7 @@ UIGestureRecognizer* cancelGesture;
             NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
             if (receivedData)
                 self.searchResults = [[NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil] objectForKey:@"results"];
-            NSLog(@"%@", self.searchResults);
+            //NSLog(@"%@", self.searchResults);
             dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
             dispatch_async(updateUIQueue, ^{
                 [self.searchDisplayController.searchResultsTableView reloadData];
