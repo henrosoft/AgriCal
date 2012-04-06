@@ -92,7 +92,14 @@
     
     // Use GCD to perform request in background, and then jump back on the main thread 
     // to update the UI
-    
+    NSDictionary *preload = [[NSDictionary alloc] init];
+    if ((preload = [[NSUserDefaults standardUserDefaults] objectForKey:urlAddon]))
+    {
+        viewController.dinner = [preload objectForKey:@"dinner"];
+        viewController.brunch = [preload objectForKey:@"brunch"];
+        viewController.lunch = [preload objectForKey:@"lunch"];
+        viewController.breakfast = [preload objectForKey:@"breakfast"];
+    }
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         NSURLResponse *response = nil;
@@ -105,6 +112,7 @@
         viewController.brunch = [dict objectForKey:@"brunch"];
         viewController.lunch = [dict objectForKey:@"lunch"];
         viewController.breakfast = [dict objectForKey:@"breakfast"];
+        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:urlAddon];
         dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
         dispatch_async(updateUIQueue, ^{
             [viewController.tableView reloadData];

@@ -28,21 +28,11 @@
 @synthesize toolBar = _toolBar;
 @synthesize cal1Callout = _cal1Callout;
 @synthesize timePopUps = _timePopUps;
+@synthesize navigationBar = _navigationBar;
+@synthesize searchBar = _searchBar;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Create the segmented control that occupies the navigation bar.
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", @"Cal1Card Locations", nil];
-	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-	segmentedControl.frame = CGRectMake(2, 2, 308, 34);
-	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.selectedSegmentIndex = 0;
-	[segmentedControl addTarget:self
-	                     action:@selector(switchAnnotations:)
-	           forControlEvents:UIControlEventValueChanged];
-    self.annotationSelector = segmentedControl;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-    [self.toolBar setItems:[NSArray arrayWithObject:barButton] animated:YES];
 	
     // Allocate memory for all the arrays that keep track of the busstops. 
     self.busStops = [[NSMutableArray alloc] init];
@@ -64,6 +54,7 @@
     NSDictionary* stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
     NSEnumerator* enumerator = [stops keyEnumerator];
     id stop;
+    // For each object in the plist, add a busstopannotion that represents it. 
     while ((stop = [enumerator nextObject]))
     {
         NSDictionary* current = [stops objectForKey:stop];
@@ -158,7 +149,7 @@
 {
     // This is a lot of customization code that allows for all the different kinds of annotations
     if ([annotation isKindOfClass:[MKUserLocation class]])
-         return nil;
+        return nil;
     if (annotation == self.testCallout)
     {
         BusStopAnnotationView *callout = (BusStopAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"callout"];
@@ -235,28 +226,28 @@
     NSLog(@"highlight path with start index %@ %@",indexes, path);
     for (BasicMapAnnotation *anno in self.busStops)
     {
-            if ([anno.routes objectForKey:pathName])
-            {
-                NSArray *times = [anno.routes objectForKey:pathName];
-                NSString *closestTime = @"N/A";
-                if ([routeIndex integerValue] > anno.index) {
-                    if (!([timeIndex integerValue]+2 > [times count]))
-                        closestTime = [times objectAtIndex:[timeIndex integerValue]+2];
-                }
-                else {
-                    closestTime = [times objectAtIndex:[timeIndex integerValue]];
-                }
-                BasicMapAnnotationView *view = (BasicMapAnnotationView*)[self.mapView viewForAnnotation:anno];
-                view.pinColor = MKPinAnnotationColorRed;
-                BasicMapAnnotation *v = [[BasicMapAnnotation alloc] initWithLatitude:anno.coordinate.latitude andLongitude:anno.coordinate.longitude andRoutes:nil andIndex:0];
-                if (![closestTime isEqualToString:@"N/A"])
-                    v.title = [NSString stringWithFormat:@"%@:%@", [[closestTime componentsSeparatedByString:@":"] objectAtIndex:0],[[closestTime componentsSeparatedByString:@":"] objectAtIndex:1]];
-                else 
-                    v.title = closestTime;
-                v.url = @"testing";
-                if (!(anno == self.selectedAnnotation.annotation))
-                    [self.timePopUps addObject:v];
+        if ([anno.routes objectForKey:pathName])
+        {
+            NSArray *times = [anno.routes objectForKey:pathName];
+            NSString *closestTime = @"N/A";
+            if ([routeIndex integerValue] > anno.index) {
+                if (!([timeIndex integerValue]+2 > [times count]))
+                    closestTime = [times objectAtIndex:[timeIndex integerValue]+2];
             }
+            else {
+                closestTime = [times objectAtIndex:[timeIndex integerValue]];
+            }
+            BasicMapAnnotationView *view = (BasicMapAnnotationView*)[self.mapView viewForAnnotation:anno];
+            view.pinColor = MKPinAnnotationColorRed;
+            BasicMapAnnotation *v = [[BasicMapAnnotation alloc] initWithLatitude:anno.coordinate.latitude andLongitude:anno.coordinate.longitude andRoutes:nil andIndex:0];
+            if (![closestTime isEqualToString:@"N/A"])
+                v.title = [NSString stringWithFormat:@"%@:%@", [[closestTime componentsSeparatedByString:@":"] objectAtIndex:0],[[closestTime componentsSeparatedByString:@":"] objectAtIndex:1]];
+            else 
+                v.title = closestTime;
+            v.url = @"testing";
+            if (!(anno == self.selectedAnnotation.annotation))
+                [self.timePopUps addObject:v];
+        }
     }
     [self.mapView addAnnotations:self.timePopUps];
 }
@@ -268,42 +259,35 @@
     [self.mapView removeAnnotations:self.busStops];
     [self.mapView removeAnnotations:self.cal1cardLocations];
     [self.mapView removeAnnotations:self.timePopUps];
-    NSArray *itemArray;
-    UISegmentedControl *segmentedControl;
-    UIBarButtonItem *barButton;
+    [UIView beginAnimations:nil context:NULL];
+    [self.searchBar setHidden:YES];
+    [self.searchBar resignFirstResponder];
+    [UIView commitAnimations];
     switch (self.annotationSelector.selectedSegmentIndex) {
         case 0:
+        {
             [self.mapView addAnnotations:self.busStops];
-            itemArray = [NSArray arrayWithObjects: @"Bus Schedule", @"Cal1Card Locations", nil];
-            segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-            segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-            segmentedControl.selectedSegmentIndex = 0;
-            [segmentedControl addTarget:self
-                                 action:@selector(switchAnnotations:)
-                       forControlEvents:UIControlEventValueChanged];
-            self.annotationSelector = segmentedControl;
-            barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-            segmentedControl.frame = CGRectMake(2, 2, 308, 34);
-            [self.toolBar setItems:[NSArray arrayWithObjects:barButton,nil] animated:YES];
+            [self.annotationSelector setTitle:@"Cal1Card" forSegmentAtIndex:1];
+        }
             break;
         case 1:
+        {
             [self.mapView addAnnotations:self.cal1cardLocations];
             NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
-            if ([balance isEqualToString:@"-1"] || !balance)
+            if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
                 balance = @"N/A";
             else 
                 balance = [NSString stringWithFormat:@"%@$", balance];
-            itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@", balance], nil];
-            segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-            segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-            segmentedControl.selectedSegmentIndex = 1;
-            [segmentedControl addTarget:self
-                                 action:@selector(switchAnnotations:)
-                       forControlEvents:UIControlEventValueChanged];
-            self.annotationSelector = segmentedControl;
-            barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-            segmentedControl.frame = CGRectMake(2, 2, 308, 34);
-            [self.toolBar setItems:[NSArray arrayWithObjects:barButton,nil] animated:YES];
+            [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
+        }
+            break;
+        case 2:
+        {
+            [self.annotationSelector setTitle:@"Cal1Card" forSegmentAtIndex:1];
+            [UIView beginAnimations:nil context:NULL];
+            [self.searchBar setHidden:NO];
+            [UIView commitAnimations];
+        }
             break;
     }
 }
@@ -314,50 +298,47 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:u];
     [self.webView setHidden:NO];
     [self.webView loadRequest:request];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    self.navigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPushed:)];
+    [self.annotationSelector setEnabled:NO forSegmentAtIndex:0];
+    [self.annotationSelector setEnabled:NO forSegmentAtIndex:1];
+    [UIView commitAnimations];
     NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
     if ([balance isEqualToString:@"-1"] || !balance)
         balance = @"N/A";
     else 
         balance = [NSString stringWithFormat:@"%@$", balance];
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@", balance], nil];
-	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.selectedSegmentIndex = 0;
-	[segmentedControl addTarget:self
-	                     action:@selector(switchAnnotations:)
-	           forControlEvents:UIControlEventValueChanged];
-    self.annotationSelector = segmentedControl;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPushed:)];
-    segmentedControl.frame = CGRectMake(2, 2, 250, 34);
-    [self.toolBar setItems:[NSArray arrayWithObjects:barButton,doneButton,nil] animated:YES];
-    [segmentedControl setEnabled:NO forSegmentAtIndex:0];
-    [segmentedControl setEnabled:NO forSegmentAtIndex:1];
+    [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
+    
 }
 - (IBAction)doneButtonPushed:(id)sender
 {
     // When the user taps the done button after viewing a website, this method returns the mapview and 
     // updates the segmented control. 
     [self.webView setHidden:YES];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
     NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
     if ([balance isEqualToString:@"-1"] || !balance)
         balance = @"N/A";
     else 
         balance = [NSString stringWithFormat:@"%@$", balance];
-    NSArray *itemArray = [NSArray arrayWithObjects: @"Bus Schedule", [NSString stringWithFormat:@"Balance: %@", balance], nil];
-	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-	segmentedControl.frame = CGRectMake(2, 2, 308, 34);
-	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.selectedSegmentIndex = 1;
-	[segmentedControl addTarget:self
-	                     action:@selector(switchAnnotations:)
-	           forControlEvents:UIControlEventValueChanged];
-    self.annotationSelector = segmentedControl;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-    [self.toolBar setItems:[NSArray arrayWithObject:barButton] animated:YES];
+    
+    [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
+    
+    [self.annotationSelector setEnabled:YES forSegmentAtIndex:0];
+    [self.annotationSelector setEnabled:YES forSegmentAtIndex:1];
+    [self.annotationSelector setSelectedSegmentIndex:1];
+    CGRect frame = self.annotationSelector.frame;
+    frame.size.width = 300;
+    self.annotationSelector.frame = frame;
+    self.navigationBar.rightBarButtonItem = nil;
+    [UIView commitAnimations];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // Make sure that the correct stop is used to display the full schedule.
     [self.mapView removeAnnotations:self.timePopUps];
     ((ScheduleViewController*)segue.destinationViewController).items = ((BusStopAnnotation*)sender).nextBuses;
     ((ScheduleViewController*)segue.destinationViewController).delegate = self;
@@ -368,6 +349,8 @@
     [self setWebView:nil];
     [self setToolBar:nil];
     [self setDoneButton:nil];
+    [self setNavigationBar:nil];
+    [self setSearchBar:nil];
     [super viewDidUnload];
 }
 @end

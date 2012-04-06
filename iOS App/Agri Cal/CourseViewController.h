@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CourseDetailViewController.h"
-@interface CourseViewController : UITableViewController
+@interface CourseViewController : UITableViewController 
 {
 }
 @property (nonatomic, strong) NSMutableDictionary *departments;
 @property (nonatomic, strong) NSMutableArray *departmentNumbers;
 @property (nonatomic, strong) NSMutableArray *searchResults;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)selectedSemester:(id)sender;
 @end

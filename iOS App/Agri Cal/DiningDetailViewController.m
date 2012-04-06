@@ -100,12 +100,9 @@
             dvc.items = [self.breakfast objectAtIndex:indexPath.row];
             break;
         case 1:
-            dvc.items = [self.brunch objectAtIndex:indexPath.row];
-            break;
-        case 2:
             dvc.items = [self.lunch objectAtIndex:indexPath.row];
             break;
-        case 3:
+        case 2:
             dvc.items = [self.dinner objectAtIndex:indexPath.row];
             break;
     }
