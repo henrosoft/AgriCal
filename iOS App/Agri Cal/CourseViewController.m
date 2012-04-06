@@ -29,6 +29,7 @@
     self.departments = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:semester]];
     self.departmentNumbers = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@num", semester]]];  
     [self.tableView reloadData];
+    NSLog(@"loading %@", semester);
     self.searchResults = [[NSMutableArray alloc] init];
     self.navigationItem.title = @"Departments";
     if (!self.departments || [[self.departments allKeys] count] == 1){

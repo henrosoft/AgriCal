@@ -30,6 +30,8 @@
 @synthesize timePopUps = _timePopUps;
 @synthesize navigationBar = _navigationBar;
 @synthesize searchBar = _searchBar;
+@synthesize buildingAnnotation = _buildingAnnotation;
+@synthesize searchResults = _searchResults;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -38,7 +40,7 @@
     self.busStops = [[NSMutableArray alloc] init];
     self.timePopUps = [[NSMutableArray alloc] init];
     self.cal1cardLocations = [[NSMutableArray alloc] init];
-    
+    self.searchResults = [[NSMutableDictionary alloc] init];
     // Initialize the mapview and set it up to focus on Berkeley.
     self.mapView.delegate = self;
 	CLLocationCoordinate2D coordinate = {38.315, -90.2045};
@@ -143,6 +145,8 @@
     {
         [self.mapView removeAnnotation:self.cal1Callout];
     }
+    if (view.annotation == self.buildingAnnotation)
+        [self.mapView removeAnnotation:self.buildingAnnotation];
 }
 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -166,6 +170,11 @@
         [callout.tableView reloadData];
         
         return callout;
+    }
+    else if (annotation == self.buildingAnnotation) {
+        
+        MKPinAnnotationView *anno = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"building"];
+        return anno;
     }
     else if (annotation == self.cal1Callout) {
         Cal1CardAnnotationView *callout = (Cal1CardAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"cal1callout"];
@@ -305,7 +314,7 @@
     [self.annotationSelector setEnabled:NO forSegmentAtIndex:1];
     [UIView commitAnimations];
     NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
-    if ([balance isEqualToString:@"-1"] || !balance)
+    if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
         balance = @"N/A";
     else 
         balance = [NSString stringWithFormat:@"%@$", balance];
@@ -320,7 +329,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
     NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
-    if ([balance isEqualToString:@"-1"] || !balance)
+    if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
         balance = @"N/A";
     else 
         balance = [NSString stringWithFormat:@"%@$", balance];
@@ -336,6 +345,10 @@
     self.navigationBar.rightBarButtonItem = nil;
     [UIView commitAnimations];
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.searchBar resignFirstResponder];
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure that the correct stop is used to display the full schedule.
@@ -343,6 +356,59 @@
     ((ScheduleViewController*)segue.destinationViewController).items = ((BusStopAnnotation*)sender).nextBuses;
     ((ScheduleViewController*)segue.destinationViewController).delegate = self;
     ((ScheduleViewController*)segue.destinationViewController).stop = sender;    
+}
+UIGestureRecognizer* cancelGesture;
+
+- (void) backgroundTouched:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *searchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    @try {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+        dispatch_async(queue, ^{
+            NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            self.searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];
+            dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+            dispatch_async(updateUIQueue, ^{
+                [self.searchDisplayController.searchResultsTableView reloadData];
+            });
+        });
+    }
+    @catch (NSException *exception) {
+        NSLog(@"error");
+    }
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return MAX([self.searchResults count], 1);
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    if (![self.searchResults count])
+        cell.textLabel.text = @"Searching...";
+    else {
+        NSLog(@"here");
+        NSString *lat  = [NSString stringWithFormat:@"%@",[[[[[self.searchResults objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"]];
+        NSString *lng  = [NSString stringWithFormat:@"%@",[[[[[self.searchResults objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"]];
+        NSLog(@"there");
+        //self.buildingAnnotation = [[BasicMapAnnotation alloc] initWithLatitude:[lat floatValue] andLongitude:[lng floatValue] andRoutes:nil andIndex:0];
+        //[self.mapView addAnnotation:self.buildingAnnotation];
+        //[self.mapView setCenterCoordinate:self.buildingAnnotation.coordinate];
+        cell.textLabel.text = lat;
+    }
+    return cell;
 }
 - (void)viewDidUnload {
     [self setAnnotationSelector:nil];
