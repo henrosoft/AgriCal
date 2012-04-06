@@ -16,7 +16,7 @@
 #import "TimePopAnnotationView.h"
 #import "ScheduleViewController.h"
 
-@interface FirstViewController : UIViewController <MKMapViewDelegate>
+@interface FirstViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     BOOL _timePoping;
 }
@@ -25,6 +25,7 @@
 @property (strong, nonatomic) BusStopAnnotation *testCallout;
 @property (strong, nonatomic) Cal1CardAnnotation *cal1Callout;
 @property (strong, nonatomic) MKAnnotationView *selectedAnnotation; 
+@property (strong, nonatomic) BasicMapAnnotation *buildingAnnotation;
 @property (strong, nonatomic) NSMutableArray *busStops; 
 @property (strong, nonatomic) NSMutableArray *cal1cardLocations;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *annotationSelector;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSMutableArray *timePopUps;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *searchResults;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path:(NSString*)indexes;

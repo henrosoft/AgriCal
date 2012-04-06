@@ -49,10 +49,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <searchBar hidden="YES" contentMode="redraw" barStyle="blackOpaque" placeholder="Search Buildings" id="BMP-tW-1Gu">
+                            <searchBar hidden="YES" contentMode="redraw" barStyle="blackOpaque" id="8ge-Fv-ljt">
                                 <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="2CD-Qr-3SC"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,11 +65,21 @@
                         <outlet property="annotationSelector" destination="y3h-eM-3Vd" id="IFS-h8-zdL"/>
                         <outlet property="mapView" destination="N0G-e7-n14" id="7dI-kL-pDk"/>
                         <outlet property="navigationBar" destination="46P-ou-ml2" id="gLK-OB-gaN"/>
-                        <outlet property="searchBar" destination="BMP-tW-1Gu" id="f0P-t2-gRU"/>
+                        <outlet property="searchBar" destination="8ge-Fv-ljt" id="076-F2-Skb"/>
+                        <outlet property="searchDisplayController" destination="HnC-EA-YeH" id="9bK-Jg-qh6"/>
                         <outlet property="webView" destination="VHt-Z8-l7l" id="d7l-gd-28D"/>
                         <segue destination="QGz-Eg-KgJ" kind="modal" identifier="times" modalTransitionStyle="partialCurl" id="iSB-hn-XkH"/>
                     </connections>
                 </viewController>
+                <searchDisplayController id="HnC-EA-YeH">
+                    <connections>
+                        <outlet property="delegate" destination="2" id="cFt-XV-Qud"/>
+                        <outlet property="searchBar" destination="8ge-Fv-ljt" id="Fod-Vs-JMi"/>
+                        <outlet property="searchContentsController" destination="2" id="IUa-hI-3Oh"/>
+                        <outlet property="searchResultsDataSource" destination="2" id="CiZ-vW-PUH"/>
+                        <outlet property="searchResultsDelegate" destination="2" id="plQ-0b-Vov"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
@@ -981,72 +994,6 @@
         <image name="preferences.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="CourseDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="CourseInfoViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseInfoViewController.h"/>
-        </class>
-        <class className="CourseViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="selectedSemester:"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="DiningDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiningDetailViewController.h"/>
-        </class>
-        <class className="DiningMainViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiningMainViewController.h"/>
-        </class>
-        <class className="FirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonPushed:"/>
-                <relationship kind="action" name="switchAnnotations:"/>
-                <relationship kind="outlet" name="annotationSelector" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="InfoViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InfoViewController.h"/>
-        </class>
-        <class className="MealViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MealViewController.h"/>
-        </class>
-        <class className="ScheduleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScheduleViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="WebcastListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebcastListViewController.h"/>
-        </class>
-        <class className="WebcastViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebcastViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
