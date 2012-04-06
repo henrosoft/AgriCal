@@ -40,7 +40,7 @@
     self.busStops = [[NSMutableArray alloc] init];
     self.timePopUps = [[NSMutableArray alloc] init];
     self.cal1cardLocations = [[NSMutableArray alloc] init];
-    self.searchResults = [[NSMutableDictionary alloc] init];
+    self.searchResults = [[NSMutableArray alloc] init];
     // Initialize the mapview and set it up to focus on Berkeley.
     self.mapView.delegate = self;
 	CLLocationCoordinate2D coordinate = {38.315, -90.2045};
@@ -269,8 +269,7 @@
     [self.mapView removeAnnotations:self.cal1cardLocations];
     [self.mapView removeAnnotations:self.timePopUps];
     [UIView beginAnimations:nil context:NULL];
-    [self.searchBar setHidden:YES];
-    [self.searchBar resignFirstResponder];
+    [self.searchDisplayController.searchBar setHidden:YES];
     [UIView commitAnimations];
     switch (self.annotationSelector.selectedSegmentIndex) {
         case 0:
@@ -294,7 +293,7 @@
         {
             [self.annotationSelector setTitle:@"Cal1Card" forSegmentAtIndex:1];
             [UIView beginAnimations:nil context:NULL];
-            [self.searchBar setHidden:NO];
+            [self.searchDisplayController.searchBar setHidden:NO];
             [UIView commitAnimations];
         }
             break;
@@ -365,14 +364,26 @@ UIGestureRecognizer* cancelGesture;
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *searchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString]];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(searchForBuilding) object:nil];
+    [self performSelector:@selector(searchForBuilding)];
+}
+-(void)searchForBuilding
+{
+    NSString *searchString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    searchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@", searchString);
+    NSURL *url = [NSURL URLWithString:@""];
+    if (![searchString isEqualToString:@""])
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&bounds=37.871657,-122.258821|37.877517,-122.262468&sensor=false", searchString]];
+    NSLog(@"%@", url);
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     @try {
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
         dispatch_async(queue, ^{
             NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            self.searchResults = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];
+            if (receivedData)
+                self.searchResults = [[NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil] objectForKey:@"results"];
+            NSLog(@"%@", self.searchResults);
             dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
             dispatch_async(updateUIQueue, ^{
                 [self.searchDisplayController.searchResultsTableView reloadData];
@@ -385,28 +396,38 @@ UIGestureRecognizer* cancelGesture;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return MAX([self.searchResults count], 1);
+    return [self.searchResults count];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(searchForBuilding) object:nil];
+    [self performSelector:@selector(searchForBuilding) withObject:nil afterDelay:1.0];
+}
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     if (![self.searchResults count])
         cell.textLabel.text = @"Searching...";
     else {
-        NSLog(@"here");
-        NSString *lat  = [NSString stringWithFormat:@"%@",[[[[[self.searchResults objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"]];
-        NSString *lng  = [NSString stringWithFormat:@"%@",[[[[[self.searchResults objectForKey:@"results"] objectAtIndex:0] objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"]];
-        NSLog(@"there");
+        NSLog(@"%@", [self.searchResults objectAtIndex:indexPath.row]);
         //self.buildingAnnotation = [[BasicMapAnnotation alloc] initWithLatitude:[lat floatValue] andLongitude:[lng floatValue] andRoutes:nil andIndex:0];
         //[self.mapView addAnnotation:self.buildingAnnotation];
         //[self.mapView setCenterCoordinate:self.buildingAnnotation.coordinate];
-        cell.textLabel.text = lat;
+        NSArray *partsOfName = [[[self.searchResults objectAtIndex:indexPath.row] objectForKey:@"formatted_address"] componentsSeparatedByString:@","];
+        NSString *shortName = [partsOfName objectAtIndex:0];
+        NSString *detailText = @"";
+        if ([partsOfName count] > 3)
+            detailText = [NSString stringWithFormat:@"%@,%@,%@", [partsOfName objectAtIndex:1], [partsOfName objectAtIndex:2], [partsOfName objectAtIndex:3]];
+        else 
+            detailText = [NSString stringWithFormat:@"%@,%@", [partsOfName objectAtIndex:1], [partsOfName objectAtIndex:2]];
+        cell.textLabel.text = shortName;
+        cell.detailTextLabel.text = detailText;
     }
     return cell;
 }

@@ -35,7 +35,7 @@
 @property (strong, nonatomic) NSMutableArray *timePopUps;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSMutableDictionary *searchResults;
+@property (strong, nonatomic) NSMutableArray *searchResults;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path:(NSString*)indexes;

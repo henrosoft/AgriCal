@@ -21,15 +21,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSelector:@selector(loadData)];
-}
-- (void)loadData
-{
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
     self.departments = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:semester]];
     self.departmentNumbers = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@num", semester]]];  
     [self.tableView reloadData];
-    NSLog(@"loading %@", semester);
+    
+    if (!self.departments)
+        [self performSelector:@selector(loadDepartments)];
+    [self performSelector:@selector(loadPersonalCourses)];
+}
+- (void)loadDepartments
+{
+    NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
+
     self.searchResults = [[NSMutableArray alloc] init];
     self.navigationItem.title = @"Departments";
     if (!self.departments || [[self.departments allKeys] count] == 1){
@@ -43,7 +47,7 @@
         // Use GCD to perform request in background, and then jump back on the main thread 
         // to update the UI
         
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             @try {
                 NSURLResponse *response = nil;
@@ -70,35 +74,6 @@
                         [self.departments setObject:[NSMutableArray arrayWithObjects:title,nil] forKey:firstLetter];
                     }
                 }
-                NSString *queryString = [NSString stringWithFormat:@"%@/api/schedule/%@/",ServerURL, semester];
-                
-                NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
-                NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-                
-                NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-                
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-                [request setURL:[NSURL URLWithString:queryString]];
-                [request setHTTPMethod:@"POST"];
-                [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                [request setHTTPBody:postData];
-                
-                receivedData = [NSURLConnection sendSynchronousRequest:request
-                                                     returningResponse:&response
-                                                                 error:&error];
-                NSMutableArray *dict = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
-                
-                dict = [NSMutableArray arrayWithArray:dict];
-                NSDictionary *toRemove = nil;
-                for(NSDictionary *current in dict)
-                {
-                    if([[current objectForKey:@"title"] isEqualToString:@""])
-                        toRemove = current;
-                }
-                if (toRemove)
-                    [dict removeObject:toRemove];
-                [self.departments setObject:dict forKey:@"*"];
                 dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
                 dispatch_async(updateUIQueue, ^{
                     NSLog(@"departments: %@", self.departments);
@@ -112,10 +87,11 @@
             [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:[NSString stringWithFormat:@"%@num", semester]]; 
         });
     }
-    else 
-    {
-        NSLog(@"else clause");
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+}
+-(void)loadPersonalCourses
+{
+        NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             @try {
                 NSURLResponse *response = nil;
@@ -160,7 +136,6 @@
                 NSLog(@"error %@", e);
             }         
         });
-    }
 }
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (tableView == self.tableView)
@@ -352,6 +327,8 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     return YES;
 }
 - (IBAction)selectedSemester:(id)sender {
-    [self performSelector:@selector(loadData)];
+    [self.departments setObject:[[NSDictionary alloc] init] forKey:@"*"];
+    [self.tableView reloadData];
+    [self performSelector:@selector(loadPersonalCourses)];
 }
 @end
