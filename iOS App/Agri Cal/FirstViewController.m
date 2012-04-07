@@ -371,7 +371,7 @@ UIGestureRecognizer* cancelGesture;
 {
     NSString *searchString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     searchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&bounds=37.867976,-122.265816|37.878004,-122.251954&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@", searchString);
     //if (![searchString isEqualToString:@""])
     NSURL *url= [[NSURL alloc] initWithString:searchString];
@@ -424,8 +424,12 @@ UIGestureRecognizer* cancelGesture;
         NSString *detailText = @"";
         if ([partsOfName count] > 3)
             detailText = [NSString stringWithFormat:@"%@,%@,%@", [partsOfName objectAtIndex:1], [partsOfName objectAtIndex:2], [partsOfName objectAtIndex:3]];
-        else 
+        else if([partsOfName count]>2)
             detailText = [NSString stringWithFormat:@"%@,%@", [partsOfName objectAtIndex:1], [partsOfName objectAtIndex:2]];
+        else if([partsOfName count]>1)
+            detailText = [NSString stringWithFormat:@"%@", [partsOfName objectAtIndex:1]];
+        else
+            detailText = @"";
         cell.textLabel.text = shortName;
         cell.detailTextLabel.text = detailText;
     }

@@ -1,10 +1,10 @@
 TODO:
 
-Remove scroll bar on the annotations for the busses - Done
-Get enrolement data - DONE
+Remove scroll bar on the annotations for the busses											DONE
+Get enrolement data																			DONE
 
-Add webcast icon on table view for courses
-Deal with names/locations that dont fit in the table view cell
+Add webcast icon on table view for courses													DONE
+Deal with names/locations that dont fit in the table view cell								DONE
 
 
 
@@ -12,19 +12,20 @@ Deal with names/locations that dont fit in the table view cell
 
 
 Bugs:
-	Department names with spaces or commas
-	Letters too small on course names
-	Menu seems to be rescraping every time
+	Department names with spaces or commas													DONE
+	Letters too small on course names														DONE
+	Menu seems to be rescraping every time													DONE
 
 Ideas:
-	Fun facts
-	Phone numbers/email addresses
-		-police
-		-tipsyt
-*	Building map
+	Fun facts																				DONE
+	Phone numbers/email addresses															DONE
+		-police																				DONE
+		-tipsyt																				DONE
+	Building map																			DONE
 	Departments should have links to actual pages
-	Athletics website
-	Link to ninja courses
+
+	Athletics website																		DONE
+	Link to ninja courses																	DONE
 	"Reload info" button
 
 	
