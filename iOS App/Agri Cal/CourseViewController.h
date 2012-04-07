@@ -12,9 +12,10 @@
 {
 }
 @property (nonatomic, strong) NSMutableDictionary *departments;
-@property (nonatomic, strong) NSMutableArray *departmentNumbers;
+@property (nonatomic, strong) NSMutableDictionary *departmentAbbreviations;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) NSMutableArray *personalCourses;
+@property (nonatomic, strong) NSMutableArray *departmentTitles;
 - (IBAction)selectedSemester:(id)sender;
 @end

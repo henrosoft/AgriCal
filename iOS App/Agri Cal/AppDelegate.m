@@ -51,7 +51,7 @@
     // Autologin to airbears
     self.web = [[UIWebView alloc] init];
     self.web.delegate = self;
-    NSURL *url = [NSURL URLWithString:@"https://wlan.berkeley.edu/login/"];
+    NSURL *url = [NSURL URLWithString:@"https://wlan.berkeley.edu/cgi-bin/login/calnet.cgi"];
     NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
     [self.web loadRequest:wifiRequest];
     return YES;

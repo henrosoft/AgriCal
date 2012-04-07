@@ -10,6 +10,6 @@
 #import "WebcastViewController.h"
 
 @interface WebcastListViewController : UITableViewController
-@property (strong, nonatomic) NSArray *webcasts;
+@property (strong, nonatomic) NSMutableArray *webcasts;
 @property (strong, nonatomic) NSString *url;
 @end

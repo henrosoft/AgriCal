@@ -370,8 +370,8 @@ UIGestureRecognizer* cancelGesture;
 -(void)searchForBuilding
 {
     NSString *searchString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    searchString = [self.searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&bounds=37.867976,-122.265816|37.878004,-122.251954&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    searchString = [NSString stringWithFormat:@"%@ %@", searchString, @"berkeley"];
+    searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@", searchString);
     //if (![searchString isEqualToString:@""])
     NSURL *url= [[NSURL alloc] initWithString:searchString];

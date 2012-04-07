@@ -22,7 +22,6 @@
 {
     [super viewDidLoad];
     self.searchResults = [[NSMutableArray alloc] init];
-    self.navigationItem.title = self.department;
     NSString *queryString = [NSString stringWithFormat:@"%@/api/courses/%@/%@/", ServerURL, self.department, self.semester]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];

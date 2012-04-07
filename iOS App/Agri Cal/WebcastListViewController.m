@@ -28,7 +28,7 @@
 {
     [super viewWillAppear:animated];
 
-    self.webcasts = [[NSArray alloc] init];
+    self.webcasts = [[NSMutableArray alloc] init];
     NSString *queryString = [NSString stringWithFormat:@"%@/%@", ServerURL, self.url]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
@@ -46,6 +46,8 @@
                                                      returningResponse:&response
                                                                  error:&error];
         self.webcasts = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];  
+        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"number"  ascending:YES];
+        [self.webcasts sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
         dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
         dispatch_async(updateUIQueue, ^{
             [self.tableView reloadData];

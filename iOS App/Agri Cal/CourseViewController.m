@@ -14,10 +14,11 @@
 
 @implementation CourseViewController
 @synthesize departments;
-@synthesize departmentNumbers = _departmentNumbers;
+@synthesize departmentAbbreviations = _departmentNumbers;
 @synthesize searchResults = _searchResults;
 @synthesize segmentedControl = _segmentedControl;
 @synthesize personalCourses = _personalCourses;
+@synthesize departmentTitles = _departmentTitles;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -29,7 +30,9 @@
     self.personalCourses = [NSMutableArray arrayWithArray:oldPersonal];
 
     self.departments = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"departments"]];
-    self.departmentNumbers = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"departmentNum"]];  
+    self.departmentAbbreviations = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"departmentNum"]];  
+    self.departmentTitles = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"departmentTitles"]];
+    [self.departments setObject:self.personalCourses forKey:@"*"];
     [self.tableView reloadData];
     
     if ([self.departments count] <= 10)
@@ -46,7 +49,8 @@
     self.navigationItem.title = @"Departments";
     if (!self.departments || [[self.departments allKeys] count] <= 10){
         self.departments = [[NSMutableDictionary alloc] init];
-        self.departmentNumbers = [[NSMutableArray alloc] init];
+        self.departmentAbbreviations = [[NSMutableDictionary alloc] init];
+        self.departmentTitles = [[NSMutableArray alloc] init];
         NSString *queryString = [NSString stringWithFormat:@"%@/api/courses/departments/%@/", ServerURL, semester];
         NSURL *requestURL = [NSURL URLWithString:queryString];
         NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
@@ -66,18 +70,21 @@
                 for (NSArray *depArr in arr)
                 {
                     NSString *title = [depArr objectAtIndex:0];
+                    NSString *abbreviation = [depArr objectAtIndex:1];
                     if([title isEqualToString:@""] || !title)
                         continue;
                     NSString *firstLetter = [title substringToIndex:1];
                     if ([self.departments objectForKey:firstLetter])
                     {
-                        [self.departmentNumbers addObject:title];
+                        [self.departmentAbbreviations setObject:abbreviation forKey:title];
+                        [self.departmentTitles addObject:title];
                         [[self.departments objectForKey:firstLetter] addObject:title];
                         [[self.departments objectForKey:firstLetter] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                     }
                     else
                     {
-                        [self.departmentNumbers addObject:title];
+                        [self.departmentAbbreviations setObject:abbreviation forKey:title];
+                        [self.departmentTitles addObject:title];
                         [self.departments setObject:[NSMutableArray arrayWithObjects:title,nil] forKey:firstLetter];
                     }
                 }
@@ -91,7 +98,8 @@
                 NSLog(@"error %@", e);
             }
             [[NSUserDefaults standardUserDefaults] setObject:self.departments forKey:@"departments"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.departmentNumbers forKey:@"departmentNum"]; 
+            [[NSUserDefaults standardUserDefaults] setObject:self.departmentAbbreviations forKey:@"departmentNum"]; 
+            [[NSUserDefaults standardUserDefaults] setObject:self.departmentTitles forKey:@"departmentTitles"];
         });
     }
 }
@@ -292,18 +300,22 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
-    ((CourseDetailViewController*)segue.destinationViewController).semester = semester;
     if ([[sender class] isSubclassOfClass:[NSArray class]])
     {
         sender = [sender objectAtIndex:0];
-        ((CourseDetailViewController*)segue.destinationViewController).department = ((UITableViewCell*)sender).textLabel.text;
+        ((CourseDetailViewController*)segue.destinationViewController).department = [self.departmentAbbreviations objectForKey:((UITableViewCell*)sender).textLabel.text];
+        ((CourseDetailViewController*)segue.destinationViewController).semester = semester;
+        ((CourseDetailViewController*)segue.destinationViewController).navigationItem.title = ((UITableViewCell*)sender).textLabel.text;        
     }
     else if ([self.tableView indexPathForCell:((UITableViewCell*)sender)].section == 0)
     {
         ((CourseInfoViewController*)segue.destinationViewController).info = [[self.departments objectForKey:@"*"] objectAtIndex:[self.tableView indexPathForCell:((UITableViewCell*)sender)].row];
+        ((CourseDetailViewController*)segue.destinationViewController).navigationItem.title = ((UITableViewCell*)sender).textLabel.text;           
     }
     else {
-        ((CourseDetailViewController*)segue.destinationViewController).department = ((UITableViewCell*)sender).textLabel.text;
+        ((CourseDetailViewController*)segue.destinationViewController).department = [self.departmentAbbreviations objectForKey:((UITableViewCell*)sender).textLabel.text];
+        ((CourseDetailViewController*)segue.destinationViewController).semester = semester;        
+        ((CourseDetailViewController*)segue.destinationViewController).navigationItem.title = ((UITableViewCell*)sender).textLabel.text;        
     }
 }
 - (void)filterContentForSearchText:(NSString*)searchText 
@@ -313,7 +325,7 @@
                                     predicateWithFormat:@"SELF contains[cd] %@",
                                     searchText];
     
-    self.searchResults = [NSMutableArray arrayWithArray:[self.departmentNumbers filteredArrayUsingPredicate:resultPredicate]];
+    self.searchResults = [NSMutableArray arrayWithArray:[self.departmentTitles filteredArrayUsingPredicate:resultPredicate]];
 }
 #pragma mark - UISearchDisplayController delegate methods
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller 
