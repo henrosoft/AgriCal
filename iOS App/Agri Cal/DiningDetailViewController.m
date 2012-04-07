@@ -64,6 +64,8 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    cell.userInteractionEnabled = YES;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.section) {
         case 0:
             cell.textLabel.text = [[self.breakfast objectAtIndex:indexPath.row] objectForKey:@"name"]; 
@@ -78,6 +80,11 @@
             {
                 cell.textLabel.text = [[self.dinner objectAtIndex:indexPath.row] objectForKey:@"name"]; 
                 cell.detailTextLabel.text = [[self.dinner objectAtIndex:indexPath.row] objectForKey:@"type"];
+                if ([cell.detailTextLabel.text isEqualToString:@"No food for you!"])
+                {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.userInteractionEnabled = NO;
+                }
             }else {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"Loading"];
                 if (!cell)

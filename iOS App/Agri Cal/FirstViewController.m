@@ -145,8 +145,6 @@
     {
         [self.mapView removeAnnotation:self.cal1Callout];
     }
-    if (view.annotation == self.buildingAnnotation)
-        [self.mapView removeAnnotation:self.buildingAnnotation];
 }
 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -174,6 +172,7 @@
     else if (annotation == self.buildingAnnotation) {
         
         MKPinAnnotationView *anno = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"building"];
+        anno.canShowCallout = YES;
         return anno;
     }
     else if (annotation == self.cal1Callout) {
@@ -268,6 +267,8 @@
     [self.mapView removeAnnotations:self.busStops];
     [self.mapView removeAnnotations:self.cal1cardLocations];
     [self.mapView removeAnnotations:self.timePopUps];
+    if (self.buildingAnnotation)
+        [self.mapView removeAnnotation:self.buildingAnnotation];
     [UIView beginAnimations:nil context:NULL];
     [self.searchDisplayController.searchBar setHidden:YES];
     [UIView commitAnimations];
@@ -369,8 +370,11 @@ UIGestureRecognizer* cancelGesture;
 }
 -(void)searchForBuilding
 {
-    NSString *searchString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *searchString = self.searchDisplayController.searchBar.text;
     searchString = [NSString stringWithFormat:@"%@ %@", searchString, @"berkeley"];
+    searchString = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if ([searchString isEqualToString:@"berkeley"])
+        return;
     searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@", searchString);
     //if (![searchString isEqualToString:@""])
@@ -416,9 +420,6 @@ UIGestureRecognizer* cancelGesture;
         cell.textLabel.text = @"Searching...";
     else {
         NSLog(@"%@", [self.searchResults objectAtIndex:indexPath.row]);
-        //self.buildingAnnotation = [[BasicMapAnnotation alloc] initWithLatitude:[lat floatValue] andLongitude:[lng floatValue] andRoutes:nil andIndex:0];
-        //[self.mapView addAnnotation:self.buildingAnnotation];
-        //[self.mapView setCenterCoordinate:self.buildingAnnotation.coordinate];
         NSArray *partsOfName = [[[self.searchResults objectAtIndex:indexPath.row] objectForKey:@"formatted_address"] componentsSeparatedByString:@","];
         NSString *shortName = [partsOfName objectAtIndex:0];
         NSString *detailText = @"";
@@ -434,6 +435,28 @@ UIGestureRecognizer* cancelGesture;
         cell.detailTextLabel.text = detailText;
     }
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.buildingAnnotation)
+    {
+        [self.mapView deselectAnnotation:self.buildingAnnotation animated:NO];
+        [self.mapView removeAnnotation:self.buildingAnnotation];
+    }
+    self.searchDisplayController.searchBar.text = @"";
+    NSString *lat =  [[[[self.searchResults objectAtIndex:indexPath.row] objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"];
+    NSString *lng =  [[[[self.searchResults objectAtIndex:indexPath.row] objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"];
+    self.buildingAnnotation = [[BasicMapAnnotation alloc] initWithLatitude:[lat doubleValue] andLongitude:[lng doubleValue] andRoutes:nil andIndex:0];
+    self.buildingAnnotation.title = [[[[self.searchResults objectAtIndex:indexPath.row] objectForKey:@"formatted_address"] componentsSeparatedByString:@","] objectAtIndex:0];
+    [self.mapView addAnnotation:self.buildingAnnotation];
+    [self.mapView setCenterCoordinate:self.buildingAnnotation.coordinate];    
+    [self.searchDisplayController setActive:NO animated:YES];  
+    self.searchResults = [[NSMutableArray alloc] init];
+    [self performSelector:@selector(selectBuilding) withObject:nil afterDelay:0.5];
+}
+-(void)selectBuilding
+{
+    [self.mapView selectAnnotation:self.buildingAnnotation animated:YES];  
 }
 - (void)viewDidUnload {
     [self setAnnotationSelector:nil];

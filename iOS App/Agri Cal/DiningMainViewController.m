@@ -87,6 +87,9 @@
     if ([urlAddon isEqualToString:@"Clark Kerr"]) 
         urlAddon = @"ckc";
     NSString *queryString = [NSString stringWithFormat:[NSString stringWithFormat:@"%@/api/menu/%@",ServerURL, urlAddon]];
+    queryString = [queryString lowercaseString];
+    
+    NSLog(@"%@", queryString);
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
     
@@ -112,6 +115,13 @@
         viewController.brunch = [dict objectForKey:@"brunch"];
         viewController.lunch = [dict objectForKey:@"lunch"];
         viewController.breakfast = [dict objectForKey:@"breakfast"];
+        if (!([[dict objectForKey:@"dinner"] count] || [[dict objectForKey:@"brunch"] count] || [[dict objectForKey:@"lunch"] count] || [[dict objectForKey:@"breakfast"] count]))
+        {
+            NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
+            [temp setObject:@"No menu today" forKey:@"name"];
+            [temp setObject:@"No food for you!" forKey:@"type"];
+            viewController.dinner = [NSArray arrayWithObject:temp];
+        }
         [[NSUserDefaults standardUserDefaults] setObject:dict forKey:urlAddon];
         dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
         dispatch_async(updateUIQueue, ^{
