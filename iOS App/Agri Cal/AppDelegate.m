@@ -31,6 +31,12 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
+    NSString *diningString = [NSString stringWithFormat:@"%@/api/dining_times/", ServerURL];
+    
+    NSURL *diningURL = [NSURL URLWithString:diningString];
+    
+    NSURLRequest *diningRequest = [NSURLRequest requestWithURL:diningURL];
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         @try {
@@ -40,8 +46,17 @@
                                                          returningResponse:&response
                                                                      error:&error];
             NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
-            [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
-            [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:1] forKey:@"mealpoints"];
+            NSString *cal1 = [NSString stringWithFormat:@"%@",[bal objectAtIndex:0]];
+            NSString *meal = [NSString stringWithFormat:@"%@",[bal objectAtIndex:1]];            
+            [[NSUserDefaults standardUserDefaults] setObject:cal1 forKey:@"cal1bal"];
+            [[NSUserDefaults standardUserDefaults] setObject:meal forKey:@"mealpoints"];
+            
+            receivedData = [NSURLConnection sendSynchronousRequest:diningRequest returningResponse:&response error:&error];
+            NSArray *diningArray = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
+            for (NSDictionary *dict in diningArray)
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[NSString stringWithFormat:@"%@times", [dict objectForKey:@"location"]]];
+            }
         }
         @catch (NSException *e) {
             NSLog(@"error when scraping cal1card data");
@@ -86,6 +101,12 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
 
+    NSString *diningString = [NSString stringWithFormat:@"%@/api/dining_times/", ServerURL];
+    
+    NSURL *diningURL = [NSURL URLWithString:diningString];
+    
+    NSURLRequest *diningRequest = [NSURLRequest requestWithURL:diningURL];
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         NSURLResponse *response = nil;
@@ -97,6 +118,13 @@
         NSLog(@"recieved %@", bal);
         [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
         [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:1] forKey:@"mealpoints"];
+        
+        receivedData = [NSURLConnection sendSynchronousRequest:diningRequest returningResponse:&response error:&error];
+        NSArray *diningArray = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
+        for (NSDictionary *dict in diningArray)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[NSString stringWithFormat:@"%@times", [dict objectForKey:@"location"]]];
+        }
     });
 
     // Autologin to airbears

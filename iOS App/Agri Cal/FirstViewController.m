@@ -452,7 +452,7 @@ UIGestureRecognizer* cancelGesture;
     [self.mapView setCenterCoordinate:self.buildingAnnotation.coordinate];    
     [self.searchDisplayController setActive:NO animated:YES];  
     self.searchResults = [[NSMutableArray alloc] init];
-    [self performSelector:@selector(selectBuilding) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(selectBuilding) withObject:nil afterDelay:0.7];
 }
 -(void)selectBuilding
 {

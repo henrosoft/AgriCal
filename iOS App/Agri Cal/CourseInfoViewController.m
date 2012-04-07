@@ -17,7 +17,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad]; 
-    NSLog(@"%@", self.info);
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = [self.info objectForKey:@"title"];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -168,5 +172,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     ((WebcastListViewController*)segue.destinationViewController).url = [NSString stringWithFormat:@"/api/webcasts/%@/", [self.info objectForKey:@"id"]];
+    ((WebcastListViewController*)segue.destinationViewController).title = [self.info objectForKey:@"title"];
+    self.navigationItem.title = @"Back";
 }
 @end

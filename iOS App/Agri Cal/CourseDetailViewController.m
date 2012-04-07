@@ -26,7 +26,7 @@
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
-    if (!(self.courses = [[NSUserDefaults standardUserDefaults] objectForKey:self.department]))
+    if (!(self.courses = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%@", self.department, self.semester]]))
         self.courses = [[NSMutableArray alloc] init];
     // Use GCD to perform request in background, and then jump back on the main thread 
     // to update the UI
@@ -46,7 +46,7 @@
                 NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"number"  ascending:YES];
                 [self.courses sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
             }
-            [[NSUserDefaults standardUserDefaults] setObject:self.courses forKey:self.department];
+            [[NSUserDefaults standardUserDefaults] setObject:self.courses forKey:[NSString stringWithFormat:@"%@%@", self.department, self.semester]];
             dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
             dispatch_async(updateUIQueue, ^{
                 [self.tableView reloadData];

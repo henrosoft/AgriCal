@@ -30,18 +30,18 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 4;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Custom";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell)
@@ -50,7 +50,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    switch (indexPath.row) {
+    switch (indexPath.section) {
         case 0:
             cell.textLabel.text = @"Crossroads"; 
             break;
@@ -68,13 +68,80 @@
     }
     return cell;
 }
-
+-(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) 
+        return 30;
+    return 0;
+}
+-(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 120;
+}
+- (UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    NSString *location = @"";
+    switch (section) {
+        case 0:
+            location = @"crossroads";
+            break;
+        case 1:
+            location = @"ckc";
+            break;
+        case 2:
+            location = @"foothill";
+            break;
+        case 3:
+            location = @"cafe3";
+            break;
+        default:
+            break;
+    }
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(16, 0, tableView.frame.size.width-32, 60)];
+    NSArray *info = [[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat: @"%@times", location]] objectForKey:@"timespans"];
+    NSLog(@"%@", info);
+    int counter = 0;
+    for (NSDictionary *currentDict in info)
+    {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, counter, tableView.frame.size.width-32, 20)];
+        label.text = [currentDict objectForKey:@"title"];
+        [view addSubview:label];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+        label.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1.0];
+        label.shadowColor = [UIColor colorWithWhite:1 alpha:1];
+        label.shadowOffset = CGSizeMake(0, 1);
+        counter += 20;
+        int innercounter = counter;
+        for (NSDictionary *currentTimes in [currentDict objectForKey:@"spans"])
+        {
+            NSString *innerTitle = [NSString stringWithFormat:@"%@: %@", [currentTimes objectForKey:@"type"], [currentTimes objectForKey:@"span"]];
+            UILabel *details = [[UILabel alloc] initWithFrame:CGRectMake(16, innercounter, tableView.frame.size.width-32, 20)];
+            [view addSubview:details];
+            details.text = innerTitle;
+            details.backgroundColor = [UIColor clearColor];
+            details.font = [UIFont fontWithName:@"Helvetica" size:12.0];
+            details.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1.0];
+            details.shadowColor = [UIColor colorWithWhite:1 alpha:1];
+            details.shadowOffset = CGSizeMake(0, 1);
+            innercounter += 15;
+            counter +=15;
+        }
+        counter += 5;
+    }
+    return view;
+}
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"])
-        return [NSString stringWithFormat:@"%@ Meal Points", [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"]];
-    else 
-        return @"Meal Points N/A";
+    if (section == 0)
+    {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"])
+            return [NSString stringWithFormat:@"%@ Meal Points", [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"]];
+        else 
+            return @"Meal Points N/A";
+    }else {
+        return @"";
+    }
 }
 #pragma mark - Table view delegate
 

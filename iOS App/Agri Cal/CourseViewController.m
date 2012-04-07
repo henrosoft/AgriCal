@@ -140,12 +140,14 @@
                 if (toRemove)
                     [dict removeObject:toRemove];
             }
-            [self.departments setObject:dict forKey:@"*"];
-            NSLog(@"setting %@", dict);
-            dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
-            dispatch_async(updateUIQueue, ^{
-                [self.tableView reloadData];
-            });
+            if ([[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] isEqualToString:semester])
+            {
+                [self.departments setObject:dict forKey:@"*"];
+                dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+                dispatch_async(updateUIQueue, ^{
+                    [self.tableView reloadData];
+                });
+            }
             [[NSUserDefaults standardUserDefaults] setObject:dict forKey:semester];                
         }
         @catch (NSException *e) {

@@ -27,7 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     self.webcasts = [[NSMutableArray alloc] init];
     NSString *queryString = [NSString stringWithFormat:@"%@/%@", ServerURL, self.url]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -40,20 +40,32 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
     dispatch_async(queue, ^{
         @try {
-        NSURLResponse *response = nil;
-        NSError *error = nil;
-        NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
-                                                     returningResponse:&response
-                                                                 error:&error];
-        self.webcasts = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];  
-        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"number"  ascending:YES];
-        [self.webcasts sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-        dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
-        dispatch_async(updateUIQueue, ^{
-            [self.tableView reloadData];
-        });
+            NSURLResponse *response = nil;
+            NSError *error = nil;
+            NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
+                                                         returningResponse:&response
+                                                                     error:&error];
+            NSArray *unsorted = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
+            self.webcasts = [[NSMutableArray alloc] initWithCapacity:[unsorted count]];
+            int i = 0;
+            while (i < [unsorted count])
+            {
+                NSMutableDictionary *standin = [[NSMutableDictionary alloc] init];
+                [standin setValue:[NSString stringWithFormat:@"%i N/A",i+1]  forKey:@"number"];
+                [self.webcasts addObject:standin];
+                i++;
+            }
+            for (NSDictionary *dict in unsorted)
+            {
+                [self.webcasts replaceObjectAtIndex:[[dict objectForKey:@"number"] integerValue]-1 withObject:dict];
+            }
+            NSLog(@"%@", self.webcasts);
+            dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+            dispatch_async(updateUIQueue, ^{
+                [self.tableView reloadData];
+            });
         }@catch (NSException *e) {
-            NSLog(@"Error");
+            NSLog(@"Error %@", e);
         }
     });
 }
@@ -82,9 +94,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     if ([self.webcasts count])
+    {
         cell.textLabel.text = [NSString stringWithFormat:@"Lecture %@", [[self.webcasts objectAtIndex:indexPath.row] objectForKey:@"number"]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     else 
+    {
         cell.textLabel.text = @"Loading webcasts...";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
