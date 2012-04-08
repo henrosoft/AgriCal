@@ -70,6 +70,10 @@
         [self.webView loadHTMLString:html baseURL:baseURL];
     });
 }
+
+/*
+    A little hack to make the video start with no user interaction required. 
+ */
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
     UIButton *b = [self findButtonInView:_webView];
     [b sendActionsForControlEvents:UIControlEventTouchUpInside];

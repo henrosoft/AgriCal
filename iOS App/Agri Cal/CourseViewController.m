@@ -20,6 +20,10 @@
 @synthesize personalCourses = _personalCourses;
 @synthesize departmentTitles = _departmentTitles;
 
+/*
+    In the view did load handle the initial load of departments, and then 
+    reload personal enrollment information. 
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,6 +46,10 @@
     }
     [self performSelector:@selector(loadPersonalCourses)];
 }
+
+/*
+    This is only called when the departments haven't been loaded.
+ */
 - (void)loadDepartments
 {
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
@@ -101,6 +109,11 @@
         });
     }
 }
+
+/*
+    This is called each time the view is loaded and the schedule period is 
+    changed so that the personal enrollment info is always up to date. 
+*/
 -(void)loadPersonalCourses
 {
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
@@ -152,6 +165,11 @@
         }         
     });
 }
+/*
+    Below are methods for displaying the data in the table view 
+    and to handle searching/switching between semesters. A lot of 
+    UI stuff. 
+ */
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (tableView == self.tableView)
         return [[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
@@ -293,6 +311,11 @@
     }
 }
 
+/*
+    This makes sure that to handle the difference between selecting a 
+    personal course or a department, and also makes sure that the 
+    courses that are loaded are for the correct semester. 
+ */
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];

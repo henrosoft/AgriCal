@@ -1,20 +1,11 @@
-//
-//  InfoViewController.m
-//  Agri Cal
-//
-//  Created by Kevin Lindkvist on 4/5/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "InfoViewController.h"
-
-@interface InfoViewController ()
-
-@end
 
 @implementation InfoViewController
 
-#pragma mark - Table view delegate
+/*
+    The table view contains only static data so just handle 
+    selections depending on if the cell is a phone number or website.
+ */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

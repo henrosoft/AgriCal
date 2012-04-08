@@ -18,6 +18,12 @@
 @synthesize searchBar = _searchBar;
 @synthesize searchResults = _searchResults;
 @synthesize semester = _semester;
+
+/*
+    Here we load the courses for the give semester and department, displaying 
+    data from the last visit until a response is given by the server, at which 
+    point the current data is loaded into the table view. 
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,20 +68,6 @@
 {
     [self setSearchBar:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -196,12 +188,16 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     
     return YES;
 }
+
+/*
+    This makes sure that the course that is displayed is the correct one 
+    depending on if the user is searching or not. 
+ */
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[sender class] isSubclassOfClass:[NSNumber class]])
     {
         sender = (NSNumber*)sender;
-        NSLog(@"%@", sender);
         NSString *title = [[self.searchResults objectAtIndex:[sender integerValue]] objectForKey:@"title"];
         ((CourseInfoViewController*)segue.destinationViewController).info = [self.searchResults objectAtIndex:[((NSNumber*)sender) integerValue]];
         ((CourseInfoViewController*)segue.destinationViewController).navigationItem.title = title;

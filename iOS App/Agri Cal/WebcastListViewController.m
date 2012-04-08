@@ -23,7 +23,11 @@
     }
     return self;
 }
-
+/*
+    Load all the webcasts for the selected course from the API, 
+    making sure that the list is sorted by lecture number, and that 
+    if a lecture is missing it displays that. 
+ */
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

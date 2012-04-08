@@ -97,6 +97,10 @@
     }
 }
 
+/*
+    The horribly intimidating code below is just a custom sorting function that makes the
+    annotation display the next times based off of the current time. 
+ */
 - (void)sortStops
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:self.routes];

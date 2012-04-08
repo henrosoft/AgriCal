@@ -393,4 +393,5 @@
 	BasicMapAnnotationView *parentView = (BasicMapAnnotationView *)self.parentAnnotationView;
 	parentView.preventSelectionChange = NO;
 }
+
 @end

@@ -45,6 +45,10 @@
     }
 }
 #pragma mark - Table view data source
+
+/*
+    A lot of UI code for the display in the tableview cells. 
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
@@ -157,7 +161,9 @@
     }
 }
 #pragma mark - Table view delegate
-
+/*
+    Only go to the webcast list if the course has a webcast. 
+ */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 7)

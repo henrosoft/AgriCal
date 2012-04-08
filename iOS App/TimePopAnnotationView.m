@@ -37,6 +37,7 @@
 @synthesize offsetFromParent = _offsetFromParent;
 @synthesize contentHeight = _contentHeight;
 @synthesize titleLabel = _titleLabel;
+
 - (id) initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
 		self.contentHeight = 80.0;
