@@ -32,8 +32,10 @@
     if (buttonIndex == 0)
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]].detailTextLabel.text]];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]].detailTextLabel.text]]];
+        if ([[[[alertView buttonTitleAtIndex:1] componentsSeparatedByString:@" "] objectAtIndex:0] isEqualToString:@"Redirect"])
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]].detailTextLabel.text]];
+        else 
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]].detailTextLabel.text]]];
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }
 }
