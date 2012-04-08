@@ -167,7 +167,7 @@
 {
     if (section == 0)
     {
-        NSString *mealPoints = [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"];
+        NSString *mealPoints = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"]];
         if (!mealPoints || [mealPoints isEqualToString:@"(null)"])
             return @"Meal Points N/A";            
         else 
