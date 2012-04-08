@@ -1,11 +1,3 @@
-//
-//  WebcastListViewController.m
-//  Agri Cal
-//
-//  Created by Kevin Lindkvist on 3/27/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "WebcastListViewController.h"
 
 @interface WebcastListViewController ()
@@ -53,7 +45,7 @@
                                                                      error:&error];
             self.webcasts = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
             NSLog(@"%@", self.webcasts);
-            
+            // Making sure that the sort is done by lecture number and not alpha-numerical. 
             int i = 0;
             while (i < [self.webcasts count])
             {
