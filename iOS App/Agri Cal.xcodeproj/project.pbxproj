@@ -11,6 +11,8 @@
 		6326ABA515226E51005F1537 /* WebcastListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA415226E51005F1537 /* WebcastListViewController.m */; };
 		6326ABA815227213005F1537 /* WebcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA715227213005F1537 /* WebcastViewController.m */; };
 		634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634208A41522C0BF00981C46 /* ScheduleViewController.m */; };
+		638934DC153247A90051919C /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 638934DA153247A90051919C /* homepage.png */; };
+		638934DD153247A90051919C /* homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638934DB153247A90051919C /* homepage@2x.png */; };
 		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
 		638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42DC150C68620031A9F6 /* DiningMainViewController.m */; };
 		638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */; };
@@ -43,8 +45,6 @@
 		6393DE7115033473003B77F5 /* Cal1CardLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE7015033473003B77F5 /* Cal1CardLocations.plist */; };
 		6393DE8015033E09003B77F5 /* Cal1CardAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */; };
 		6393DE8415033E1A003B77F5 /* Cal1CardAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */; };
-		63974DF1152D526600CEF806 /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63974DEF152D526600CEF806 /* homepage.png */; };
-		63974DF2152D526600CEF806 /* homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63974DF0152D526600CEF806 /* homepage@2x.png */; };
 		639994E3152BC93500356F87 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E2152BC93500356F87 /* Icon.png */; };
 		639994E6152BCFCD00356F87 /* preferences@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E5152BCFCD00356F87 /* preferences@2x.png */; };
 		639994E8152BD01A00356F87 /* preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 639994E7152BD01A00356F87 /* preferences.png */; };
@@ -84,6 +84,8 @@
 		6326ABA715227213005F1537 /* WebcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastViewController.m; sourceTree = "<group>"; };
 		634208A31522C0BF00981C46 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		634208A41522C0BF00981C46 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		638934DA153247A90051919C /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage.png; sourceTree = "<group>"; };
+		638934DB153247A90051919C /* homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homepage@2x.png"; sourceTree = "<group>"; };
 		638EE2EE150374210031FC10 /* TimePopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePopAnnotationView.h; path = ../TimePopAnnotationView.h; sourceTree = "<group>"; };
 		638EE2EF150374210031FC10 /* TimePopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePopAnnotationView.m; path = ../TimePopAnnotationView.m; sourceTree = "<group>"; };
 		638F42DB150C68620031A9F6 /* DiningMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningMainViewController.h; sourceTree = "<group>"; };
@@ -133,8 +135,6 @@
 		6393DE7F15033E09003B77F5 /* Cal1CardAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cal1CardAnnotation.m; sourceTree = "<group>"; };
 		6393DE8215033E1A003B77F5 /* Cal1CardAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal1CardAnnotationView.h; sourceTree = "<group>"; };
 		6393DE8315033E1A003B77F5 /* Cal1CardAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cal1CardAnnotationView.m; sourceTree = "<group>"; };
-		63974DEF152D526600CEF806 /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage.png; sourceTree = "<group>"; };
-		63974DF0152D526600CEF806 /* homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homepage@2x.png"; sourceTree = "<group>"; };
 		639994E2152BC93500356F87 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		639994E5152BCFCD00356F87 /* preferences@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preferences@2x.png"; sourceTree = "<group>"; };
 		639994E7152BD01A00356F87 /* preferences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preferences.png; sourceTree = "<group>"; };
@@ -337,8 +337,8 @@
 				639994F6152BD3C500356F87 /* crossroads@2x.png */,
 				6399950B152C1AD100356F87 /* monitor.png */,
 				6399950C152C1AD100356F87 /* monitor@2x.png */,
-				63974DEF152D526600CEF806 /* homepage.png */,
-				63974DF0152D526600CEF806 /* homepage@2x.png */,
+				638934DA153247A90051919C /* homepage.png */,
+				638934DB153247A90051919C /* homepage@2x.png */,
 			);
 			name = "Tabbar images";
 			sourceTree = "<group>";
@@ -436,8 +436,8 @@
 				63999506152BDA9E00356F87 /* Icon@2x.png in Resources */,
 				6399950D152C1AD100356F87 /* monitor.png in Resources */,
 				6399950E152C1AD100356F87 /* monitor@2x.png in Resources */,
-				63974DF1152D526600CEF806 /* homepage.png in Resources */,
-				63974DF2152D526600CEF806 /* homepage@2x.png in Resources */,
+				638934DC153247A90051919C /* homepage.png in Resources */,
+				638934DD153247A90051919C /* homepage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
