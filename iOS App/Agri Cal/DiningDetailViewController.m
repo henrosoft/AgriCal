@@ -1,16 +1,4 @@
-//
-//  DiningDetailViewController.m
-//  Agri Cal
-//
-//  Created by Kevin Lindkvist on 3/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "DiningDetailViewController.h"
-
-@interface DiningDetailViewController ()
-
-@end
 
 @implementation DiningDetailViewController
 @synthesize dinner = _dinner; 

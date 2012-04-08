@@ -1,16 +1,4 @@
-//
-//  MealViewController.m
-//  Agri Cal
-//
-//  Created by Daniela Molinaro on 4/4/12.
-//  Copyright (c) 2012 UC Berkeley. All rights reserved.
-//
-
 #import "MealViewController.h"
-
-@interface MealViewController ()
-
-@end
 
 @implementation MealViewController
 @synthesize items;

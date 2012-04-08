@@ -1,16 +1,4 @@
-//
-//  DiningMainViewController.m
-//  Agri Cal
-//
-//  Created by Kevin Lindkvist on 3/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "DiningMainViewController.h"
-
-@interface DiningMainViewController ()
-
-@end
 
 @implementation DiningMainViewController
 
@@ -19,6 +7,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+/*
+ When the view appears send a request to get the most current info for the users 
+ mealpoints. 
+ */
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated]; 
@@ -201,8 +193,6 @@
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
     
-    // Use GCD to perform request in background, and then jump back on the main thread 
-    // to update the UI
     NSDictionary *preload = [[NSDictionary alloc] init];
     if ((preload = [[NSUserDefaults standardUserDefaults] objectForKey:urlAddon]))
     {

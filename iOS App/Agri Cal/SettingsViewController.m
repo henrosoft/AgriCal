@@ -1,16 +1,4 @@
-//
-//  SettingsViewController.m
-//  Agri Cal
-//
-//  Created by Kevin Lindkvist on 3/11/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "SettingsViewController.h"
-
-@interface SettingsViewController ()
-
-@end
 
 @implementation SettingsViewController
 @synthesize username;

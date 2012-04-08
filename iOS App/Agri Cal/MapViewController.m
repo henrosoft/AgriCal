@@ -1,47 +1,36 @@
-//
-//  FirstViewController.m
-//  Agri Cal
-//
-//  Created by Kevin Lindkvist on 3/3/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-// 
-
-/* This controller manages the map view and all the related map annotations. */
-
 #import "MapViewController.h"
-
-@interface MapViewController ()
-
-@end
 
 @implementation MapViewController
 @synthesize mapView;
-@synthesize testCallout = _testCallout;
-@synthesize testAnnotation = _testAnnotation;
+@synthesize busstopCallout = _testCallout;
+@synthesize busstopAnnotation = _testAnnotation;
 @synthesize selectedAnnotation = _selectedAnnotation;
 @synthesize busStops = _busStops;
 @synthesize cal1cardLocations = _cal1cardLocations;
 @synthesize annotationSelector = _annotationSelector;
 @synthesize webView = _webView;
 @synthesize doneButton = _doneButton;
-@synthesize toolBar = _toolBar;
 @synthesize cal1Callout = _cal1Callout;
 @synthesize timePopUps = _timePopUps;
 @synthesize navigationBar = _navigationBar;
 @synthesize searchBar = _searchBar;
 @synthesize buildingAnnotation = _buildingAnnotation;
 @synthesize searchResults = _searchResults;
+
+/* 
+    When the view loads do all the initialization of arrays, set the region of the mapview, 
+    load all the schedule and location information from the datasources and add annotations 
+    to the mapview. 
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    // Allocate memory for all the arrays that keep track of the busstops. 
+    
     self.busStops = [[NSMutableArray alloc] init];
     self.timePopUps = [[NSMutableArray alloc] init];
     self.cal1cardLocations = [[NSMutableArray alloc] init];
     self.searchResults = [[NSMutableArray alloc] init];
-    // Initialize the mapview and set it up to focus on Berkeley.
+    
     self.mapView.delegate = self;
 	CLLocationCoordinate2D coordinate = {38.315, -90.2045};
 	[self.mapView setRegion:MKCoordinateRegionMake(coordinate, 
@@ -51,12 +40,10 @@
     MKCoordinateRegion region = {coord, span};
     [self.mapView setRegion:region];
     
-    // Load the schedule information from the included plist. 
     NSString* plistpath = [[NSBundle mainBundle] pathForResource:@"Stops" ofType:@"plist"];
     NSDictionary* stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
     NSEnumerator* enumerator = [stops keyEnumerator];
     id stop;
-    // For each object in the plist, add a busstopannotion that represents it. 
     while ((stop = [enumerator nextObject]))
     {
         NSDictionary* current = [stops objectForKey:stop];
@@ -68,7 +55,6 @@
         [self.busStops addObject:ano];	
     }
     
-    // Load the information about the cal1card locations from a plist. 
     plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
     stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
     enumerator = [stops keyEnumerator];
@@ -87,28 +73,29 @@
     self.mapView.showsUserLocation = YES;    
 }
 
+/*
+    Handles the selection of the annotations and displays the correct popups.
+ */
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    // If the selected annotation is a busstop, display the appropriate callout. 
     if ([self.busStops containsObject:view.annotation])
-    {
-        if (self.testCallout == nil) 
+    {   
+        if (self.busstopCallout == nil) 
         {
-            self.testCallout = [[BusStopAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andRoutes:((BasicMapAnnotation*)view.annotation).routes andDelegate:self andIndex:((BasicMapAnnotation*)view.annotation).index];
-            self.testCallout.title = view.annotation.title;
+            self.busstopCallout = [[BusStopAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andRoutes:((BasicMapAnnotation*)view.annotation).routes andDelegate:self andIndex:((BasicMapAnnotation*)view.annotation).index];
+            self.busstopCallout.title = view.annotation.title;
         }
         else {
-            self.testCallout.title = view.annotation.title;
-            self.testCallout.latitude = view.annotation.coordinate.latitude;
-            self.testCallout.longitude = view.annotation.coordinate.longitude;
-            self.testCallout.routes = ((BasicMapAnnotation*)view.annotation).routes;
-            self.testCallout.routeIndex = ((BasicMapAnnotation*)view.annotation).index;
+            self.busstopCallout.title = view.annotation.title;
+            self.busstopCallout.latitude = view.annotation.coordinate.latitude;
+            self.busstopCallout.longitude = view.annotation.coordinate.longitude;
+            self.busstopCallout.routes = ((BasicMapAnnotation*)view.annotation).routes;
+            self.busstopCallout.routeIndex = ((BasicMapAnnotation*)view.annotation).index;
         }
-        
-        [self.mapView addAnnotation:self.testCallout];
+        [self.mapView addAnnotation:self.busstopCallout];
         self.selectedAnnotation = view;
     }
-    // If the selected annotation is a cal1card location, display the appropriate callout. 
+
     if ([self.cal1cardLocations containsObject:view.annotation])
     {
         if (self.cal1Callout == nil)
@@ -124,13 +111,19 @@
         self.selectedAnnotation = view;
     }
 }
+
+/*
+    Deselects the selected annotation view, but has some custom code to prevent 
+    deselection if the annotation wants to prevent it for reasons like that the 
+    touch was to select a bus path etc. 
+ */
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
     // Make sure that the deselection wasn't as a result of a tab inside the callout table view, then deselect 
     // the correct annotation. 
-    if (self.testCallout && [self.busStops containsObject:view.annotation] && !((BasicMapAnnotationView*)view).preventSelectionChange)
+    if (self.busstopCallout && [self.busStops containsObject:view.annotation] && !((BasicMapAnnotationView*)view).preventSelectionChange)
     {
-        [self.mapView removeAnnotation:self.testCallout];
+        [self.mapView removeAnnotation:self.busstopCallout];
         [self.mapView removeAnnotations:self.timePopUps];
         for (BasicMapAnnotation *anno in self.mapView.annotations)
         {
@@ -147,12 +140,15 @@
     }
 }
 
+/*
+    A lot of customization code to display the correct views for the annotations,
+    and prevents customization of the annotation that shows the user location. 
+ */ 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    // This is a lot of customization code that allows for all the different kinds of annotations
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
-    if (annotation == self.testCallout)
+    if (annotation == self.busstopCallout)
     {
         BusStopAnnotationView *callout = (BusStopAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"callout"];
         if (!callout)
@@ -222,10 +218,12 @@
     return nil;
 }
 
+/*
+    Takes an index of a time, busstop, and a line (perimeter, f, etc), and 
+    highlights the path and displays the time pop ups. 
+ */
 - (void)highlightPath:(NSString *)path:(NSString*)indexes
 {
-    // This method allows for a selected path to be highlighted, making sure that 
-    // the correct times are displayed etc. 
     [self.mapView removeAnnotations:self.timePopUps];
     self.timePopUps = [[NSMutableArray alloc] init];
     NSString *timeIndex = [[indexes componentsSeparatedByString:@":"] objectAtIndex:0];
@@ -238,6 +236,7 @@
         {
             NSArray *times = [anno.routes objectForKey:pathName];
             NSString *closestTime = @"N/A";
+            
             if ([routeIndex integerValue] > anno.index) {
                 if (!([timeIndex integerValue]+2 > [times count]))
                     closestTime = [times objectAtIndex:[timeIndex integerValue]+2];
@@ -245,14 +244,20 @@
             else {
                 closestTime = [times objectAtIndex:[timeIndex integerValue]];
             }
+            
             BasicMapAnnotationView *view = (BasicMapAnnotationView*)[self.mapView viewForAnnotation:anno];
+            // Make the pin red to show that the annotation is part of the path 
             view.pinColor = MKPinAnnotationColorRed;
             BasicMapAnnotation *v = [[BasicMapAnnotation alloc] initWithLatitude:anno.coordinate.latitude andLongitude:anno.coordinate.longitude andRoutes:nil andIndex:0];
+            
+            // If the specific bus that was selected never reaches this location, don't change the title
             if (![closestTime isEqualToString:@"N/A"])
                 v.title = [NSString stringWithFormat:@"%@:%@", [[closestTime componentsSeparatedByString:@":"] objectAtIndex:0],[[closestTime componentsSeparatedByString:@":"] objectAtIndex:1]];
             else 
                 v.title = closestTime;
             v.url = @"testing";
+            
+            // Do not add a popup for the selected annotation
             if (!(anno == self.selectedAnnotation.annotation))
                 [self.timePopUps addObject:v];
         }
@@ -260,10 +265,11 @@
     [self.mapView addAnnotations:self.timePopUps];
 }
 
+/*
+    Switched the annotations on the map and handles the title of the 
+    segmented control in the title bar. 
+ */
 - (IBAction)switchAnnotations:(id)sender {
-    
-    // Basically does what the method name says, removes the current annotations then adds new 
-    // ones depending on which alternative is selected. 
     [self.mapView removeAnnotations:self.busStops];
     [self.mapView removeAnnotations:self.cal1cardLocations];
     [self.mapView removeAnnotations:self.timePopUps];
@@ -300,6 +306,10 @@
             break;
     }
 }
+
+/*
+    Display the website for the cal1card location that was selected. 
+ */
 - (void)displayWebsite:(NSString *)url
 {
     // Displays the website that is related to the specified url. 
@@ -321,6 +331,10 @@
     [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
     
 }
+
+/*
+    Remove the webview and return to the cal1card view. 
+ */
 - (IBAction)doneButtonPushed:(id)sender
 {
     // When the user taps the done button after viewing a website, this method returns the mapview and 
@@ -345,22 +359,22 @@
     self.navigationBar.rightBarButtonItem = nil;
     [UIView commitAnimations];
 }
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.searchBar resignFirstResponder];
 }
+
+/*
+    Customize the table view that is displayed for the full schedule 
+    of a busstop. 
+ */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure that the correct stop is used to display the full schedule.
     [self.mapView removeAnnotations:self.timePopUps];
     ((ScheduleViewController*)segue.destinationViewController).items = ((BusStopAnnotation*)sender).nextBuses;
     ((ScheduleViewController*)segue.destinationViewController).delegate = self;
     ((ScheduleViewController*)segue.destinationViewController).stop = sender;    
-}
-UIGestureRecognizer* cancelGesture;
-
-- (void) backgroundTouched:(id)sender {
-    [self.view endEditing:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -368,6 +382,10 @@ UIGestureRecognizer* cancelGesture;
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(searchForBuilding) object:nil];
     [self performSelector:@selector(searchForBuilding)];
 }
+
+/*
+    Uses the google maps api to search for buldings in Berkeley. 
+ */
 -(void)searchForBuilding
 {
     NSString *searchString = self.searchDisplayController.searchBar.text;
@@ -376,10 +394,7 @@ UIGestureRecognizer* cancelGesture;
     if ([searchString isEqualToString:@"berkeley"])
         return;
     searchString = [[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", searchString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@", searchString);
-    //if (![searchString isEqualToString:@""])
     NSURL *url= [[NSURL alloc] initWithString:searchString];
-    NSLog(@"%@", url);
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     @try {
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
@@ -387,7 +402,6 @@ UIGestureRecognizer* cancelGesture;
             NSData *receivedData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
             if (receivedData)
                 self.searchResults = [[NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil] objectForKey:@"results"];
-            //NSLog(@"%@", self.searchResults);
             dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
             dispatch_async(updateUIQueue, ^{
                 [self.searchDisplayController.searchResultsTableView reloadData];
@@ -398,6 +412,17 @@ UIGestureRecognizer* cancelGesture;
         NSLog(@"error");
     }
 }
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(searchForBuilding) object:nil];
+    [self performSelector:@selector(searchForBuilding) withObject:nil afterDelay:1.0];
+}
+
+/*
+    Everything below here is related to the table view, and just handles 
+    the customization of the cells etc. 
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.searchResults count];
@@ -405,11 +430,6 @@ UIGestureRecognizer* cancelGesture;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-}
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(searchForBuilding) object:nil];
-    [self performSelector:@selector(searchForBuilding) withObject:nil afterDelay:1.0];
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -461,7 +481,6 @@ UIGestureRecognizer* cancelGesture;
 - (void)viewDidUnload {
     [self setAnnotationSelector:nil];
     [self setWebView:nil];
-    [self setToolBar:nil];
     [self setDoneButton:nil];
     [self setNavigationBar:nil];
     [self setSearchBar:nil];
