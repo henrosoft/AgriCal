@@ -45,6 +45,7 @@
             NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
                                                          returningResponse:&response
                                                                      error:&error];
+            self.courses = [[NSMutableArray alloc] init];
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];  
             for (NSDictionary *dict in arr)
             {

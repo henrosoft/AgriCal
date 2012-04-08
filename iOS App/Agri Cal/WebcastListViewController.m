@@ -32,12 +32,14 @@
 {
     [super viewWillAppear:animated];
     
-    self.webcasts = [[NSMutableArray alloc] init];
+    self.webcasts = [[NSUserDefaults standardUserDefaults] objectForKey:self.url];
+    if (!self.webcasts) 
+        self.webcasts = [[NSMutableArray alloc] init];
     NSString *queryString = [NSString stringWithFormat:@"%@/%@", ServerURL, self.url]; 
     queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
-    
+
     // Use GCD to perform request in background, and then jump back on the main thread 
     // to update the UI
     
@@ -49,21 +51,19 @@
             NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
                                                          returningResponse:&response
                                                                      error:&error];
-            NSArray *unsorted = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
-            self.webcasts = [[NSMutableArray alloc] initWithCapacity:[unsorted count]];
+            self.webcasts = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil]; 
+            NSLog(@"%@", self.webcasts);
+            
             int i = 0;
-            while (i < [unsorted count])
+            while (i < [self.webcasts count])
             {
-                NSMutableDictionary *standin = [[NSMutableDictionary alloc] init];
-                [standin setValue:[NSString stringWithFormat:@"%i N/A",i+1]  forKey:@"number"];
-                [self.webcasts addObject:standin];
+                NSDictionary *currentDict = [self.webcasts objectAtIndex:i];
+                [currentDict setValue:[NSNumber numberWithInt:[[currentDict objectForKey:@"number"] integerValue]] forKey:@"number"];
                 i++;
             }
-            for (NSDictionary *dict in unsorted)
-            {
-                [self.webcasts replaceObjectAtIndex:[[dict objectForKey:@"number"] integerValue]-1 withObject:dict];
-            }
-            NSLog(@"%@", self.webcasts);
+            NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"number"  ascending:YES];
+            [self.webcasts sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+            [[NSUserDefaults standardUserDefaults] setValue:self.webcasts forKey:self.url];
             dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
             dispatch_async(updateUIQueue, ^{
                 [self.tableView reloadData];
