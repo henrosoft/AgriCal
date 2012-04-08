@@ -19,6 +19,7 @@
 @synthesize segmentedControl = _segmentedControl;
 @synthesize personalCourses = _personalCourses;
 @synthesize departmentTitles = _departmentTitles;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,9 +55,6 @@
         NSString *queryString = [NSString stringWithFormat:@"%@/api/courses/departments/%@/", ServerURL, semester];
         NSURL *requestURL = [NSURL URLWithString:queryString];
         NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
-        
-        // Use GCD to perform request in background, and then jump back on the main thread 
-        // to update the UI
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
@@ -105,7 +103,6 @@
 }
 -(void)loadPersonalCourses
 {
-    NSLog(@"loading personal courses");
     NSString *semester = [[[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] componentsSeparatedByString:@" "] objectAtIndex:0];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
@@ -172,8 +169,6 @@
 {
     [self setSegmentedControl:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -185,7 +180,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     if (tableView == self.tableView) 
         return MAX([self.departments count],1);
     else 
@@ -194,7 +188,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     if (tableView == self.tableView)
     {
         NSArray *indexArray = [[self.departments allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
@@ -296,6 +289,7 @@
     else 
     {
         [self performSegueWithIdentifier:@"Department" sender:[NSArray arrayWithObject:[tableView cellForRowAtIndexPath:indexPath]]];    
+        [self.searchDisplayController setActive:NO animated:YES];  
     }
 }
 

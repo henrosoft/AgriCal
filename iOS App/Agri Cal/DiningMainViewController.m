@@ -61,13 +61,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return 1;
 }
 
@@ -131,7 +129,8 @@
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(16, 0, tableView.frame.size.width-32, 60)];
     NSArray *info = [[[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat: @"%@times", location]] objectForKey:@"timespans"];
-    NSLog(@"%@", info);
+    
+    // Laying out all the footer labels.
     int counter = 0;
     for (NSDictionary *currentDict in info)
     {
@@ -189,10 +188,10 @@
     NSString *queryString = [NSString stringWithFormat:[NSString stringWithFormat:@"%@/api/menu/%@",ServerURL, urlAddon]];
     queryString = [queryString lowercaseString];
     
-    NSLog(@"%@", queryString);
     NSURL *requestURL = [NSURL URLWithString:queryString];
     NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
     
+    // Have a dictionary that preloads info so that two views in the same day display instantly. 
     NSDictionary *preload = [[NSDictionary alloc] init];
     if ((preload = [[NSUserDefaults standardUserDefaults] objectForKey:urlAddon]))
     {

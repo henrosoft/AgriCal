@@ -205,6 +205,7 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
         NSString *title = [[self.searchResults objectAtIndex:[sender integerValue]] objectForKey:@"title"];
         ((CourseInfoViewController*)segue.destinationViewController).info = [self.searchResults objectAtIndex:[((NSNumber*)sender) integerValue]];
         ((CourseInfoViewController*)segue.destinationViewController).navigationItem.title = title;
+        [self.searchDisplayController setActive:NO animated:YES];  
     }
     else {
         sender = [NSNumber numberWithInt:[self.tableView indexPathForSelectedRow].row];
