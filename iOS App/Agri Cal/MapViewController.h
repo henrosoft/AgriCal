@@ -16,7 +16,7 @@
 #import "TimePopAnnotationView.h"
 #import "ScheduleViewController.h"
 
-@interface FirstViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MapViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     BOOL _timePoping;
 }

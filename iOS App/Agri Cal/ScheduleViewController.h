@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BusStopAnnotation.h"
-#import "FirstViewController.h"
+#import "MapViewController.h"
 @interface ScheduleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSArray *items;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

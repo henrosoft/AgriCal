@@ -23,6 +23,46 @@
 {
     [super viewWillAppear:animated]; 
     self.navigationItem.title = @"Dining Commons";
+    NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/", ServerURL];
+    
+    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:queryString]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSString *diningString = [NSString stringWithFormat:@"%@/api/dining_times/", ServerURL];
+    
+    NSURL *diningURL = [NSURL URLWithString:diningString];
+    
+    NSURLRequest *diningRequest = [NSURLRequest requestWithURL:diningURL];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        NSURLResponse *response = nil;
+        NSError *error = nil;
+        NSData *receivedData = [NSURLConnection sendSynchronousRequest:request
+                                                     returningResponse:&response
+                                                                 error:&error];
+        NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];   
+        NSLog(@"recieved %@", bal);
+        [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:0] forKey:@"cal1bal"];
+        [[NSUserDefaults standardUserDefaults] setObject:[bal objectAtIndex:1] forKey:@"mealpoints"];
+        
+        receivedData = [NSURLConnection sendSynchronousRequest:diningRequest returningResponse:&response error:&error];
+        NSArray *diningArray = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:&error];
+        for (NSDictionary *dict in diningArray)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:[NSString stringWithFormat:@"%@times", [dict objectForKey:@"location"]]];
+        }
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - Table view data source
@@ -135,10 +175,11 @@
 {
     if (section == 0)
     {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"])
-            return [NSString stringWithFormat:@"%@ Meal Points", [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"]];
+        NSString *mealPoints = [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"];
+        if (!mealPoints || [mealPoints isEqualToString:@"(null)"])
+            return @"Meal Points N/A";            
         else 
-            return @"Meal Points N/A";
+            return [NSString stringWithFormat:@"%@ Meal Points", [[NSUserDefaults standardUserDefaults] objectForKey:@"mealpoints"]];
     }else {
         return @"";
     }

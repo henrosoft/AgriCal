@@ -78,7 +78,7 @@
         NSString *indexOfSelectedTime = [NSString stringWithFormat:@"%@:%@", [tableView cellForRowAtIndexPath:indexPath].textLabel.text, pathSelected];
         NSString *indexes = [NSString stringWithFormat:@"%i:%i", [[self.stop.routes objectForKey:pathSelected] indexOfObject:indexOfSelectedTime],self.stop.routeIndex];
         [self.delegate performSelector:@selector(highlightPath::) withObject:[[tableView cellForRowAtIndexPath:indexPath] detailTextLabel].text withObject:indexes];
-        [((FirstViewController*)self.delegate) dismissModalViewControllerAnimated:YES];
+        [((MapViewController*)self.delegate) dismissModalViewControllerAnimated:YES];
     }
 }
 

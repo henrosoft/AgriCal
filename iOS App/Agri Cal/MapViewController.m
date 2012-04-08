@@ -9,13 +9,13 @@
 
 /* This controller manages the map view and all the related map annotations. */
 
-#import "FirstViewController.h"
+#import "MapViewController.h"
 
-@interface FirstViewController ()
+@interface MapViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation MapViewController
 @synthesize mapView;
 @synthesize testCallout = _testCallout;
 @synthesize testAnnotation = _testAnnotation;

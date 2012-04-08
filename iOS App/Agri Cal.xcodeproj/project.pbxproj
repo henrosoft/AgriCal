@@ -23,7 +23,7 @@
 		6393DE19150301F3003B77F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE18150301F3003B77F5 /* AppDelegate.m */; };
 		6393DE1C150301F3003B77F5 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE1A150301F3003B77F5 /* MainStoryboard_iPhone.storyboard */; };
 		6393DE1F150301F3003B77F5 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE1D150301F3003B77F5 /* MainStoryboard_iPad.storyboard */; };
-		6393DE22150301F3003B77F5 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE21150301F3003B77F5 /* FirstViewController.m */; };
+		6393DE22150301F3003B77F5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE21150301F3003B77F5 /* MapViewController.m */; };
 		6393DE24150301F3003B77F5 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE23150301F3003B77F5 /* first.png */; };
 		6393DE26150301F3003B77F5 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6393DE25150301F3003B77F5 /* first@2x.png */; };
 		6393DE29150301F3003B77F5 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393DE28150301F3003B77F5 /* SecondViewController.m */; };
@@ -104,8 +104,8 @@
 		6393DE18150301F3003B77F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6393DE1B150301F3003B77F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		6393DE1E150301F3003B77F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		6393DE20150301F3003B77F5 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		6393DE21150301F3003B77F5 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		6393DE20150301F3003B77F5 /* MapViewController.h */ = {isa = PBXFileReference; path = MapViewController.h; sourceTree = "<group>"; };
+		6393DE21150301F3003B77F5 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		6393DE23150301F3003B77F5 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		6393DE25150301F3003B77F5 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		6393DE27150301F3003B77F5 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 				6393DE18150301F3003B77F5 /* AppDelegate.m */,
 				6393DE1A150301F3003B77F5 /* MainStoryboard_iPhone.storyboard */,
 				6393DE1D150301F3003B77F5 /* MainStoryboard_iPad.storyboard */,
-				6393DE20150301F3003B77F5 /* FirstViewController.h */,
-				6393DE21150301F3003B77F5 /* FirstViewController.m */,
+				6393DE20150301F3003B77F5 /* MapViewController.h */,
+				6393DE21150301F3003B77F5 /* MapViewController.m */,
 				6393DE5C15030FA5003B77F5 /* Map Annotations */,
 				638F42DB150C68620031A9F6 /* DiningMainViewController.h */,
 				638F42DC150C68620031A9F6 /* DiningMainViewController.m */,
@@ -474,7 +474,7 @@
 			files = (
 				6393DE15150301F3003B77F5 /* main.m in Sources */,
 				6393DE19150301F3003B77F5 /* AppDelegate.m in Sources */,
-				6393DE22150301F3003B77F5 /* FirstViewController.m in Sources */,
+				6393DE22150301F3003B77F5 /* MapViewController.m in Sources */,
 				6393DE29150301F3003B77F5 /* SecondViewController.m in Sources */,
 				6393DE4F15030395003B77F5 /* BasicMapAnnotation.m in Sources */,
 				6393DE52150303A8003B77F5 /* BasicMapAnnotationView.m in Sources */,
