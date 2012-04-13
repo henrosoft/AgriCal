@@ -18,7 +18,9 @@
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *times;
+@property (nonatomic, strong) NSString *info;
+@property (nonatomic, strong) NSString *type;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
               andTitle:(NSString*)title

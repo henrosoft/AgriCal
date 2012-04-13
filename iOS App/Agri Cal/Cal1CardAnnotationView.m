@@ -41,8 +41,9 @@
 @synthesize offsetFromParent = _offsetFromParent;
 @synthesize contentHeight = _contentHeight;
 @synthesize title = _title;
-@synthesize url = _url;
+@synthesize times = _url;
 @synthesize textLabel = _textLabel;
+@synthesize info = _info;
 
 - (id) initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
@@ -84,9 +85,9 @@
 }
 
 - (void) calloutAccessoryTapped {
-	if ([self.mapView.delegate respondsToSelector:@selector(displayWebsite:)])
+	if ([self.mapView.delegate respondsToSelector:@selector(displayInfo:)])
     {
-        [self.mapView.delegate performSelector:@selector(displayWebsite:) withObject:self.url];
+        [self.mapView.delegate performSelector:@selector(displayInfo:) withObject:self];
     }
 }
 
@@ -295,7 +296,7 @@
 	CGPathCloseSubpath(path);
 	
 	//Fill Callout Bubble & Add Shadow
-	color = [[UIColor blackColor] colorWithAlphaComponent:.6];
+	color = [[UIColor blackColor] colorWithAlphaComponent:.7];
 	[color setFill];
 	CGContextAddPath(context, path);
 	CGContextSaveGState(context);
@@ -304,7 +305,7 @@
 	CGContextRestoreGState(context);
 	
 	//Stroke Callout Bubble
-	color = [[UIColor darkGrayColor] colorWithAlphaComponent:.9];
+	color = [[UIColor darkGrayColor] colorWithAlphaComponent:.95];
 	[color setStroke];
 	CGContextSetLineWidth(context, stroke);
 	CGContextSetLineCap(context, kCGLineCapSquare);
@@ -402,9 +403,9 @@
 		_contentView = [[UIView alloc] init];
 		self.contentView.backgroundColor = [UIColor clearColor];
 		self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 306, 35)];
+        self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 265, 35)];
         [self.textLabel setBackgroundColor:[UIColor clearColor]];
-        [self.textLabel setTextColor:[UIColor grayColor]];
+        [self.textLabel setTextColor:[UIColor lightGrayColor]];
         [self.contentView addSubview:self.textLabel];
 		[self addSubview:self.contentView];
 	}

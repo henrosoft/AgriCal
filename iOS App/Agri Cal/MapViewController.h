@@ -7,6 +7,7 @@
 #import "Cal1CardAnnotationView.h"
 #import "TimePopAnnotationView.h"
 #import "ScheduleViewController.h"
+#import "InfoView.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -36,9 +37,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *mapKeyImageView;
+@property (strong, nonatomic) InfoView *infoView;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path:(NSString*)indexes;
 - (IBAction)displayMapKey:(id)sender;
-- (void)displayWebsite:(NSString*)url;
+- (void)displayInfo:(Cal1CardAnnotationView*)annotation;
 @end

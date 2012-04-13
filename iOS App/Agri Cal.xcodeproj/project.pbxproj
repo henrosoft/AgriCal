@@ -15,6 +15,9 @@
 		6387FF4B1538157A00EA4A15 /* mapkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6387FF491538157A00EA4A15 /* mapkey@2x.png */; };
 		638934DC153247A90051919C /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 638934DA153247A90051919C /* homepage.png */; };
 		638934DD153247A90051919C /* homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638934DB153247A90051919C /* homepage@2x.png */; };
+		638DD19015384A95009EA87A /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638DD18F15384A95009EA87A /* InfoView.m */; };
+		638DD19315384D46009EA87A /* infoimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 638DD19115384D46009EA87A /* infoimage.png */; };
+		638DD19415384D46009EA87A /* infoimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638DD19215384D46009EA87A /* infoimage@2x.png */; };
 		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
 		638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42DC150C68620031A9F6 /* DiningMainViewController.m */; };
 		638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */; };
@@ -90,6 +93,10 @@
 		6387FF491538157A00EA4A15 /* mapkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapkey@2x.png"; sourceTree = "<group>"; };
 		638934DA153247A90051919C /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage.png; sourceTree = "<group>"; };
 		638934DB153247A90051919C /* homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homepage@2x.png"; sourceTree = "<group>"; };
+		638DD18E15384A95009EA87A /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
+		638DD18F15384A95009EA87A /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
+		638DD19115384D46009EA87A /* infoimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoimage.png; sourceTree = "<group>"; };
+		638DD19215384D46009EA87A /* infoimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoimage@2x.png"; sourceTree = "<group>"; };
 		638EE2EE150374210031FC10 /* TimePopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePopAnnotationView.h; path = ../TimePopAnnotationView.h; sourceTree = "<group>"; };
 		638EE2EF150374210031FC10 /* TimePopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePopAnnotationView.m; path = ../TimePopAnnotationView.m; sourceTree = "<group>"; };
 		638F42DB150C68620031A9F6 /* DiningMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningMainViewController.h; sourceTree = "<group>"; };
@@ -232,6 +239,8 @@
 				6393DE1D150301F3003B77F5 /* MainStoryboard_iPad.storyboard */,
 				6393DE20150301F3003B77F5 /* MapViewController.h */,
 				6393DE21150301F3003B77F5 /* MapViewController.m */,
+				638DD18E15384A95009EA87A /* InfoView.h */,
+				638DD18F15384A95009EA87A /* InfoView.m */,
 				6393DE5C15030FA5003B77F5 /* Map Annotations */,
 				638F42DB150C68620031A9F6 /* DiningMainViewController.h */,
 				638F42DC150C68620031A9F6 /* DiningMainViewController.m */,
@@ -263,6 +272,8 @@
 				6393DE2C150301F3003B77F5 /* second@2x.png */,
 				6387FF481538157A00EA4A15 /* mapkey.png */,
 				6387FF491538157A00EA4A15 /* mapkey@2x.png */,
+				638DD19115384D46009EA87A /* infoimage.png */,
+				638DD19215384D46009EA87A /* infoimage@2x.png */,
 				6393DE0F150301F3003B77F5 /* Supporting Files */,
 			);
 			path = "Agri Cal";
@@ -446,6 +457,8 @@
 				638934DD153247A90051919C /* homepage@2x.png in Resources */,
 				6387FF4A1538157A00EA4A15 /* mapkey.png in Resources */,
 				6387FF4B1538157A00EA4A15 /* mapkey@2x.png in Resources */,
+				638DD19315384D46009EA87A /* infoimage.png in Resources */,
+				638DD19415384D46009EA87A /* infoimage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +515,7 @@
 				634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */,
 				6D489920152C33D20060CBA6 /* MealViewController.m in Sources */,
 				63C187B8152D90B000FF4AF1 /* InfoViewController.m in Sources */,
+				638DD19015384A95009EA87A /* InfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

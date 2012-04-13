@@ -26,8 +26,9 @@
 @property (nonatomic) CGPoint offsetFromParent;
 @property (nonatomic) CGFloat contentHeight;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *times;
 @property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) NSString *info;
 - (void)animateIn;
 - (void)animateInStepTwo;
 - (void)animateInStepThree;

@@ -12,7 +12,10 @@
 @synthesize latitude = _latitude;
 @synthesize longitude = _longitude;
 @synthesize title = _title;
-@synthesize url = _url;
+@synthesize times = _url;
+@synthesize info = _info;
+@synthesize type = _type;
+
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
               andTitle:(NSString *)title 
@@ -21,7 +24,7 @@
 		self.latitude = latitude;
 		self.longitude = longitude;
         self.title = title;
-        self.url = url;
+        self.times = url;
 	}
 	return self;
 }

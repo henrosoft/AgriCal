@@ -76,6 +76,8 @@
 		<real>37.865522</real>
 		<key>long</key>
 		<real>-122.258646</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Ned&apos;s Berkeley Bookstore</key>
 	<dict>
@@ -311,7 +313,7 @@
 	<key>The Bancroft Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>10 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -322,7 +324,7 @@
 	<key>Thomas J. Long Business Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -333,18 +335,28 @@
 	<key>Doe Library / Main Stacks</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>8 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
 		<real>37.872101</real>
 		<key>long</key>
 		<real>-122.259389</real>
+		<key>info</key>
+		<string>The Doe Memorial Library is the main library of the UC Berkeley Library System on the UC Berkeley campus. The library is named after its benefactor, Charles Franklin Doe, who was persuaded by the then President of the University of California, Benjamin Ide Wheeler, in 1904 to bequeath funds for its construction. It is located adjacent to the Bancroft Library. In 1900, Emile Benard won an architectural competition for the design of the library, and the Classical Revival style library was completed in 1911. The Doe Library houses both the Undergraduate and Gardner (Main) Stacks collections.
+</string>
+		<key>times</key>
+		<string>Doe Library	 8 am-5 pm	Calendar	Map/Info
+Circulation Desk	 9 am-4:45 pm	Calendar	Map/Info
+Gardner (MAIN) Stacks	 9 am-10 pm	Calendar	Map/Info
+Privileges Desk	 9 am-4:45 pm	Calendar	Map/Info
+Reference Service	 10 am-5 pm	Calendar	Map/Info
+Research Advisory Service	 11 am-5 pm</string>
 	</dict>
 	<key>C.V. Starr East Asian Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -355,7 +367,7 @@
 	<key>Kresge Engineering Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>8 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -366,7 +378,7 @@
 	<key>Ethnic Studies Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -377,7 +389,7 @@
 	<key>Institute of Transportation Studies Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>11 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -385,10 +397,10 @@
 		<key>long</key>
 		<real>-122.259185</real>
 	</dict>
-	<key>Moffit Information Gateway</key>
+	<key>Moffit Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>8 am-10 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -396,21 +408,10 @@
 		<key>long</key>
 		<real>-122.260692</real>
 	</dict>
-	<key>Philosophy Library</key>
-	<dict>
-		<key>url</key>
-		<string></string>
-		<key>type</key>
-		<string>Library</string>
-		<key>lat</key>
-		<real>37.871</real>
-		<key>long</key>
-		<real>-122.257989</real>
-	</dict>
 	<key>Sheldon Margen Public Health Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -421,7 +422,7 @@
 	<key>Art History / Classics Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -432,7 +433,7 @@
 	<key>Bioscience &amp; Natural Resources Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -443,7 +444,7 @@
 	<key>Chemistry &amp; Chemical Engineering Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -454,7 +455,7 @@
 	<key>Earth Sciences and Map Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -465,7 +466,7 @@
 	<key>Education-Psychology Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -476,7 +477,7 @@
 	<key>Mathematics Statistics Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -487,7 +488,7 @@
 	<key>Jean Gray Hargrove Music Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -498,7 +499,7 @@
 	<key>Optometry &amp; Health Sciences Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -509,7 +510,7 @@
 	<key>Physics-Astronomy Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>8 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>
@@ -520,7 +521,7 @@
 	<key>Social Welfare Library</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>9 am-5 pm</string>
 		<key>type</key>
 		<string>Library</string>
 		<key>lat</key>

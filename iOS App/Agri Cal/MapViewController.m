@@ -18,6 +18,7 @@
 @synthesize mapKeyImageView = _mapKeyTableView;
 @synthesize buildingAnnotation = _buildingAnnotation;
 @synthesize searchResults = _searchResults;
+@synthesize infoView = _libraryLabel;
 
 static NSString *OffCampus = @"Off-Campus";
 static NSString *OnCampus = @"On-campus by Cal Dining";
@@ -68,15 +69,20 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[[NSMutableDictionary alloc] init] andIndex:0];
-        ano.url = [current objectForKey:@"url"];
+        Cal1CardAnnotation* ano = [[Cal1CardAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andTitle:stop andURL:[current objectForKey:@"url"]];
+        ano.times = [current objectForKey:@"times"];
         ano.title = stop;
         ano.type = [current objectForKey:@"type"];
+        ano.info = [current objectForKey:@"info"];
         [self.cal1cardLocations addObject:ano];	
     }
     [self.mapView addAnnotations:self.busStops];
     
     self.mapView.showsUserLocation = YES;    
+    
+    self.infoView = [[InfoView alloc] initWithFrame:CGRectMake(0, 480, 320, 200)];
+    self.infoView.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.8];
+    [self.view addSubview:self.infoView];
 }
 
 /*
@@ -106,18 +112,18 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     {
         if (self.cal1Callout == nil)
         {
-            self.cal1Callout = [[Cal1CardAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andTitle:((BasicMapAnnotation*)view.annotation).title andURL:((BasicMapAnnotation*)view.annotation).url];
+            self.cal1Callout = [[Cal1CardAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andTitle:((BasicMapAnnotation*)view.annotation).title andURL:((Cal1CardAnnotation*)view.annotation).times];
         } else {
             self.cal1Callout.latitude = view.annotation.coordinate.latitude;
             self.cal1Callout.longitude = view.annotation.coordinate.longitude;
             self.cal1Callout.title = view.annotation.title;
-            self.cal1Callout.url = ((BasicMapAnnotation*)view.annotation).url;
+            self.cal1Callout.times = ((Cal1CardAnnotation*)view.annotation).times;
+            self.cal1Callout.info = ((Cal1CardAnnotation*)view.annotation).info;
         }   
         [self.mapView addAnnotation:self.cal1Callout];
         self.selectedAnnotation = view;
     }
 }
-
 /*
  Deselects the selected annotation view, but has some custom code to prevent 
  deselection if the annotation wants to prevent it for reasons like that the 
@@ -142,6 +148,13 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     }
     if (self.cal1Callout && [self.cal1cardLocations containsObject:view.annotation] && !((BasicMapAnnotationView*)view).preventSelectionChange)
     {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.75];
+        CGRect frame = self.infoView.frame;
+        if (!(frame.origin.y == 480))
+            frame.origin.y += 240;
+        self.infoView.frame = frame;
+        [UIView commitAnimations];
         [self.mapView removeAnnotation:self.cal1Callout];
     }
 }
@@ -183,15 +196,15 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
         {
             callout = [[Cal1CardAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"cal1callout"];
             callout.contentHeight = 39.0f;
-            callout.url = ((BasicMapAnnotation*)annotation).url;
-            callout.title = ((BasicMapAnnotation*)annotation).title;
+            callout.times = ((Cal1CardAnnotation*)annotation).times;
+            callout.title = ((Cal1CardAnnotation*)annotation).title;
         }
-        callout.url = ((BasicMapAnnotation*)annotation).url;
-        callout.title = ((BasicMapAnnotation*)annotation).title;
+        callout.times = ((Cal1CardAnnotation*)annotation).times;
+        callout.title = ((Cal1CardAnnotation*)annotation).title;
         callout.parentAnnotationView = self.selectedAnnotation;
         callout.mapView = self.mapView;
-        callout.textLabel.text = ((BasicMapAnnotation*)annotation).title;
-        
+        callout.textLabel.text = ((Cal1CardAnnotation*)annotation).title;
+        callout.info = ((Cal1CardAnnotation*)annotation).info;
         return callout;
     }
     else if ([self.busStops containsObject:annotation]) 
@@ -205,9 +218,9 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     {
         MKPinAnnotationView *annotationView = [[BasicMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Cal1Pin"];
         annotationView.canShowCallout = NO; 
-        if ([((BasicMapAnnotation*)annotation).type isEqualToString:OffCampus])
+        if ([((Cal1CardAnnotation*)annotation).type isEqualToString:OffCampus])
             annotationView.pinColor = MKPinAnnotationColorRed;
-        else if([((BasicMapAnnotation*)annotation).type isEqualToString:OnCampus]) {
+        else if([((Cal1CardAnnotation*)annotation).type isEqualToString:OnCampus]) {
             annotationView.pinColor = MKPinAnnotationColorGreen;
         } else {
             annotationView.pinColor = MKPinAnnotationColorPurple;
@@ -341,9 +354,23 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
 /*
  Display the website for the cal1card location that was selected. 
  */
-- (void)displayWebsite:(NSString *)url
+- (void)displayInfo:(Cal1CardAnnotationView *)annotation
 {
-    if (![url isEqualToString:@""])
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.75];
+    CGRect frame = self.infoView.frame;
+    if (frame.origin.y == 480)
+        frame.origin.y -= 240;
+    else {
+        frame.origin.y += 240;
+    }
+    self.infoView.frame = frame;
+    self.infoView.textView.text = annotation.info;
+    self.infoView.titleLabel.text = annotation.title;
+    self.infoView.timesTextView.text = annotation.times;
+    [UIView commitAnimations];
+    /*
+    if ([url hasPrefix:@"http"])
     {
         // Displays the website that is related to the specified url. 
         NSURL *u = [NSURL URLWithString:url];
@@ -366,9 +393,8 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
         else 
             balance = [NSString stringWithFormat:@"%@$", balance];
         [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
-    }   
+    } */
 }
-
 /*
  Remove the webview and return to the cal1card view. 
  */
