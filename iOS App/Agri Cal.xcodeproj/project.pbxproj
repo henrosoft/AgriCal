@@ -11,6 +11,8 @@
 		6326ABA515226E51005F1537 /* WebcastListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA415226E51005F1537 /* WebcastListViewController.m */; };
 		6326ABA815227213005F1537 /* WebcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6326ABA715227213005F1537 /* WebcastViewController.m */; };
 		634208A51522C0BF00981C46 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634208A41522C0BF00981C46 /* ScheduleViewController.m */; };
+		6387FF4A1538157A00EA4A15 /* mapkey.png in Resources */ = {isa = PBXBuildFile; fileRef = 6387FF481538157A00EA4A15 /* mapkey.png */; };
+		6387FF4B1538157A00EA4A15 /* mapkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6387FF491538157A00EA4A15 /* mapkey@2x.png */; };
 		638934DC153247A90051919C /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 638934DA153247A90051919C /* homepage.png */; };
 		638934DD153247A90051919C /* homepage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638934DB153247A90051919C /* homepage@2x.png */; };
 		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
@@ -84,6 +86,8 @@
 		6326ABA715227213005F1537 /* WebcastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastViewController.m; sourceTree = "<group>"; };
 		634208A31522C0BF00981C46 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		634208A41522C0BF00981C46 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		6387FF481538157A00EA4A15 /* mapkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapkey.png; sourceTree = "<group>"; };
+		6387FF491538157A00EA4A15 /* mapkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapkey@2x.png"; sourceTree = "<group>"; };
 		638934DA153247A90051919C /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homepage.png; sourceTree = "<group>"; };
 		638934DB153247A90051919C /* homepage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homepage@2x.png"; sourceTree = "<group>"; };
 		638EE2EE150374210031FC10 /* TimePopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePopAnnotationView.h; path = ../TimePopAnnotationView.h; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				6393DE28150301F3003B77F5 /* SecondViewController.m */,
 				6393DE2A150301F3003B77F5 /* second.png */,
 				6393DE2C150301F3003B77F5 /* second@2x.png */,
+				6387FF481538157A00EA4A15 /* mapkey.png */,
+				6387FF491538157A00EA4A15 /* mapkey@2x.png */,
 				6393DE0F150301F3003B77F5 /* Supporting Files */,
 			);
 			path = "Agri Cal";
@@ -438,6 +444,8 @@
 				6399950E152C1AD100356F87 /* monitor@2x.png in Resources */,
 				638934DC153247A90051919C /* homepage.png in Resources */,
 				638934DD153247A90051919C /* homepage@2x.png in Resources */,
+				6387FF4A1538157A00EA4A15 /* mapkey.png in Resources */,
+				6387FF4B1538157A00EA4A15 /* mapkey@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,13 +14,18 @@
 @synthesize timePopUps = _timePopUps;
 @synthesize navigationBar = _navigationBar;
 @synthesize searchBar = _searchBar;
+@synthesize infoButton = _infoButton;
+@synthesize mapKeyImageView = _mapKeyTableView;
 @synthesize buildingAnnotation = _buildingAnnotation;
 @synthesize searchResults = _searchResults;
 
+static NSString *OffCampus = @"Off-Campus";
+static NSString *OnCampus = @"On-campus by Cal Dining";
+
 /* 
-    When the view loads do all the initialization of arrays, set the region of the mapview, 
-    load all the schedule and location information from the datasources and add annotations 
-    to the mapview. 
+ When the view loads do all the initialization of arrays, set the region of the mapview, 
+ load all the schedule and location information from the datasources and add annotations 
+ to the mapview. 
  */
 - (void)viewDidLoad
 {
@@ -66,6 +71,7 @@
         BasicMapAnnotation* ano = [[BasicMapAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andRoutes:[[NSMutableDictionary alloc] init] andIndex:0];
         ano.url = [current objectForKey:@"url"];
         ano.title = stop;
+        ano.type = [current objectForKey:@"type"];
         [self.cal1cardLocations addObject:ano];	
     }
     [self.mapView addAnnotations:self.busStops];
@@ -74,7 +80,7 @@
 }
 
 /*
-    Handles the selection of the annotations and displays the correct popups.
+ Handles the selection of the annotations and displays the correct popups.
  */
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
@@ -95,7 +101,7 @@
         [self.mapView addAnnotation:self.busstopCallout];
         self.selectedAnnotation = view;
     }
-
+    
     if ([self.cal1cardLocations containsObject:view.annotation])
     {
         if (self.cal1Callout == nil)
@@ -113,9 +119,9 @@
 }
 
 /*
-    Deselects the selected annotation view, but has some custom code to prevent 
-    deselection if the annotation wants to prevent it for reasons like that the 
-    touch was to select a bus path etc. 
+ Deselects the selected annotation view, but has some custom code to prevent 
+ deselection if the annotation wants to prevent it for reasons like that the 
+ touch was to select a bus path etc. 
  */
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
@@ -141,8 +147,8 @@
 }
 
 /*
-    A lot of customization code to display the correct views for the annotations,
-    and prevents customization of the annotation that shows the user location. 
+ A lot of customization code to display the correct views for the annotations,
+ and prevents customization of the annotation that shows the user location. 
  */ 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -199,7 +205,13 @@
     {
         MKPinAnnotationView *annotationView = [[BasicMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Cal1Pin"];
         annotationView.canShowCallout = NO; 
-        annotationView.pinColor = MKPinAnnotationColorPurple;
+        if ([((BasicMapAnnotation*)annotation).type isEqualToString:OffCampus])
+            annotationView.pinColor = MKPinAnnotationColorRed;
+        else if([((BasicMapAnnotation*)annotation).type isEqualToString:OnCampus]) {
+            annotationView.pinColor = MKPinAnnotationColorGreen;
+        } else {
+            annotationView.pinColor = MKPinAnnotationColorPurple;
+        }
         return annotationView;  
     }
     else if ([self.timePopUps containsObject:annotation])
@@ -219,8 +231,8 @@
 }
 
 /*
-    Takes an index of a time, busstop, and a line (perimeter, f, etc), and 
-    highlights the path and displays the time pop ups. 
+ Takes an index of a time, busstop, and a line (perimeter, f, etc), and 
+ highlights the path and displays the time pop ups. 
  */
 - (void)highlightPath:(NSString *)path:(NSString*)indexes
 {
@@ -265,14 +277,28 @@
     [self.mapView addAnnotations:self.timePopUps];
 }
 
+- (IBAction)displayMapKey:(id)sender {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    CGRect frame = self.mapKeyImageView.frame;
+    if (frame.origin.x == 320)
+        frame.origin.x -= frame.size.width;
+    else {
+        frame.origin.x += frame.size.width;
+    }
+    self.mapKeyImageView.frame = frame;
+    [UIView commitAnimations];
+}
+
 /*
-    Switched the annotations on the map and handles the title of the 
-    segmented control in the title bar. 
+ Switched the annotations on the map and handles the title of the 
+ segmented control in the title bar. 
  */
 - (IBAction)switchAnnotations:(id)sender {
     [self.mapView removeAnnotations:self.busStops];
     [self.mapView removeAnnotations:self.cal1cardLocations];
     [self.mapView removeAnnotations:self.timePopUps];
+    [self.infoButton setHidden:YES];
     if (self.buildingAnnotation)
         [self.mapView removeAnnotation:self.buildingAnnotation];
     [UIView beginAnimations:nil context:NULL];
@@ -287,8 +313,13 @@
             break;
         case 1:
         {
+            [self.infoButton setHidden:NO];
             [self.mapView addAnnotations:self.cal1cardLocations];
             NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
+            NSArray *components = [balance componentsSeparatedByString:@"."];
+            if ([components count] >= 2)
+                if ([[components objectAtIndex:1] length] > 2)
+                    balance = [NSString stringWithFormat:@"%@.%@", [components objectAtIndex:0], [[components objectAtIndex:1] substringToIndex:2]];
             if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
                 balance = @"N/A";
             else 
@@ -308,32 +339,38 @@
 }
 
 /*
-    Display the website for the cal1card location that was selected. 
+ Display the website for the cal1card location that was selected. 
  */
 - (void)displayWebsite:(NSString *)url
 {
-    // Displays the website that is related to the specified url. 
-    NSURL *u = [NSURL URLWithString:url];
-    NSURLRequest *request = [NSURLRequest requestWithURL:u];
-    [self.webView setHidden:NO];
-    [self.webView loadRequest:request];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    self.navigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPushed:)];
-    [self.annotationSelector setEnabled:NO forSegmentAtIndex:0];
-    [self.annotationSelector setEnabled:NO forSegmentAtIndex:1];
-    [UIView commitAnimations];
-    NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
-    if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
-        balance = @"N/A";
-    else 
-        balance = [NSString stringWithFormat:@"%@$", balance];
-    [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
-    
+    if (![url isEqualToString:@""])
+    {
+        // Displays the website that is related to the specified url. 
+        NSURL *u = [NSURL URLWithString:url];
+        NSURLRequest *request = [NSURLRequest requestWithURL:u];
+        [self.webView setHidden:NO];
+        [self.webView loadRequest:request];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.5];
+        self.navigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPushed:)];
+        [self.annotationSelector setEnabled:NO forSegmentAtIndex:0];
+        [self.annotationSelector setEnabled:NO forSegmentAtIndex:1];
+        [UIView commitAnimations];
+        NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
+        NSArray *components = [balance componentsSeparatedByString:@"."];
+        if ([components count] >= 2)
+            if ([[components objectAtIndex:1] length] > 2)
+                balance = [NSString stringWithFormat:@"%@.%@", [components objectAtIndex:0], [[components objectAtIndex:1] substringToIndex:2]];
+        if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
+            balance = @"N/A";
+        else 
+            balance = [NSString stringWithFormat:@"%@$", balance];
+        [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
+    }   
 }
 
 /*
-    Remove the webview and return to the cal1card view. 
+ Remove the webview and return to the cal1card view. 
  */
 - (IBAction)doneButtonPushed:(id)sender
 {
@@ -343,6 +380,10 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
     NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
+    NSArray *components = [balance componentsSeparatedByString:@"."];
+    if ([components count] >= 2)
+        if ([[components objectAtIndex:1] length] > 2)
+            balance = [NSString stringWithFormat:@"%@.%@", [components objectAtIndex:0], [[components objectAtIndex:1] substringToIndex:2]];
     if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
         balance = @"N/A";
     else 
@@ -366,8 +407,8 @@
 }
 
 /*
-    Customize the table view that is displayed for the full schedule 
-    of a busstop. 
+ Customize the table view that is displayed for the full schedule 
+ of a busstop. 
  */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -384,7 +425,7 @@
 }
 
 /*
-    Uses the google maps api to search for buldings in Berkeley. 
+ Uses the google maps api to search for buldings in Berkeley. 
  */
 -(void)searchForBuilding
 {
@@ -420,8 +461,8 @@
 }
 
 /*
-    Everything below here is related to the table view, and just handles 
-    the customization of the cells etc. 
+ Everything below here is related to the table view, and just handles 
+ the customization of the cells etc. 
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -474,6 +515,10 @@
     self.searchResults = [[NSMutableArray alloc] init];
     [self performSelector:@selector(selectBuilding) withObject:nil afterDelay:0.7];
 }
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Map Key";
+}
 -(void)selectBuilding
 {
     [self.mapView selectAnnotation:self.buildingAnnotation animated:YES];  
@@ -484,6 +529,8 @@
     [self setDoneButton:nil];
     [self setNavigationBar:nil];
     [self setSearchBar:nil];
+    [self setMapKeyImageView:nil];
+    [self setInfoButton:nil];
     [super viewDidUnload];
 }
 @end

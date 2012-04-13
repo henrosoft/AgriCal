@@ -112,7 +112,6 @@
                                                      returningResponse:&response
                                                                  error:&error];
         NSArray *bal = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];   
-        NSLog(@"recieved %@", bal);
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",[bal objectAtIndex:0]] forKey:@"cal1bal"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",[bal objectAtIndex:1]] forKey:@"mealpoints"];
         

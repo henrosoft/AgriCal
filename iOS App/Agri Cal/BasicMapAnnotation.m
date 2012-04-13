@@ -18,6 +18,7 @@
 @synthesize routes = _routes;
 @synthesize url = _url;
 @synthesize index = _index;
+@synthesize type = _color;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes

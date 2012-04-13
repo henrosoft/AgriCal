@@ -34,8 +34,11 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (weak, nonatomic) IBOutlet UIImageView *mapKeyImageView;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path:(NSString*)indexes;
+- (IBAction)displayMapKey:(id)sender;
 - (void)displayWebsite:(NSString*)url;
 @end

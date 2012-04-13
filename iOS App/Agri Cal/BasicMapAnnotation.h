@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableDictionary *routes; 
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic) NSInteger index;
+@property (nonatomic, strong) NSString *type;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
           andLongitude:(CLLocationDegrees)longitude
              andRoutes:(NSMutableDictionary*)routes

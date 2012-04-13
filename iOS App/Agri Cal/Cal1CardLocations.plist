@@ -10,6 +10,8 @@
 		<real>37.86768</real>
 		<key>long</key>
 		<real>-122.259085</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Berkeley Thai House</key>
 	<dict>
@@ -19,6 +21,8 @@
 		<real>-122.258389</real>
 		<key>lat</key>
 		<real>37.867061</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Cafe Durant</key>
 	<dict>
@@ -28,6 +32,8 @@
 		<real>37.868026</real>
 		<key>long</key>
 		<real>-122.258245</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Chipotle Mexican Grill</key>
 	<dict>
@@ -37,6 +43,8 @@
 		<real>37.868366</real>
 		<key>long</key>
 		<real>-122.25905</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>IB&apos;s Hoagies &amp; Cheesesteaks</key>
 	<dict>
@@ -46,6 +54,8 @@
 		<real>37.868018</real>
 		<key>long</key>
 		<real>-122.258502</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Johnston&apos;s Market</key>
 	<dict>
@@ -55,6 +65,8 @@
 		<real>37.868024</real>
 		<key>long</key>
 		<real>-122.258457</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Moe&apos;s Books</key>
 	<dict>
@@ -73,6 +85,8 @@
 		<real>37.868554</real>
 		<key>long</key>
 		<real>-122.259842</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>UC Hair Salon &amp; Waxing</key>
 	<dict>
@@ -82,6 +96,8 @@
 		<real>37.868402</real>
 		<key>long</key>
 		<real>-122.26052</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Berkeley Student Food Collective</key>
 	<dict>
@@ -91,6 +107,8 @@
 		<real>37.868402</real>
 		<key>long</key>
 		<real>-122.26052</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Blondie&apos;s Pizza</key>
 	<dict>
@@ -100,6 +118,8 @@
 		<real>37.868034</real>
 		<key>long</key>
 		<real>-122.259197</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Cheese &apos;n&apos; Stuff</key>
 	<dict>
@@ -109,6 +129,8 @@
 		<real>37.86763</real>
 		<key>long</key>
 		<real>-122.26029</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Extreme Pizza, Shattuck Ave.</key>
 	<dict>
@@ -118,6 +140,8 @@
 		<real>37.86621</real>
 		<key>long</key>
 		<real>-122.268271</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Extreme Pizza, College Ave.</key>
 	<dict>
@@ -127,6 +151,8 @@
 		<real>37.851045</real>
 		<key>long</key>
 		<real>-122.252634</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Jamba Juice</key>
 	<dict>
@@ -136,6 +162,8 @@
 		<real>37.868682</real>
 		<key>long</key>
 		<real>-122.258734</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Joshua-ya&apos;s Brasserie</key>
 	<dict>
@@ -145,6 +173,8 @@
 		<real>37.865234</real>
 		<key>long</key>
 		<real>-122.259381</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>Naan-N-Curry</key>
 	<dict>
@@ -154,6 +184,8 @@
 		<real>37.8674</real>
 		<key>long</key>
 		<real>-122.259068</real>
+		<key>type</key>
+		<string>Off-Campus</string>
 	</dict>
 	<key>San Francisco Soup Company</key>
 	<dict>
@@ -163,6 +195,338 @@
 		<real>37.868671</real>
 		<key>long</key>
 		<real>-122.258563</real>
+		<key>type</key>
+		<string>Off-Campus</string>
+	</dict>
+	<key>Bear Market</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/bear_market.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.867146</real>
+		<key>long</key>
+		<real>-122.260387</real>
+	</dict>
+	<key>Golden Bear Cafe</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/golden_bear.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.86978</real>
+		<key>long</key>
+		<real>-122.259759</real>
+	</dict>
+	<key>Peet&apos;s Coffee &amp; Tea</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/the_den.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.866867</real>
+		<key>long</key>
+		<real>-122.256235</real>
+	</dict>
+	<key>Qualcomm Cybercafe</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/qualcomm.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.874667</real>
+		<key>long</key>
+		<real>-122.258665</real>
+	</dict>
+	<key>The Terrace Cafe</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/terrace_cafe.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.874354</real>
+		<key>long</key>
+		<real>-122.25815</real>
+	</dict>
+	<key>Common Grounds</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/common_grounds.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.870786</real>
+		<key>long</key>
+		<real>-122.260515</real>
+	</dict>
+	<key>Pat Brown&apos;s Grille</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/pat_browns.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.873625</real>
+		<key>long</key>
+		<real>-122.264796</real>
+	</dict>
+	<key>The Pro Shop</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/pro_shop.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.868569</real>
+		<key>long</key>
+		<real>-122.262683</real>
+	</dict>
+	<key>Ramona&apos;s</key>
+	<dict>
+		<key>url</key>
+		<string>http://caldining.berkeley.edu/ramonas.html</string>
+		<key>type</key>
+		<string>On-campus by Cal Dining</string>
+		<key>lat</key>
+		<real>37.87028</real>
+		<key>long</key>
+		<real>-122.254786</real>
+	</dict>
+	<key>The George &amp; Mary Foster Anthropology Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.869881</real>
+		<key>long</key>
+		<real>-122.255197</real>
+	</dict>
+	<key>The Bancroft Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.872287</real>
+		<key>long</key>
+		<real>-122.25866</real>
+	</dict>
+	<key>Thomas J. Long Business Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.871604</real>
+		<key>long</key>
+		<real>-122.253165</real>
+	</dict>
+	<key>Doe Library / Main Stacks</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.872101</real>
+		<key>long</key>
+		<real>-122.259389</real>
+	</dict>
+	<key>C.V. Starr East Asian Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.87349</real>
+		<key>long</key>
+		<real>-122.260333</real>
+	</dict>
+	<key>Kresge Engineering Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.87442</real>
+		<key>long</key>
+		<real>-122.258122</real>
+	</dict>
+	<key>Ethnic Studies Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.87141</real>
+		<key>long</key>
+		<real>-122.257501</real>
+	</dict>
+	<key>Institute of Transportation Studies Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.874095</real>
+		<key>long</key>
+		<real>-122.259185</real>
+	</dict>
+	<key>Moffit Information Gateway</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.872518</real>
+		<key>long</key>
+		<real>-122.260692</real>
+	</dict>
+	<key>Philosophy Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.871</real>
+		<key>long</key>
+		<real>-122.257989</real>
+	</dict>
+	<key>Sheldon Margen Public Health Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.871322</real>
+		<key>long</key>
+		<real>-122.258542</real>
+	</dict>
+	<key>Art History / Classics Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.87028</real>
+		<key>long</key>
+		<real>-122.254786</real>
+	</dict>
+	<key>Bioscience &amp; Natural Resources Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.871567</real>
+		<key>long</key>
+		<real>-122.262264</real>
+	</dict>
+	<key>Chemistry &amp; Chemical Engineering Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.872987</real>
+		<key>long</key>
+		<real>-122.255995</real>
+	</dict>
+	<key>Earth Sciences and Map Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.874095</real>
+		<key>long</key>
+		<real>-122.259185</real>
+	</dict>
+	<key>Education-Psychology Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.874181</real>
+		<key>long</key>
+		<real>-122.263528</real>
+	</dict>
+	<key>Mathematics Statistics Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.873627</real>
+		<key>long</key>
+		<real>-122.257698</real>
+	</dict>
+	<key>Jean Gray Hargrove Music Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.870503</real>
+		<key>long</key>
+		<real>-122.256083</real>
+	</dict>
+	<key>Optometry &amp; Health Sciences Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.871482</real>
+		<key>long</key>
+		<real>-122.25471</real>
+	</dict>
+	<key>Physics-Astronomy Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.872262</real>
+		<key>long</key>
+		<real>-122.257147</real>
+	</dict>
+	<key>Social Welfare Library</key>
+	<dict>
+		<key>url</key>
+		<string></string>
+		<key>type</key>
+		<string>Library</string>
+		<key>lat</key>
+		<real>37.873698</real>
+		<key>long</key>
+		<real>-122.261091</real>
 	</dict>
 </dict>
 </plist>
