@@ -226,7 +226,7 @@ It&apos;s about Cheese &apos;N&apos; Stuff&apos;s tireless support for the UC Be
 	</dict>
 	<key>Jamba Juice</key>
 	<dict>
-		<key>New item</key>
+		<key>url</key>
 		<string>jamba.jpg</string>
 		<key>lat</key>
 		<real>37.868682</real>
@@ -328,6 +328,11 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.866867</real>
 		<key>long</key>
 		<real>-122.256235</real>
+		<key>info</key>
+		<string>The Den, attached to Crossroads dining hall, is a residential retail location that features a Peet’s Coffee &amp; Tea store, made-to-order deli and bagel bar, smoothies and grab-and-go items.</string>
+		<key>times</key>
+		<string>Monday - Friday 7:00 am - 10:00 pm
+Saturday-Sunday 9:00 am - 10:00 pm</string>
 	</dict>
 	<key>Qualcomm Cybercafe</key>
 	<dict>
@@ -339,6 +344,12 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.874667</real>
 		<key>long</key>
 		<real>-122.258665</real>
+		<key>times</key>
+		<string>Monday - Thursday 7:00 am - 8:00 pm	
+Friday 7:00 am - 4:00 pm
+Breakfast served until 10:30 am.</string>
+		<key>info</key>
+		<string>The Qualcomm Cafe is Cal Dining&apos;s newest location, featuring a Peet’s Coffee &amp; Tea store, salads, a made-to-order wrap bar and other grab-and-go items. Located on the north side of campus, QC2 is perfect for getting coffee between classes or sitting down for lunch.</string>
 	</dict>
 	<key>The Terrace Cafe</key>
 	<dict>
@@ -350,6 +361,10 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.874354</real>
 		<key>long</key>
 		<real>-122.25815</real>
+		<key>times</key>
+		<string>Monday - Friday 8:00 am - 3:00 pm</string>
+		<key>info</key>
+		<string>Designed for quick service on the run, Terrace Café features a variety of popular grab-and-go salads, sushi, sandwiches and great coffee.</string>
 	</dict>
 	<key>Common Grounds</key>
 	<dict>
@@ -361,6 +376,10 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.870786</real>
 		<key>long</key>
 		<real>-122.260515</real>
+		<key>times</key>
+		<string>Monday - Friday 8:00 am - 3:00 pm</string>
+		<key>info</key>
+		<string>On level F of Dwinelle Hall, Common Grounds proudly brews Peet’s Coffee and offers standard Peet’s coffee and tea products, as well as grab-and-go items.  Open weekdays.</string>
 	</dict>
 	<key>Pat Brown&apos;s Grille</key>
 	<dict>
@@ -372,6 +391,10 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.873625</real>
 		<key>long</key>
 		<real>-122.264796</real>
+		<key>times</key>
+		<string>Monday - Friday 7:30 am - 4 pm	</string>
+		<key>info</key>
+		<string>Serving the northwest part of campus, Pat Brown’s has made-to-order salads and sandwiches, along with an impressive selection of rotisserie and hand-carved meats. Now proudly brewing Peet&apos;s Coffee and Tea, PB&apos;s offers standard Peet’s Coffee and Tea products, as well as grab-and-go items for those in a hurry. The menu is complimented with plenty of indoor and outdoor patio seating with umbrellas.</string>
 	</dict>
 	<key>The Pro Shop</key>
 	<dict>
@@ -383,6 +406,12 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.868569</real>
 		<key>long</key>
 		<real>-122.262683</real>
+		<key>times</key>
+		<string>Monday - Thursday 10:00 am  12:00 am
+Friday 9:00 am - 11:00 pm
+Saturday - Sunday 8:00 am - 9:00 pm</string>
+		<key>info</key>
+		<string>Located in the Recreational Sports Facility (RSF), The Pro Shop provides just what customers need before or after a workout: sports drinks, fresh juices, fresh fruit, salads, sandwiches, sushi, energy bars, high energy snacks and sporting goods. Open daily from early morning to late at night.</string>
 	</dict>
 	<key>Ramona&apos;s</key>
 	<dict>
@@ -394,6 +423,11 @@ Fri 7:00 am - 4:00 pm</string>
 		<real>37.87028</real>
 		<key>long</key>
 		<real>-122.254786</real>
+		<key>times</key>
+		<string>Monday - Thursday 7:00 am - 8:00 pm
+Friday 7:00 am - 4:00 pm</string>
+		<key>info</key>
+		<string>Specializing in made-to-order paninis and Asian rice bowls, Ramona’s also serves grab-and-go items, baked goods and a variety of beverages and snacks. Located in Wurster Hall, Ramona’s has ample indoor and outdoor seating.</string>
 	</dict>
 	<key>The George &amp; Mary Foster Anthropology Library</key>
 	<dict>
