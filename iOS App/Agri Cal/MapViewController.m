@@ -69,11 +69,8 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
         NSDictionary* current = [stops objectForKey:stop];
         NSNumber* longitude = [current objectForKey:@"long"];
         NSNumber* latitude = [current objectForKey:@"lat"];
-        Cal1CardAnnotation* ano = [[Cal1CardAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andTitle:stop andURL:[current objectForKey:@"url"]];
-        ano.times = [current objectForKey:@"times"];
-        ano.title = stop;
+        Cal1CardAnnotation* ano = [[Cal1CardAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andTitle:stop andURL:[current objectForKey:@"url"] andTimes:[current objectForKey:@"times"] andInfo:[current objectForKey:@"info"]];
         ano.type = [current objectForKey:@"type"];
-        ano.info = [current objectForKey:@"info"];
         [self.cal1cardLocations addObject:ano];	
     }
     [self.mapView addAnnotations:self.busStops];
@@ -112,13 +109,19 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     {
         if (self.cal1Callout == nil)
         {
-            self.cal1Callout = [[Cal1CardAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude andLongitude:view.annotation.coordinate.longitude andTitle:((BasicMapAnnotation*)view.annotation).title andURL:((Cal1CardAnnotation*)view.annotation).times];
+            self.cal1Callout = [[Cal1CardAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude 
+                                                               andLongitude:view.annotation.coordinate.longitude 
+                                                                   andTitle:((BasicMapAnnotation*)view.annotation).title 
+                                                                     andURL:((Cal1CardAnnotation*)view.annotation).imageURL 
+                                                                   andTimes:((Cal1CardAnnotation*)view.annotation).times
+                                                                    andInfo:((Cal1CardAnnotation*)view.annotation).info];
         } else {
             self.cal1Callout.latitude = view.annotation.coordinate.latitude;
             self.cal1Callout.longitude = view.annotation.coordinate.longitude;
             self.cal1Callout.title = view.annotation.title;
             self.cal1Callout.times = ((Cal1CardAnnotation*)view.annotation).times;
             self.cal1Callout.info = ((Cal1CardAnnotation*)view.annotation).info;
+            self.cal1Callout.imageURL = ((Cal1CardAnnotation*)view.annotation).imageURL;
         }   
         [self.mapView addAnnotation:self.cal1Callout];
         self.selectedAnnotation = view;
@@ -205,6 +208,7 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
         callout.mapView = self.mapView;
         callout.textLabel.text = ((Cal1CardAnnotation*)annotation).title;
         callout.info = ((Cal1CardAnnotation*)annotation).info;
+        callout.imageURL = ((Cal1CardAnnotation*)annotation).imageURL;
         return callout;
     }
     else if ([self.busStops containsObject:annotation]) 
@@ -368,32 +372,8 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     self.infoView.textView.text = annotation.info;
     self.infoView.titleLabel.text = annotation.title;
     self.infoView.timesTextView.text = annotation.times;
+    self.infoView.imageView.image = [UIImage imageNamed:annotation.imageURL];
     [UIView commitAnimations];
-    /*
-    if ([url hasPrefix:@"http"])
-    {
-        // Displays the website that is related to the specified url. 
-        NSURL *u = [NSURL URLWithString:url];
-        NSURLRequest *request = [NSURLRequest requestWithURL:u];
-        [self.webView setHidden:NO];
-        [self.webView loadRequest:request];
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.5];
-        self.navigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPushed:)];
-        [self.annotationSelector setEnabled:NO forSegmentAtIndex:0];
-        [self.annotationSelector setEnabled:NO forSegmentAtIndex:1];
-        [UIView commitAnimations];
-        NSString *balance = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"cal1bal"]];
-        NSArray *components = [balance componentsSeparatedByString:@"."];
-        if ([components count] >= 2)
-            if ([[components objectAtIndex:1] length] > 2)
-                balance = [NSString stringWithFormat:@"%@.%@", [components objectAtIndex:0], [[components objectAtIndex:1] substringToIndex:2]];
-        if ([balance isEqualToString:@"-1"] || !balance || [balance isEqualToString:@"(null)"])
-            balance = @"N/A";
-        else 
-            balance = [NSString stringWithFormat:@"%@$", balance];
-        [self.annotationSelector setTitle:balance forSegmentAtIndex:1]; 
-    } */
 }
 /*
  Remove the webview and return to the cal1card view. 

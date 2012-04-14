@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Cal1CardAnnotation.h"
 
 @interface Cal1CardAnnotationView : MKAnnotationView {
     UIButton *_accessory;
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) NSString *times;
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) NSString *info;
+@property (nonatomic, strong) NSString *imageURL;
 - (void)animateIn;
 - (void)animateInStepTwo;
 - (void)animateInStepThree;

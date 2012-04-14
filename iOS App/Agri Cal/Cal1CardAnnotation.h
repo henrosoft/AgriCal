@@ -21,9 +21,13 @@
 @property (nonatomic, strong) NSString *times;
 @property (nonatomic, strong) NSString *info;
 @property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *imageURL;
 - (id)initWithLatitude:(CLLocationDegrees)latitude
 		  andLongitude:(CLLocationDegrees)longitude
               andTitle:(NSString*)title
-                andURL:(NSString*)url;
+                andURL:(NSString*)url
+              andTimes:(NSString*)times
+               andInfo:(NSString*)info;
+    
 
 @end

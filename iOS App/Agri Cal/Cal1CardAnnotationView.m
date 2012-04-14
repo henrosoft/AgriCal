@@ -44,6 +44,7 @@
 @synthesize times = _url;
 @synthesize textLabel = _textLabel;
 @synthesize info = _info;
+@synthesize imageURL = _imageURL;
 
 - (id) initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
