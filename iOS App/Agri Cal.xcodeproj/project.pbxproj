@@ -69,6 +69,32 @@
 		63B2E3EC15204BBF00AA7848 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EB15204BBF00AA7848 /* CourseViewController.m */; };
 		63B2E3EF1520642000AA7848 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */; };
 		63C187B8152D90B000FF4AF1 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C187B7152D90B000FF4AF1 /* InfoViewController.m */; };
+		63DE52B81539330C00F9ECFB /* bearbasics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52B71539330C00F9ECFB /* bearbasics.jpg */; };
+		63DE52BB1539332C00F9ECFB /* berkeleyThaiHouse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52BA1539332C00F9ECFB /* berkeleyThaiHouse.jpg */; };
+		63DE52BD153933E700F9ECFB /* cafedurant.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52BC153933E700F9ECFB /* cafedurant.jpg */; };
+		63DE52BF1539343B00F9ECFB /* chipotle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52BE1539343B00F9ECFB /* chipotle.gif */; };
+		63DE52C11539345F00F9ECFB /* hoagies.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52C01539345F00F9ECFB /* hoagies.JPG */; };
+		63DE52C31539363700F9ECFB /* johnstons.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52C21539363700F9ECFB /* johnstons.jpg */; };
+		63DE52C51539365000F9ECFB /* Moesbooks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52C41539365000F9ECFB /* Moesbooks.jpg */; };
+		63DE52C71539369400F9ECFB /* neds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52C61539369400F9ECFB /* neds.jpg */; };
+		63DE52C91539371F00F9ECFB /* uchair.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52C81539371F00F9ECFB /* uchair.jpg */; };
+		63DE52CB1539375000F9ECFB /* studentfood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52CA1539375000F9ECFB /* studentfood.jpg */; };
+		63DE52CD153937EB00F9ECFB /* extreme.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52CC153937EB00F9ECFB /* extreme.jpg */; };
+		63DE52DB15393BA200F9ECFB /* ramonas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52CE15393BA200F9ECFB /* ramonas.jpg */; };
+		63DE52DC15393BA200F9ECFB /* proshop.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52CF15393BA200F9ECFB /* proshop.gif */; };
+		63DE52DD15393BA200F9ECFB /* patbrown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D015393BA200F9ECFB /* patbrown.jpg */; };
+		63DE52DE15393BA200F9ECFB /* commongrounds.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D115393BA200F9ECFB /* commongrounds.gif */; };
+		63DE52DF15393BA200F9ECFB /* terrace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D215393BA200F9ECFB /* terrace.jpg */; };
+		63DE52E015393BA200F9ECFB /* qualcomm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D315393BA200F9ECFB /* qualcomm.jpg */; };
+		63DE52E115393BA200F9ECFB /* peets.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D415393BA200F9ECFB /* peets.jpg */; };
+		63DE52E215393BA200F9ECFB /* gbc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D515393BA200F9ECFB /* gbc.jpg */; };
+		63DE52E315393BA200F9ECFB /* bearmarket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D615393BA200F9ECFB /* bearmarket.gif */; };
+		63DE52E415393BA200F9ECFB /* soupco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D715393BA200F9ECFB /* soupco.jpg */; };
+		63DE52E515393BA200F9ECFB /* naan.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D815393BA200F9ECFB /* naan.JPG */; };
+		63DE52E615393BA200F9ECFB /* joshu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52D915393BA200F9ECFB /* joshu.jpg */; };
+		63DE52E715393BA200F9ECFB /* jamba.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52DA15393BA200F9ECFB /* jamba.jpg */; };
+		63DE52E915393C7000F9ECFB /* cheesenstuff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52E815393C7000F9ECFB /* cheesenstuff.jpg */; };
+		63DE52EB15393C7A00F9ECFB /* blondies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52EA15393C7A00F9ECFB /* blondies.jpg */; };
 		6D489920152C33D20060CBA6 /* MealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D48991F152C33D20060CBA6 /* MealViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +197,32 @@
 		63B2E3EE1520642000AA7848 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
 		63C187B6152D90B000FF4AF1 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		63C187B7152D90B000FF4AF1 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		63DE52B71539330C00F9ECFB /* bearbasics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bearbasics.jpg; sourceTree = "<group>"; };
+		63DE52BA1539332C00F9ECFB /* berkeleyThaiHouse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = berkeleyThaiHouse.jpg; sourceTree = "<group>"; };
+		63DE52BC153933E700F9ECFB /* cafedurant.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cafedurant.jpg; sourceTree = "<group>"; };
+		63DE52BE1539343B00F9ECFB /* chipotle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = chipotle.gif; sourceTree = "<group>"; };
+		63DE52C01539345F00F9ECFB /* hoagies.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hoagies.JPG; sourceTree = "<group>"; };
+		63DE52C21539363700F9ECFB /* johnstons.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = johnstons.jpg; sourceTree = "<group>"; };
+		63DE52C41539365000F9ECFB /* Moesbooks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Moesbooks.jpg; sourceTree = "<group>"; };
+		63DE52C61539369400F9ECFB /* neds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = neds.jpg; sourceTree = "<group>"; };
+		63DE52C81539371F00F9ECFB /* uchair.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = uchair.jpg; sourceTree = "<group>"; };
+		63DE52CA1539375000F9ECFB /* studentfood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = studentfood.jpg; sourceTree = "<group>"; };
+		63DE52CC153937EB00F9ECFB /* extreme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = extreme.jpg; sourceTree = "<group>"; };
+		63DE52CE15393BA200F9ECFB /* ramonas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ramonas.jpg; sourceTree = "<group>"; };
+		63DE52CF15393BA200F9ECFB /* proshop.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = proshop.gif; sourceTree = "<group>"; };
+		63DE52D015393BA200F9ECFB /* patbrown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = patbrown.jpg; sourceTree = "<group>"; };
+		63DE52D115393BA200F9ECFB /* commongrounds.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = commongrounds.gif; sourceTree = "<group>"; };
+		63DE52D215393BA200F9ECFB /* terrace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = terrace.jpg; sourceTree = "<group>"; };
+		63DE52D315393BA200F9ECFB /* qualcomm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qualcomm.jpg; sourceTree = "<group>"; };
+		63DE52D415393BA200F9ECFB /* peets.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = peets.jpg; sourceTree = "<group>"; };
+		63DE52D515393BA200F9ECFB /* gbc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gbc.jpg; sourceTree = "<group>"; };
+		63DE52D615393BA200F9ECFB /* bearmarket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bearmarket.gif; sourceTree = "<group>"; };
+		63DE52D715393BA200F9ECFB /* soupco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = soupco.jpg; sourceTree = "<group>"; };
+		63DE52D815393BA200F9ECFB /* naan.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = naan.JPG; sourceTree = "<group>"; };
+		63DE52D915393BA200F9ECFB /* joshu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = joshu.jpg; sourceTree = "<group>"; };
+		63DE52DA15393BA200F9ECFB /* jamba.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jamba.jpg; sourceTree = "<group>"; };
+		63DE52E815393C7000F9ECFB /* cheesenstuff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cheesenstuff.jpg; sourceTree = "<group>"; };
+		63DE52EA15393C7A00F9ECFB /* blondies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blondies.jpg; sourceTree = "<group>"; };
 		6D48991E152C33D20060CBA6 /* MealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealViewController.h; sourceTree = "<group>"; };
 		6D48991F152C33D20060CBA6 /* MealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +332,32 @@
 				638DD19115384D46009EA87A /* infoimage.png */,
 				638DD19215384D46009EA87A /* infoimage@2x.png */,
 				638DD1951538F12B009EA87A /* doe.jpg */,
+				63DE52B71539330C00F9ECFB /* bearbasics.jpg */,
+				63DE52BA1539332C00F9ECFB /* berkeleyThaiHouse.jpg */,
+				63DE52BC153933E700F9ECFB /* cafedurant.jpg */,
+				63DE52BE1539343B00F9ECFB /* chipotle.gif */,
+				63DE52C01539345F00F9ECFB /* hoagies.JPG */,
+				63DE52C21539363700F9ECFB /* johnstons.jpg */,
+				63DE52C41539365000F9ECFB /* Moesbooks.jpg */,
+				63DE52C61539369400F9ECFB /* neds.jpg */,
+				63DE52C81539371F00F9ECFB /* uchair.jpg */,
+				63DE52CA1539375000F9ECFB /* studentfood.jpg */,
+				63DE52CC153937EB00F9ECFB /* extreme.jpg */,
+				63DE52CE15393BA200F9ECFB /* ramonas.jpg */,
+				63DE52CF15393BA200F9ECFB /* proshop.gif */,
+				63DE52D015393BA200F9ECFB /* patbrown.jpg */,
+				63DE52D115393BA200F9ECFB /* commongrounds.gif */,
+				63DE52D215393BA200F9ECFB /* terrace.jpg */,
+				63DE52D315393BA200F9ECFB /* qualcomm.jpg */,
+				63DE52D415393BA200F9ECFB /* peets.jpg */,
+				63DE52E815393C7000F9ECFB /* cheesenstuff.jpg */,
+				63DE52EA15393C7A00F9ECFB /* blondies.jpg */,
+				63DE52D515393BA200F9ECFB /* gbc.jpg */,
+				63DE52D615393BA200F9ECFB /* bearmarket.gif */,
+				63DE52D715393BA200F9ECFB /* soupco.jpg */,
+				63DE52D815393BA200F9ECFB /* naan.JPG */,
+				63DE52D915393BA200F9ECFB /* joshu.jpg */,
+				63DE52DA15393BA200F9ECFB /* jamba.jpg */,
 				6393DE0F150301F3003B77F5 /* Supporting Files */,
 				638DD197153917F4009EA87A /* TVOutManager.h */,
 				638DD198153917F4009EA87A /* TVOutManager.m */,
@@ -468,6 +546,32 @@
 				638DD19315384D46009EA87A /* infoimage.png in Resources */,
 				638DD19415384D46009EA87A /* infoimage@2x.png in Resources */,
 				638DD1961538F12B009EA87A /* doe.jpg in Resources */,
+				63DE52B81539330C00F9ECFB /* bearbasics.jpg in Resources */,
+				63DE52BB1539332C00F9ECFB /* berkeleyThaiHouse.jpg in Resources */,
+				63DE52BD153933E700F9ECFB /* cafedurant.jpg in Resources */,
+				63DE52BF1539343B00F9ECFB /* chipotle.gif in Resources */,
+				63DE52C11539345F00F9ECFB /* hoagies.JPG in Resources */,
+				63DE52C31539363700F9ECFB /* johnstons.jpg in Resources */,
+				63DE52C51539365000F9ECFB /* Moesbooks.jpg in Resources */,
+				63DE52C71539369400F9ECFB /* neds.jpg in Resources */,
+				63DE52C91539371F00F9ECFB /* uchair.jpg in Resources */,
+				63DE52CB1539375000F9ECFB /* studentfood.jpg in Resources */,
+				63DE52CD153937EB00F9ECFB /* extreme.jpg in Resources */,
+				63DE52DB15393BA200F9ECFB /* ramonas.jpg in Resources */,
+				63DE52DC15393BA200F9ECFB /* proshop.gif in Resources */,
+				63DE52DD15393BA200F9ECFB /* patbrown.jpg in Resources */,
+				63DE52DE15393BA200F9ECFB /* commongrounds.gif in Resources */,
+				63DE52DF15393BA200F9ECFB /* terrace.jpg in Resources */,
+				63DE52E015393BA200F9ECFB /* qualcomm.jpg in Resources */,
+				63DE52E115393BA200F9ECFB /* peets.jpg in Resources */,
+				63DE52E215393BA200F9ECFB /* gbc.jpg in Resources */,
+				63DE52E315393BA200F9ECFB /* bearmarket.gif in Resources */,
+				63DE52E415393BA200F9ECFB /* soupco.jpg in Resources */,
+				63DE52E515393BA200F9ECFB /* naan.JPG in Resources */,
+				63DE52E615393BA200F9ECFB /* joshu.jpg in Resources */,
+				63DE52E715393BA200F9ECFB /* jamba.jpg in Resources */,
+				63DE52E915393C7000F9ECFB /* cheesenstuff.jpg in Resources */,
+				63DE52EB15393C7A00F9ECFB /* blondies.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,7 +5,7 @@
 	<key>Bear Basics</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>bearbasics.jpg</string>
 		<key>lat</key>
 		<real>37.86768</real>
 		<key>long</key>
@@ -16,7 +16,7 @@
 	<key>Berkeley Thai House</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.berkeleythaihouse.com/</string>
+		<string>berkeleyThaiHouse.jpg</string>
 		<key>long</key>
 		<real>-122.258389</real>
 		<key>lat</key>
@@ -27,7 +27,7 @@
 	<key>Cafe Durant</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.cafedurant.com/</string>
+		<string>cafedurant.jpg</string>
 		<key>lat</key>
 		<real>37.868026</real>
 		<key>long</key>
@@ -38,7 +38,7 @@
 	<key>Chipotle Mexican Grill</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.chipotle.com/</string>
+		<string>chipotle.gif</string>
 		<key>lat</key>
 		<real>37.868366</real>
 		<key>long</key>
@@ -49,7 +49,7 @@
 	<key>IB&apos;s Hoagies &amp; Cheesesteaks</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.ibshoagies.com/</string>
+		<string>hoagies.JPG</string>
 		<key>lat</key>
 		<real>37.868018</real>
 		<key>long</key>
@@ -60,7 +60,7 @@
 	<key>Johnston&apos;s Market</key>
 	<dict>
 		<key>url</key>
-		<string></string>
+		<string>johnstons.jpg</string>
 		<key>lat</key>
 		<real>37.868024</real>
 		<key>long</key>
@@ -71,7 +71,7 @@
 	<key>Moe&apos;s Books</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.moesbooks.com/</string>
+		<string>Moesbooks.jpg</string>
 		<key>lat</key>
 		<real>37.865522</real>
 		<key>long</key>
@@ -82,7 +82,7 @@
 	<key>Ned&apos;s Berkeley Bookstore</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.nedsbooks.com/ucb/</string>
+		<string>neds.jpg</string>
 		<key>lat</key>
 		<real>37.868554</real>
 		<key>long</key>
@@ -93,7 +93,7 @@
 	<key>UC Hair Salon &amp; Waxing</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.ucsalon.com/</string>
+		<string>uchair.jpg</string>
 		<key>lat</key>
 		<real>37.868402</real>
 		<key>long</key>
@@ -104,7 +104,7 @@
 	<key>Berkeley Student Food Collective</key>
 	<dict>
 		<key>url</key>
-		<string>http://berkeleystudentfoodcollective.org/</string>
+		<string>studentfood.jpg</string>
 		<key>lat</key>
 		<real>37.868402</real>
 		<key>long</key>
@@ -115,7 +115,7 @@
 	<key>Blondie&apos;s Pizza</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.blondiespizza.com/</string>
+		<string>blondies.jpg</string>
 		<key>lat</key>
 		<real>37.868034</real>
 		<key>long</key>
@@ -126,7 +126,7 @@
 	<key>Cheese &apos;n&apos; Stuff</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.cheesenstuff.com/</string>
+		<string>cheesenstuff.jpg</string>
 		<key>lat</key>
 		<real>37.86763</real>
 		<key>long</key>
@@ -137,7 +137,7 @@
 	<key>Extreme Pizza, Shattuck Ave.</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.extremepizza.com/</string>
+		<string>extreme.jpg</string>
 		<key>lat</key>
 		<real>37.86621</real>
 		<key>long</key>
@@ -159,7 +159,7 @@
 	<key>Jamba Juice</key>
 	<dict>
 		<key>New item</key>
-		<string>http://www.jambajuice.com/</string>
+		<string>jamba.jpg</string>
 		<key>lat</key>
 		<real>37.868682</real>
 		<key>long</key>
@@ -170,7 +170,7 @@
 	<key>Joshua-ya&apos;s Brasserie</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.joshu-ya.com/</string>
+		<string>joshu.jpg</string>
 		<key>lat</key>
 		<real>37.865234</real>
 		<key>long</key>
@@ -181,7 +181,7 @@
 	<key>Naan-N-Curry</key>
 	<dict>
 		<key>url</key>
-		<string>http://naanncurryberkeley.com/</string>
+		<string>naan.JPG</string>
 		<key>lat</key>
 		<real>37.8674</real>
 		<key>long</key>
@@ -192,7 +192,7 @@
 	<key>San Francisco Soup Company</key>
 	<dict>
 		<key>url</key>
-		<string>http://www.sfsoupco.com/</string>
+		<string>soupco.jpg</string>
 		<key>lat</key>
 		<real>37.868671</real>
 		<key>long</key>
@@ -203,7 +203,7 @@
 	<key>Bear Market</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/bear_market.html</string>
+		<string>bearmarket.gif</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -214,7 +214,7 @@
 	<key>Golden Bear Cafe</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/golden_bear.html</string>
+		<string>gbc.jpg</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -225,7 +225,7 @@
 	<key>Peet&apos;s Coffee &amp; Tea</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/the_den.html</string>
+		<string>peets.jpg</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -236,7 +236,7 @@
 	<key>Qualcomm Cybercafe</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/qualcomm.html</string>
+		<string>qualcomm.jpg</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -247,7 +247,7 @@
 	<key>The Terrace Cafe</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/terrace_cafe.html</string>
+		<string>terrace.jpg</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -258,7 +258,7 @@
 	<key>Common Grounds</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/common_grounds.html</string>
+		<string>commongrounds.gif</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -269,7 +269,7 @@
 	<key>Pat Brown&apos;s Grille</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/pat_browns.html</string>
+		<string>patbrown.jpg</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -280,7 +280,7 @@
 	<key>The Pro Shop</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/pro_shop.html</string>
+		<string>proshop.gif</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>
@@ -291,7 +291,7 @@
 	<key>Ramona&apos;s</key>
 	<dict>
 		<key>url</key>
-		<string>http://caldining.berkeley.edu/ramonas.html</string>
+		<string>ramonas.jpg</string>
 		<key>type</key>
 		<string>On-campus by Cal Dining</string>
 		<key>lat</key>

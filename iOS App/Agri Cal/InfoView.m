@@ -25,7 +25,7 @@
         self.timesTextView = [[UITextView alloc] initWithFrame:CGRectMake(114, 28, 320-114, self.frame.size.height-self.textView.frame.size.height-self.titleLabel.frame.size.height-8)];
         self.timesTextView.backgroundColor = [UIColor clearColor];
         self.timesTextView.textColor = [UIColor lightGrayColor];
-        
+        self.imageView.contentMode = UIViewContentModeScaleToFill;
         [self addSubview:self.timesTextView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.imageView];
