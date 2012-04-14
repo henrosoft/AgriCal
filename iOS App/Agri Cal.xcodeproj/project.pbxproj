@@ -95,6 +95,21 @@
 		63DE52E715393BA200F9ECFB /* jamba.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52DA15393BA200F9ECFB /* jamba.jpg */; };
 		63DE52E915393C7000F9ECFB /* cheesenstuff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52E815393C7000F9ECFB /* cheesenstuff.jpg */; };
 		63DE52EB15393C7A00F9ECFB /* blondies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52EA15393C7A00F9ECFB /* blondies.jpg */; };
+		63DE52FB153940C100F9ECFB /* physicslib.png in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52EC153940C100F9ECFB /* physicslib.png */; };
+		63DE52FC153940C100F9ECFB /* optometrylib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52ED153940C100F9ECFB /* optometrylib.jpg */; };
+		63DE52FD153940C100F9ECFB /* musiclib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52EE153940C100F9ECFB /* musiclib.jpg */; };
+		63DE52FE153940C100F9ECFB /* mathlib.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52EF153940C100F9ECFB /* mathlib.jpeg */; };
+		63DE52FF153940C100F9ECFB /* psychlib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F0153940C100F9ECFB /* psychlib.jpg */; };
+		63DE5300153940C100F9ECFB /* chemlib.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F1153940C100F9ECFB /* chemlib.jpeg */; };
+		63DE5301153940C100F9ECFB /* biolib.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F2153940C100F9ECFB /* biolib.JPG */; };
+		63DE5302153940C100F9ECFB /* sheldon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F3153940C100F9ECFB /* sheldon.jpg */; };
+		63DE5303153940C100F9ECFB /* moffitt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F4153940C100F9ECFB /* moffitt.jpg */; };
+		63DE5304153940C100F9ECFB /* ethnicstud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F5153940C100F9ECFB /* ethnicstud.jpg */; };
+		63DE5305153940C100F9ECFB /* kresge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F6153940C100F9ECFB /* kresge.jpg */; };
+		63DE5306153940C100F9ECFB /* eastasianlib.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F7153940C100F9ECFB /* eastasianlib.jpeg */; };
+		63DE5307153940C100F9ECFB /* buslib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F8153940C100F9ECFB /* buslib.jpg */; };
+		63DE5308153940C100F9ECFB /* bancroft.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F9153940C100F9ECFB /* bancroft.jpg */; };
+		63DE5309153940C100F9ECFB /* anthro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52FA153940C100F9ECFB /* anthro.jpeg */; };
 		6D489920152C33D20060CBA6 /* MealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D48991F152C33D20060CBA6 /* MealViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +238,21 @@
 		63DE52DA15393BA200F9ECFB /* jamba.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jamba.jpg; sourceTree = "<group>"; };
 		63DE52E815393C7000F9ECFB /* cheesenstuff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cheesenstuff.jpg; sourceTree = "<group>"; };
 		63DE52EA15393C7A00F9ECFB /* blondies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blondies.jpg; sourceTree = "<group>"; };
+		63DE52EC153940C100F9ECFB /* physicslib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = physicslib.png; sourceTree = "<group>"; };
+		63DE52ED153940C100F9ECFB /* optometrylib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = optometrylib.jpg; sourceTree = "<group>"; };
+		63DE52EE153940C100F9ECFB /* musiclib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = musiclib.jpg; sourceTree = "<group>"; };
+		63DE52EF153940C100F9ECFB /* mathlib.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mathlib.jpeg; sourceTree = "<group>"; };
+		63DE52F0153940C100F9ECFB /* psychlib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = psychlib.jpg; sourceTree = "<group>"; };
+		63DE52F1153940C100F9ECFB /* chemlib.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chemlib.jpeg; sourceTree = "<group>"; };
+		63DE52F2153940C100F9ECFB /* biolib.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = biolib.JPG; sourceTree = "<group>"; };
+		63DE52F3153940C100F9ECFB /* sheldon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sheldon.jpg; sourceTree = "<group>"; };
+		63DE52F4153940C100F9ECFB /* moffitt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moffitt.jpg; sourceTree = "<group>"; };
+		63DE52F5153940C100F9ECFB /* ethnicstud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ethnicstud.jpg; sourceTree = "<group>"; };
+		63DE52F6153940C100F9ECFB /* kresge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kresge.jpg; sourceTree = "<group>"; };
+		63DE52F7153940C100F9ECFB /* eastasianlib.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eastasianlib.jpeg; sourceTree = "<group>"; };
+		63DE52F8153940C100F9ECFB /* buslib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buslib.jpg; sourceTree = "<group>"; };
+		63DE52F9153940C100F9ECFB /* bancroft.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bancroft.jpg; sourceTree = "<group>"; };
+		63DE52FA153940C100F9ECFB /* anthro.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = anthro.jpeg; sourceTree = "<group>"; };
 		6D48991E152C33D20060CBA6 /* MealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealViewController.h; sourceTree = "<group>"; };
 		6D48991F152C33D20060CBA6 /* MealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,6 +388,21 @@
 				63DE52D815393BA200F9ECFB /* naan.JPG */,
 				63DE52D915393BA200F9ECFB /* joshu.jpg */,
 				63DE52DA15393BA200F9ECFB /* jamba.jpg */,
+				63DE52EC153940C100F9ECFB /* physicslib.png */,
+				63DE52ED153940C100F9ECFB /* optometrylib.jpg */,
+				63DE52EE153940C100F9ECFB /* musiclib.jpg */,
+				63DE52EF153940C100F9ECFB /* mathlib.jpeg */,
+				63DE52F0153940C100F9ECFB /* psychlib.jpg */,
+				63DE52F1153940C100F9ECFB /* chemlib.jpeg */,
+				63DE52F2153940C100F9ECFB /* biolib.JPG */,
+				63DE52F3153940C100F9ECFB /* sheldon.jpg */,
+				63DE52F4153940C100F9ECFB /* moffitt.jpg */,
+				63DE52F5153940C100F9ECFB /* ethnicstud.jpg */,
+				63DE52F6153940C100F9ECFB /* kresge.jpg */,
+				63DE52F7153940C100F9ECFB /* eastasianlib.jpeg */,
+				63DE52F8153940C100F9ECFB /* buslib.jpg */,
+				63DE52F9153940C100F9ECFB /* bancroft.jpg */,
+				63DE52FA153940C100F9ECFB /* anthro.jpeg */,
 				6393DE0F150301F3003B77F5 /* Supporting Files */,
 				638DD197153917F4009EA87A /* TVOutManager.h */,
 				638DD198153917F4009EA87A /* TVOutManager.m */,
@@ -572,6 +617,21 @@
 				63DE52E715393BA200F9ECFB /* jamba.jpg in Resources */,
 				63DE52E915393C7000F9ECFB /* cheesenstuff.jpg in Resources */,
 				63DE52EB15393C7A00F9ECFB /* blondies.jpg in Resources */,
+				63DE52FB153940C100F9ECFB /* physicslib.png in Resources */,
+				63DE52FC153940C100F9ECFB /* optometrylib.jpg in Resources */,
+				63DE52FD153940C100F9ECFB /* musiclib.jpg in Resources */,
+				63DE52FE153940C100F9ECFB /* mathlib.jpeg in Resources */,
+				63DE52FF153940C100F9ECFB /* psychlib.jpg in Resources */,
+				63DE5300153940C100F9ECFB /* chemlib.jpeg in Resources */,
+				63DE5301153940C100F9ECFB /* biolib.JPG in Resources */,
+				63DE5302153940C100F9ECFB /* sheldon.jpg in Resources */,
+				63DE5303153940C100F9ECFB /* moffitt.jpg in Resources */,
+				63DE5304153940C100F9ECFB /* ethnicstud.jpg in Resources */,
+				63DE5305153940C100F9ECFB /* kresge.jpg in Resources */,
+				63DE5306153940C100F9ECFB /* eastasianlib.jpeg in Resources */,
+				63DE5307153940C100F9ECFB /* buslib.jpg in Resources */,
+				63DE5308153940C100F9ECFB /* bancroft.jpg in Resources */,
+				63DE5309153940C100F9ECFB /* anthro.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
