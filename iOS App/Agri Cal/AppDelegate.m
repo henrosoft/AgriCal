@@ -22,7 +22,6 @@
  */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     NSString *queryString = [NSString stringWithFormat:@"%@/api/balance/", ServerURL];
 
     NSString *post = [NSString stringWithFormat:@"username=%@&password=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
@@ -75,9 +74,13 @@
     NSURL *url = [NSURL URLWithString:@"https://wlan.berkeley.edu/cgi-bin/login/calnet.cgi"];
     NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
     [self.web loadRequest:wifiRequest];
+    [self performSelector:@selector(startTvOut) withObject:nil afterDelay:1.5];
     return YES;
 }
-
+-(void)startTvOut
+{
+    [[TVOutManager sharedInstance] startTVOut];
+}
 /*  
     The same thing happens each time the application enters the foreground
  */
@@ -129,6 +132,7 @@
     NSURL *url = [NSURL URLWithString:@"https://wlan.berkeley.edu/cgi-bin/login/calnet.cgi"];
     NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
     [self.web loadRequest:wifiRequest];
+    [self performSelector:@selector(startTvOut) withObject:nil afterDelay:1.5];
 }
 
 /*

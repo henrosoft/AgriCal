@@ -19,6 +19,7 @@
 		638DD19315384D46009EA87A /* infoimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 638DD19115384D46009EA87A /* infoimage.png */; };
 		638DD19415384D46009EA87A /* infoimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638DD19215384D46009EA87A /* infoimage@2x.png */; };
 		638DD1961538F12B009EA87A /* doe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 638DD1951538F12B009EA87A /* doe.jpg */; };
+		638DD199153917F4009EA87A /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 638DD198153917F4009EA87A /* TVOutManager.m */; };
 		638EE2F0150374210031FC10 /* TimePopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 638EE2EF150374210031FC10 /* TimePopAnnotationView.m */; };
 		638F42DD150C68620031A9F6 /* DiningMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42DC150C68620031A9F6 /* DiningMainViewController.m */; };
 		638F42E1150C6D3E0031A9F6 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 638F42E0150C6D3E0031A9F6 /* DiningDetailViewController.m */; };
@@ -99,6 +100,8 @@
 		638DD19115384D46009EA87A /* infoimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoimage.png; sourceTree = "<group>"; };
 		638DD19215384D46009EA87A /* infoimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoimage@2x.png"; sourceTree = "<group>"; };
 		638DD1951538F12B009EA87A /* doe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doe.jpg; sourceTree = "<group>"; };
+		638DD197153917F4009EA87A /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
+		638DD198153917F4009EA87A /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
 		638EE2EE150374210031FC10 /* TimePopAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePopAnnotationView.h; path = ../TimePopAnnotationView.h; sourceTree = "<group>"; };
 		638EE2EF150374210031FC10 /* TimePopAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePopAnnotationView.m; path = ../TimePopAnnotationView.m; sourceTree = "<group>"; };
 		638F42DB150C68620031A9F6 /* DiningMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningMainViewController.h; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				638DD19215384D46009EA87A /* infoimage@2x.png */,
 				638DD1951538F12B009EA87A /* doe.jpg */,
 				6393DE0F150301F3003B77F5 /* Supporting Files */,
+				638DD197153917F4009EA87A /* TVOutManager.h */,
+				638DD198153917F4009EA87A /* TVOutManager.m */,
 			);
 			path = "Agri Cal";
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				6D489920152C33D20060CBA6 /* MealViewController.m in Sources */,
 				63C187B8152D90B000FF4AF1 /* InfoViewController.m in Sources */,
 				638DD19015384A95009EA87A /* InfoView.m in Sources */,
+				638DD199153917F4009EA87A /* TVOutManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

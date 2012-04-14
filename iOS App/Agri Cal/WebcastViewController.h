@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface WebcastViewController : UIViewController <UIWebViewDelegate>
+{
+
+}
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSString *url;
 
