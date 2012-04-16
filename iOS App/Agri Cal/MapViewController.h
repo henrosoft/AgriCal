@@ -37,7 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *mapKeyImageView;
-@property (strong, nonatomic) InfoView *infoView;
+@property (strong, nonatomic) IBOutlet InfoView *infoView;
 - (IBAction)switchAnnotations:(id)sender;
 - (IBAction)doneButtonPushed:(id)sender;
 - (void)highlightPath:(NSString*)path:(NSString*)indexes;

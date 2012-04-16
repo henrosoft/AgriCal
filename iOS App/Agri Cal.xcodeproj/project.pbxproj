@@ -110,6 +110,7 @@
 		63DE5307153940C100F9ECFB /* buslib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F8153940C100F9ECFB /* buslib.jpg */; };
 		63DE5308153940C100F9ECFB /* bancroft.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52F9153940C100F9ECFB /* bancroft.jpg */; };
 		63DE5309153940C100F9ECFB /* anthro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 63DE52FA153940C100F9ECFB /* anthro.jpeg */; };
+		63DE5314153BF9E100F9ECFB /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DE5313153BF9E100F9ECFB /* InfoView.xib */; };
 		6D489920152C33D20060CBA6 /* MealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D48991F152C33D20060CBA6 /* MealViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -253,6 +254,7 @@
 		63DE52F8153940C100F9ECFB /* buslib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buslib.jpg; sourceTree = "<group>"; };
 		63DE52F9153940C100F9ECFB /* bancroft.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bancroft.jpg; sourceTree = "<group>"; };
 		63DE52FA153940C100F9ECFB /* anthro.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = anthro.jpeg; sourceTree = "<group>"; };
+		63DE5313153BF9E100F9ECFB /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		6D48991E152C33D20060CBA6 /* MealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealViewController.h; sourceTree = "<group>"; };
 		6D48991F152C33D20060CBA6 /* MealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,6 +330,7 @@
 				6393DE21150301F3003B77F5 /* MapViewController.m */,
 				638DD18E15384A95009EA87A /* InfoView.h */,
 				638DD18F15384A95009EA87A /* InfoView.m */,
+				63DE5313153BF9E100F9ECFB /* InfoView.xib */,
 				6393DE5C15030FA5003B77F5 /* Map Annotations */,
 				638F42DB150C68620031A9F6 /* DiningMainViewController.h */,
 				638F42DC150C68620031A9F6 /* DiningMainViewController.m */,
@@ -632,6 +635,7 @@
 				63DE5307153940C100F9ECFB /* buslib.jpg in Resources */,
 				63DE5308153940C100F9ECFB /* bancroft.jpg in Resources */,
 				63DE5309153940C100F9ECFB /* anthro.jpeg in Resources */,
+				63DE5314153BF9E100F9ECFB /* InfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
