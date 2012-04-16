@@ -45,7 +45,6 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     MKCoordinateSpan span = {.latitudeDelta = 0.01, .longitudeDelta = 0.01};
     MKCoordinateRegion region = {coord, span};
     [self.mapView setRegion:region];
-    
     NSString* plistpath = [[NSBundle mainBundle] pathForResource:@"Stops" ofType:@"plist"];
     NSDictionary* stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
     NSEnumerator* enumerator = [stops keyEnumerator];
@@ -60,19 +59,6 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
         ano.title = stop;
         [self.busStops addObject:ano];	
     }
-    
-    plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
-    stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
-    enumerator = [stops keyEnumerator];
-    while ((stop = [enumerator nextObject]))
-    {
-        NSDictionary* current = [stops objectForKey:stop];
-        NSNumber* longitude = [current objectForKey:@"long"];
-        NSNumber* latitude = [current objectForKey:@"lat"];
-        Cal1CardAnnotation* ano = [[Cal1CardAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andTitle:stop andURL:[current objectForKey:@"url"] andTimes:[current objectForKey:@"times"] andInfo:[current objectForKey:@"info"]];
-        ano.type = [current objectForKey:@"type"];
-        [self.cal1cardLocations addObject:ano];	
-    }
     [self.mapView addAnnotations:self.busStops];
     
     self.mapView.showsUserLocation = YES;    
@@ -80,6 +66,56 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     self.infoView = [[InfoView alloc] initWithFrame:CGRectMake(0, 480, 320, 200)];
     self.infoView.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0.8];
     [self.view addSubview:self.infoView];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+       
+        NSString *queryString = [NSString stringWithFormat:@"%@/api/locations/", ServerURL];
+        NSURL *requestURL = [NSURL URLWithString:queryString];
+        NSURLResponse *response = nil;
+        NSError *error = nil;
+        
+        NSURLRequest *jsonRequest = [NSURLRequest requestWithURL:requestURL];
+        
+        NSData *receivedData = [NSURLConnection sendSynchronousRequest:jsonRequest
+                                                     returningResponse:&response
+                                                                 error:&error];
+        NSArray *arr = [NSJSONSerialization JSONObjectWithData:receivedData options:NSJSONWritingPrettyPrinted error:nil];  
+        for (NSDictionary *currentLocation in arr)
+        {
+            NSNumber *latitude = [currentLocation objectForKey:@"latitude"];
+            NSNumber *longitude = [currentLocation objectForKey:@"longitude"];
+            NSString *info = [currentLocation objectForKey:@"description"];
+            NSString *title = [currentLocation objectForKey:@"name"];
+            NSString *times = [currentLocation objectForKey:@"times"];
+            NSString *imageURL = [currentLocation objectForKey:@"image_url"];
+            NSString *type = [currentLocation objectForKey:@"kind"];
+            if (latitude != nil)
+            {
+                Cal1CardAnnotation *annotation = [[Cal1CardAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andTitle:title andURL:imageURL andTimes:times andInfo:info];
+                annotation.type = type;
+                [self.cal1cardLocations addObject:annotation];
+            }
+        }
+        
+        NSString *plistpath = [[NSBundle mainBundle] pathForResource:@"Cal1CardLocations" ofType:@"plist"];
+        NSDictionary *stops = [NSDictionary dictionaryWithContentsOfFile:plistpath];
+        NSEnumerator *enumerator = [stops keyEnumerator];
+        id stop;
+        while ((stop = [enumerator nextObject]))
+        {
+            NSDictionary* current = [stops objectForKey:stop];
+            NSNumber* longitude = [current objectForKey:@"long"];
+            NSNumber* latitude = [current objectForKey:@"lat"];
+            Cal1CardAnnotation* ano = [[Cal1CardAnnotation alloc] initWithLatitude:[latitude doubleValue] andLongitude:[longitude doubleValue] andTitle:stop andURL:[current objectForKey:@"url"] andTimes:[current objectForKey:@"times"] andInfo:[current objectForKey:@"info"]];
+            ano.type = [current objectForKey:@"type"];
+            [self.cal1cardLocations addObject:ano];	
+        }
+        dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+        dispatch_async(updateUIQueue, ^{
+            
+            
+        });
+    });
 }
 
 /*
@@ -122,6 +158,7 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
             self.cal1Callout.times = ((Cal1CardAnnotation*)view.annotation).times;
             self.cal1Callout.info = ((Cal1CardAnnotation*)view.annotation).info;
             self.cal1Callout.imageURL = ((Cal1CardAnnotation*)view.annotation).imageURL;
+            self.cal1Callout.type = ((Cal1CardAnnotation*)view.annotation).type;
         }   
         [self.mapView addAnnotation:self.cal1Callout];
         self.selectedAnnotation = view;
@@ -372,7 +409,24 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     self.infoView.textView.text = annotation.info;
     self.infoView.titleLabel.text = annotation.title;
     self.infoView.timesTextView.text = annotation.times;
-    self.infoView.imageView.image = [UIImage imageNamed:annotation.imageURL];
+    NSLog(@"%@", ((Cal1CardAnnotation*)annotation.annotation).type);
+    if ([((Cal1CardAnnotation*)annotation.annotation).type isEqualToString:@"library"])
+    {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+        dispatch_async(queue, ^{
+            
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:annotation.imageURL]]];
+            NSLog(@"%@", image);
+            dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
+            dispatch_async(updateUIQueue, ^{
+                self.infoView.imageView.image = image;
+            });
+        });
+ 
+    }
+    else {
+        self.infoView.imageView.image = [UIImage imageNamed:annotation.imageURL];
+    }
     [UIView commitAnimations];
 }
 /*
@@ -405,11 +459,6 @@ static NSString *OnCampus = @"On-campus by Cal Dining";
     self.annotationSelector.frame = frame;
     self.navigationBar.rightBarButtonItem = nil;
     [UIView commitAnimations];
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.searchBar resignFirstResponder];
 }
 
 /*
