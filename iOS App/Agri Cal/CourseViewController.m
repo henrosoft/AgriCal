@@ -150,9 +150,10 @@
                 if (toRemove)
                     [dict removeObject:toRemove];
             }
-            if ([[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] isEqualToString:semester])
+            if ([[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]] isEqualToString:[NSString stringWithFormat:@"%@ 12", semester]])
             {
                 [self.departments setObject:dict forKey:@"*"];
+                NSLog(@"%@ %@", dict, semester);
                 dispatch_queue_t updateUIQueue = dispatch_get_main_queue();
                 dispatch_async(updateUIQueue, ^{
                     [self.tableView reloadData];
