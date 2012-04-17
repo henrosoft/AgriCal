@@ -74,7 +74,7 @@
     NSURL *url = [NSURL URLWithString:@"https://wlan.berkeley.edu/cgi-bin/login/calnet.cgi"];
     NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
     [self.web loadRequest:wifiRequest];
-    [self performSelector:@selector(startTvOut) withObject:nil afterDelay:1.5];
+    //[self performSelector:@selector(startTvOut) withObject:nil afterDelay:1.5];
     return YES;
 }
 -(void)startTvOut
@@ -132,7 +132,7 @@
     NSURL *url = [NSURL URLWithString:@"https://wlan.berkeley.edu/cgi-bin/login/calnet.cgi"];
     NSURLRequest *wifiRequest = [NSURLRequest requestWithURL:url];
     [self.web loadRequest:wifiRequest];
-    [self performSelector:@selector(startTvOut) withObject:nil afterDelay:1.5];
+    //[self performSelector:@selector(startTvOut) withObject:nil afterDelay:1.5];
 }
 
 /*
